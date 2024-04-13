@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5gt1atkp4ssc"]
+
+[ext_resource type="Texture2D" uid="uid://bj1kbvn37v518" path="res://Data/Portraits/EnemyLeader/EnemyLeader0.png" id="1_cd5js"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4sdxx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cd5js")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyPortraitAndDialogUi" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-154, 0)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_4sdxx")
+centered = false

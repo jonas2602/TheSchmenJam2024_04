@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu536ymb4dtul"]
 
 [ext_resource type="Script" path="res://Scripts/ingame_ui.gd" id="1_b65dg"]
-[ext_resource type="Texture2D" uid="uid://toowomqny63x" path="res://Data/Monsters/ReplaceMe_Monster/frame0000.png" id="2_xh0y5"]
+[ext_resource type="PackedScene" uid="uid://b5gt1atkp4ssc" path="res://Scenes/enemy_portrait_and_dialog_ui.tscn" id="3_4u6kf"]
 [ext_resource type="PackedScene" uid="uid://dsxcdsr1b7o1o" path="res://Scenes/hero_portrait_ui.tscn" id="3_mim8c"]
 
 [node name="IngameUIRoot" type="Control"]
@@ -13,26 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b65dg")
 
-[node name="EnemyPortrait" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -175.0
-offset_right = -45.0
-offset_bottom = 130.0
-grow_horizontal = 0
-texture = ExtResource("2_xh0y5")
-expand_mode = 1
-
 [node name="HeroPortrait" parent="." instance=ExtResource("3_mim8c")]
 layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 20.0
 offset_bottom = 20.0
-grow_horizontal = 1
-grow_vertical = 1
+
+[node name="EnemyPortraitAndDialogUi" parent="." instance=ExtResource("3_4u6kf")]
+layout_mode = 1
+offset_left = -52.0
+offset_top = 20.0
+offset_right = -52.0
+offset_bottom = 20.0
