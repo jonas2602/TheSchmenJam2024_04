@@ -1,30 +1,32 @@
 extends Node2D
 
-class EnemyData:
-	var Cursor : int
-	var Name : String
-	#var Texture : Texture2D
-	#var Speed : float
-
 # Variables exposed to the editor.
-@export var speed : int = 200
+@export var move_speed : int = 200
 @export var text_box_node : Node
+@export var sprite_rect_node : Node
 
-var data : EnemyData
+var cursor_pos : int
+var enemy_name : String
 
-func _initialize_enemy(name):
-	data        = EnemyData.new()
-	data.Cursor = 0
-	data.Name   = name
-	text_box_node.initialize_text_box(data.Name)
+func _initialize_enemy(name, speed, sprites):
+	move_speed = speed
+	sprite_rect_node.set_sprite_frames(sprites)
+	sprite_rect_node.play()
+	
+	cursor_pos = 0
+	enemy_name = name
+	text_box_node.initialize_text_box(name)
 
 func _set_cursor_progress(cursor):
-	data.Cursor = cursor
+	cursor_pos = cursor
 	text_box_node.on_new_progression_state(cursor)
+	
+	if (cursor == enemy_name.length()):
+		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x -= delta * speed
+	position.x -= delta * move_speed
 	
 	if (position.x < 0):
 		queue_free()

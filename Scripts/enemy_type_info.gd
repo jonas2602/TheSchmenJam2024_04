@@ -1,5 +1,5 @@
 extends Node
 
-@export var speed  : int
-@export var sprite : Texture2D
-@export var height : int
+@export var speed   : int
+@export var sprites : SpriteFrames
+@export var height  : int

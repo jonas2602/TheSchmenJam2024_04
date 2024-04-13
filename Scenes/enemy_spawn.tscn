@@ -1,12 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1rmwfiqwbfp8"]
+[gd_scene load_steps=11 format=3 uid="uid://c1rmwfiqwbfp8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_spawn.gd" id="1_o4g6m"]
 [ext_resource type="PackedScene" uid="uid://chhuuimlvap0i" path="res://Scenes/enemy_prefab.tscn" id="2_t1i8u"]
 [ext_resource type="Script" path="res://Scripts/enemy_type_info.gd" id="3_2np3i"]
 [ext_resource type="Texture2D" uid="uid://bsd4t2xgpgs67" path="res://Data/Monsters/ReplaceMe_FlyingMonster/frame0000.png" id="4_ceml0"]
+[ext_resource type="Texture2D" uid="uid://cyn03lwfh410m" path="res://Data/Monsters/ReplaceMe_Monster/frame0001.png" id="5_d14fs"]
 [ext_resource type="Texture2D" uid="uid://toowomqny63x" path="res://Data/Monsters/ReplaceMe_Monster/frame0000.png" id="5_wp70w"]
+[ext_resource type="Texture2D" uid="uid://7xc0e6rg5dox" path="res://Data/Monsters/ReplaceMe_FlyingMonster/frame0001.png" id="7_bk3ja"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_23dd2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvylj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wp70w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d14fs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65fw6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ceml0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bk3ja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SpawnPoint" type="Node2D"]
 script = ExtResource("1_o4g6m")
@@ -22,13 +52,13 @@ mesh = SubResource("SphereMesh_23dd2")
 
 [node name="BasicBitchEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
-speed = 200
-sprite = ExtResource("5_wp70w")
+speed = 150
+sprites = SubResource("SpriteFrames_qvylj")
 
 [node name="FlyingEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
-speed = 400
-sprite = ExtResource("4_ceml0")
-height = 10
+speed = 300
+sprites = SubResource("SpriteFrames_65fw6")
+height = 60
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
