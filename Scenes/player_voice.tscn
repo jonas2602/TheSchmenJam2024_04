@@ -1,15 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://celeitfa83iba"]
+[gd_scene load_steps=3 format=3 uid="uid://celeitfa83iba"]
 
 [ext_resource type="Script" path="res://Scripts/player_voice.gd" id="1_57adb"]
-[ext_resource type="AudioStream" uid="uid://cylty0u8j310c" path="res://Audio/Alphabet/A.ogg" id="2_tumot"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_8fn5e"]
 
-[node name="bgx_player" type="Node"]
+[node name="player_voice" type="Node"]
 script = ExtResource("1_57adb")
-sounds = {
-"A": ExtResource("2_tumot")
-}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPolyphonic_8fn5e")

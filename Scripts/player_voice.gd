@@ -1,16 +1,16 @@
 extends Node
 
 const MAX_INT : int = 0xFFFFFFFF
-const NO_KEY : int  = MAX_INT
+const NO_KEY  : int = MAX_INT
 
-@export var sounds = {}
+var streams = {}
 
 var player : AudioStreamPlayer
 
 func load_sounds():
 	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	for k in range(KEY_A, KEY_Z+1):
-		sounds[k] = ResourceLoader.load("res://Audio/Alphabet/" + chars[k-KEY_A] + ".ogg")
+		streams[k] = ResourceLoader.load("res://Data/Audio/Alphabet/" + chars[k-KEY_A] + ".ogg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,15 +34,15 @@ func _process(_delta):
 		last_pressed_key = pressed_key
 		return
 	
-	stream = sounds[pressed_key]
+	stream = streams[pressed_key]
 	if (!stream):
 		return
-		
+	
 	if player.is_playing:
 		player.stop()
-		
+	
 	player.stream = stream
 	player.play()
 	
-	last_pressed_key = pressed_key	
+	last_pressed_key = pressed_key
 	
