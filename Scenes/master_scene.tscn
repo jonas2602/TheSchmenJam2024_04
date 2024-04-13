@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfnnottyj712b"]
 
 [ext_resource type="PackedScene" uid="uid://b7x33yvqgxwnk" path="res://Scenes/main_game.tscn" id="1_gr7mx"]
-[ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/ingame_ui.tscn" id="2_kyer8"]
-[ext_resource type="PackedScene" uid="uid://dv8f4evxayiow" path="res://Scenes/options_ui.tscn" id="3_yh4um"]
-[ext_resource type="PackedScene" uid="uid://c3idsj77kmk8h" path="res://Scenes/auto_scroller.tscn" id="4_yexh0"]
+[ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/UI/ingame_ui.tscn" id="2_kyer8"]
+[ext_resource type="PackedScene" uid="uid://dv8f4evxayiow" path="res://Scenes/UI/options_ui.tscn" id="3_yh4um"]
+[ext_resource type="PackedScene" uid="uid://c3idsj77kmk8h" path="res://Scenes/UI/auto_scroller.tscn" id="4_yexh0"]
 
 [node name="MasterRoot" type="Node"]
 

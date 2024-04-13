@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu536ymb4dtul"]
 
 [ext_resource type="Script" path="res://Scripts/ingame_ui.gd" id="1_b65dg"]
-[ext_resource type="PackedScene" uid="uid://b5gt1atkp4ssc" path="res://Scenes/enemy_portrait_and_dialog_ui.tscn" id="3_4u6kf"]
-[ext_resource type="PackedScene" uid="uid://dsxcdsr1b7o1o" path="res://Scenes/hero_portrait_ui.tscn" id="3_mim8c"]
+[ext_resource type="PackedScene" uid="uid://b5gt1atkp4ssc" path="res://Scenes/UI/enemy_portrait_and_dialog_ui.tscn" id="3_4u6kf"]
+[ext_resource type="PackedScene" uid="uid://dsxcdsr1b7o1o" path="res://Scenes/UI/hero_portrait_ui.tscn" id="3_mim8c"]
 
 [node name="IngameUIRoot" type="Control"]
 layout_mode = 3

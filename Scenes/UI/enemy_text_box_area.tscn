@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cma2jha7m3sjm"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_text_box_area.gd" id="1_0lakw"]
+[ext_resource type="Script" path="res://Scripts/enemy_text_box_area.gd" id="1_lnh0w"]
 
 [node name="EnemyTextBoxArea" type="Control"]
 z_index = 1
@@ -12,7 +12,7 @@ offset_left = 222.0
 offset_top = 103.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0lakw")
+script = ExtResource("1_lnh0w")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqiufca25tll4"]
 
-[ext_resource type="PackedScene" uid="uid://cma2jha7m3sjm" path="res://Scenes/enemy_text_box_area.tscn" id="1_d7eap"]
+[ext_resource type="PackedScene" uid="uid://cma2jha7m3sjm" path="res://Scenes/UI/enemy_text_box_area.tscn" id="1_78t4x"]
 
 [node name="UIDebugRoot" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EnemyTextBoxArea" parent="." instance=ExtResource("1_d7eap")]
+[node name="EnemyTextBoxArea" parent="." instance=ExtResource("1_78t4x")]
 layout_mode = 1
 offset_left = 849.0
 offset_top = 100.0
