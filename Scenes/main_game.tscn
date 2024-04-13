@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crl5naeiviu00"]
+
+[ext_resource type="PackedScene" uid="uid://c1rmwfiqwbfp8" path="res://Scenes/enemy_spawn.tscn" id="1_52djr"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SpawnPoint" parent="." instance=ExtResource("1_52djr")]
+position = Vector2(1103, 624)
