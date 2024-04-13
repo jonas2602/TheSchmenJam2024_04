@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3idsj77kmk8h"]
+[gd_scene load_steps=11 format=3 uid="uid://c3idsj77kmk8h"]
 
 [ext_resource type="Texture2D" uid="uid://6w3cy3cdr6c4" path="res://Data/Background/parallax-demon-woods-bg.png" id="1_pf2nl"]
 [ext_resource type="Shader" path="res://Shaders/auto_scroller.gdshader" id="2_s8vwb"]
 [ext_resource type="Texture2D" uid="uid://ba5rvuxlakffu" path="res://Data/Background/parallax-demon-woods-far-trees.png" id="3_5lblu"]
 [ext_resource type="Texture2D" uid="uid://cysw8qnldnq5g" path="res://Data/Background/parallax-demon-woods-mid-trees.png" id="4_l8m0a"]
 [ext_resource type="Texture2D" uid="uid://1wud4jmniej" path="res://Data/Background/parallax-demon-woods-close-trees.png" id="5_gwwo1"]
+[ext_resource type="Texture2D" uid="uid://6xxy63l08m0a" path="res://Data/Background/oak-woods-ground.png" id="6_hcaip"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jv7m2"]
 shader = ExtResource("2_s8vwb")
@@ -20,6 +21,11 @@ shader_parameter/speed_scale = 0.02
 shader = ExtResource("2_s8vwb")
 shader_parameter/direction = Vector2(5, 0)
 shader_parameter/speed_scale = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yuik"]
+shader = ExtResource("2_s8vwb")
+shader_parameter/direction = Vector2(1.5, 0)
+shader_parameter/speed_scale = 1.0
 
 [node name="AutoScroller" type="Node2D"]
 
@@ -47,4 +53,13 @@ material = SubResource("ShaderMaterial_maog4")
 offset_right = 320.0
 offset_bottom = 240.0
 texture = ExtResource("5_gwwo1")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_2yuik")
+offset_top = 248.0
+offset_right = 592.0
+offset_bottom = 272.0
+texture = ExtResource("6_hcaip")
 stretch_mode = 1
