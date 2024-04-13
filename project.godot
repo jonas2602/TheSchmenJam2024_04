@@ -19,3 +19,12 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
+
+[gui]
+
+theme/custom="res://UI/Themes/base_theme.tres"
+theme/custom_font="res://UI/Fonts/Platypi-VariableFont_wght.ttf"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.584314, 0.760784, 0.972549, 1)
