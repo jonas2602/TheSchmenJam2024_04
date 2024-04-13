@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7x33yvqgxwnk"]
 
 [ext_resource type="PackedScene" uid="uid://c1rmwfiqwbfp8" path="res://Scenes/enemy_spawn.tscn" id="1_52djr"]
-[ext_resource type="PackedScene" uid="uid://biivxpp44thpq" path="res://Scenes/player_prefab.tscn" id="2_viaqs"]
+[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="1_vi2xe"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="SpawnPoint" parent="." instance=ExtResource("1_52djr")]
-position = Vector2(1085, 646)
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("1_vi2xe")
 
-[node name="PlayerPrefab" parent="." instance=ExtResource("2_viaqs")]
-position = Vector2(89, 650)
+[node name="SpawnPoint" parent="." instance=ExtResource("1_52djr")]
+position = Vector2(1103, 624)
+input_manager_node_path = NodePath("../InputManager")

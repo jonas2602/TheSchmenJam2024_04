@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1rmwfiqwbfp8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_spawn.gd" id="1_o4g6m"]
-[ext_resource type="PackedScene" uid="uid://grhe7c17084j" path="res://Scenes/enemy_prefab.tscn" id="2_t1i8u"]
+[ext_resource type="PackedScene" uid="uid://chhuuimlvap0i" path="res://Scenes/enemy_prefab.tscn" id="2_t1i8u"]
 [ext_resource type="Script" path="res://Scripts/enemy_type_info.gd" id="3_2np3i"]
-[ext_resource type="Texture2D" uid="uid://dix60qrjvf42x" path="res://Data/Monsters/ReplaceMe_FlyingMonster/frame0000.png" id="4_ceml0"]
-[ext_resource type="Texture2D" uid="uid://cetjrsmk6gphs" path="res://Data/Monsters/ReplaceMe_Monster/frame0000.png" id="5_wp70w"]
+[ext_resource type="Texture2D" uid="uid://bsd4t2xgpgs67" path="res://Data/Monsters/ReplaceMe_FlyingMonster/frame0000.png" id="4_ceml0"]
+[ext_resource type="Texture2D" uid="uid://toowomqny63x" path="res://Data/Monsters/ReplaceMe_Monster/frame0000.png" id="5_wp70w"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_23dd2"]
 
@@ -17,10 +17,6 @@ scale = Vector2(30.61, 30.61)
 mesh = SubResource("SphereMesh_23dd2")
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="BasicBitchEnemy" type="Node2D" parent="."]
-script = ExtResource("3_2np3i")
-sprite = ExtResource("4_ceml0")
 
 [node name="EnemyTypeContainer" type="Node" parent="."]
 

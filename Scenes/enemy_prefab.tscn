@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/enemy_controller.gd" id="1_af2gr"]
 [ext_resource type="Texture2D" uid="uid://cyn03lwfh410m" path="res://Data/Monsters/ReplaceMe_Monster/frame0001.png" id="2_4tfvr"]
-[ext_resource type="PackedScene" uid="uid://cma2jha7m3sjm" path="res://Scenes/UI/enemy_text_box_area.tscn" id="3_pq2w7"]
+[ext_resource type="PackedScene" uid="uid://cma2jha7m3sjm" path="res://Scenes/UI/enemy_text_box_area.tscn" id="3_j8uir"]
 
-[node name="BasicEnemy" type="Node2D"]
+[node name="BasicEnemy" type="Node2D" node_paths=PackedStringArray("text_box_node")]
 script = ExtResource("1_af2gr")
+text_box_node = NodePath("EnemyTextBoxArea")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(0, -134)
@@ -18,7 +19,7 @@ offset_right = 493.0
 offset_bottom = 518.0
 texture = ExtResource("2_4tfvr")
 
-[node name="EnemyTextBoxArea" parent="." instance=ExtResource("3_pq2w7")]
+[node name="EnemyTextBoxArea" parent="." instance=ExtResource("3_j8uir")]
 offset_left = 1.0
 offset_top = -335.0
 offset_right = 1.0

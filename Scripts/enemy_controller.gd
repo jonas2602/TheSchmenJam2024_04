@@ -1,11 +1,26 @@
 extends Node2D
 
-@export var speed = 200
+class EnemyData:
+	var Cursor : int
+	var Name : String
+	#var Texture : Texture2D
+	#var Speed : float
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+# Variables exposed to the editor.
+@export var speed : int = 200
+@export var text_box_node : Node
 
+var data : EnemyData
+
+func _initialize_enemy(name):
+	data        = EnemyData.new()
+	data.Cursor = 0
+	data.Name   = name
+	text_box_node.initialize_text_box(data.Name)
+
+func _set_cursor_progress(cursor):
+	data.Cursor = cursor
+	text_box_node.on_new_progression_state(cursor)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -13,4 +28,3 @@ func _process(delta):
 	
 	if (position.x < 0):
 		queue_free()
-	pass

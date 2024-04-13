@@ -21,7 +21,7 @@ func construct_enemy(name):
 func _test_input_detected(input_char : String):
 	for i in range(0, enemies.size()):
 		var current_enemy : EnemyData = enemies[i]
-		
+
 		# If the enemy is already dead, skip.
 		if current_enemy.Dead == true:
 			continue

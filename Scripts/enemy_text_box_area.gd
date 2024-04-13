@@ -1,23 +1,14 @@
 extends Control
 
-var text = "Default Andy"
-var previous_progression = 0
-var character_labels = []
+var text                      = "Default Andy"
+var previous_progression      = 0
+var character_labels          = []
 var character_highlight_times = []
-var text_padding_hortizontal = 10.0
+var text_padding_hortizontal  = 10.0
 
-func initialize(enemy_text):
+func initialize_text_box(enemy_text):
 	text = enemy_text
-	pass
 
-# Call this when the text progresses
-func on_new_progression_state(new_progression):
-	
-	previous_progression = new_progression
-	pass
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
 	var position_x = text_padding_hortizontal
 	for character in text:
 		var label = Label.new()
@@ -39,11 +30,13 @@ func _ready():
 	var background_panel_node = get_node("BackgroundPanel")
 	background_panel_node.set_size(Vector2(position_x + text_padding_hortizontal, background_panel_node.get_size().y))
 	var half_size = (position_x - text_padding_hortizontal) / 2.0;
-	
+
 	for label in character_labels:
 		label.set_position(Vector2(label.get_position().x - half_size, label.get_position().y))
-	
-	pass
+
+# Call this when the text progresses
+func on_new_progression_state(new_progression):
+	previous_progression = new_progression
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -64,5 +57,3 @@ func _process(delta):
 		var scale = 1.0 + sin(clamp(animationFactor, 0.0, 1.0) * PI)
 		label.scale.x = scale
 		label.scale.y = scale
-		
-	
