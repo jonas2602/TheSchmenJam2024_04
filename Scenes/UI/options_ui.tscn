@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv8f4evxayiow"]
+
+[ext_resource type="Script" path="res://Scripts/options_ui.gd" id="1_gii8j"]
+[ext_resource type="Texture2D" uid="uid://d3fyllhdg11x4" path="res://UI/Icons/options.png" id="1_kkle4"]
+
+[node name="OptionsUIRoot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gii8j")
+
+[node name="Options Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_top = 14.0
+offset_right = -12.0
+offset_bottom = 59.0
+grow_horizontal = 0
+texture_normal = ExtResource("1_kkle4")
+texture_hover = ExtResource("1_kkle4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MasterVolumeSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 213.0
+offset_right = 751.0
+offset_bottom = 240.0
+theme_override_constants/center_grabber = 0
+max_value = 10.0
+value = 1.0
+
+[node name="MusicVolumeSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 244.0
+offset_right = 750.0
+offset_bottom = 266.0
+theme_override_constants/center_grabber = 0
+max_value = 10.0
+value = 1.0
+
+[node name="SoundEffectVolumeSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 272.0
+offset_right = 751.0
+offset_bottom = 294.0
+theme_override_constants/center_grabber = 0
+max_value = 10.0
+value = 1.0
+
+[node name="SpeechVolumeSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 300.0
+offset_right = 752.0
+offset_bottom = 322.0
+theme_override_constants/center_grabber = 0
+max_value = 10.0
+value = 1.0

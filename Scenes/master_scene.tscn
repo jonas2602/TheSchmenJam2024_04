@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://q7vkn4aycqf5"]
+[gd_scene load_steps=5 format=3 uid="uid://cfnnottyj712b"]
 
-[ext_resource type="PackedScene" path="res://Scenes/main_game.tscn" id="1_gr7mx"]
-[ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/ingame_ui.tscn" id="2_kyer8"]
-[ext_resource type="PackedScene" uid="uid://celeitfa83iba" path="res://Scenes/player_voice.tscn" id="3_b2yj5"]
+[ext_resource type="PackedScene" uid="uid://b7x33yvqgxwnk" path="res://Scenes/main_game.tscn" id="1_gr7mx"]
+[ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/UI/ingame_ui.tscn" id="2_kyer8"]
+[ext_resource type="PackedScene" uid="uid://dv8f4evxayiow" path="res://Scenes/UI/options_ui.tscn" id="3_yh4um"]
+[ext_resource type="PackedScene" uid="uid://c3idsj77kmk8h" path="res://Scenes/UI/auto_scroller.tscn" id="4_yexh0"]
 
 [node name="MasterRoot" type="Node"]
 
+[node name="AutoScroller" parent="." instance=ExtResource("4_yexh0")]
+scale = Vector2(2.4, 2.4)
+
 [node name="MainGame" parent="." instance=ExtResource("1_gr7mx")]
+position = Vector2(0, -51)
 
 [node name="IngameUIRoot" parent="." instance=ExtResource("2_kyer8")]
 offset_left = 19.0
@@ -14,4 +19,5 @@ offset_top = 7.0
 offset_right = 19.0
 offset_bottom = 7.0
 
-[node name="bgx_player" parent="." instance=ExtResource("3_b2yj5")]
+[node name="OptionsUIRoot" parent="." instance=ExtResource("3_yh4um")]
+visible = false

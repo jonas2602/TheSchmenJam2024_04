@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg4i4h7jnt84"]
+
+[ext_resource type="Texture2D" uid="uid://ccokht3hhbg2g" path="res://icon.svg" id="1_0dv8q"]
+[ext_resource type="Script" path="res://Scripts/input_manager_experiment.gd" id="3_5oo2l"]
+[ext_resource type="Script" path="res://Scripts/input_manager.gd" id="4_q8hg8"]
+
+[node name="Parent" type="Sprite2D"]
+position = Vector2(622, 337)
+texture = ExtResource("1_0dv8q")
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("4_q8hg8")
+
+[node name="Experiment" type="Node" parent="."]
+script = ExtResource("3_5oo2l")
+input_manager_node_path = NodePath("../InputManager")

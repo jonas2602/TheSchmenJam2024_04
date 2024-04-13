@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://biivxpp44thpq"]
+
+[ext_resource type="Texture2D" uid="uid://5mak06j2ix32" path="res://Data/Hero/hero-static.png" id="1_814eg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbdlb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_814eg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerPrefab" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -102)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_lbdlb")

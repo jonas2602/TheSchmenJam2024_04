@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci45evnbqlvwj"]
 
-[ext_resource type="Theme" uid="uid://bwnxr6rm3otb3" path="res://UI/Themes/base_theme.tres" id="1_xrdyo"]
+[ext_resource type="Theme" uid="uid://bwnxr6rm3otb3" path="res://UI/Themes/base_theme.tres" id="1_bikil"]
 
 [sub_resource type="SystemFont" id="SystemFont_txyp8"]
 
@@ -23,7 +23,7 @@ offset_left = -274.0
 offset_right = 278.0
 offset_bottom = 170.0
 grow_horizontal = 2
-theme = ExtResource("1_xrdyo")
+theme = ExtResource("1_bikil")
 theme_override_colors/font_shadow_color = Color(0.462745, 0.462745, 0.462745, 0.470588)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 2
