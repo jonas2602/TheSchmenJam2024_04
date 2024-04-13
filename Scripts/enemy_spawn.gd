@@ -48,9 +48,10 @@ func _on_timer_timeout():
 	mob.position.y -= type_info.height
 	
 	
-	var name    = enemy_names_temp[randi() % enemy_names_temp.size()]
-	var speed   = type_info.speed
-	var sprites = type_info.sprites
+	var name_type = type_info.name
+	var name_inst = enemy_names_temp[randi() % enemy_names_temp.size()]
+	var speed     = type_info.speed
+	var sprites   = type_info.sprites
 	
 	enemy_inst_container.add_child(mob)
-	mob._initialize_enemy(name, speed, sprites)
+	mob._initialize_enemy(name_type, name_inst, speed, sprites)

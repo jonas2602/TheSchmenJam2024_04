@@ -8,14 +8,16 @@ extends Node2D
 var cursor_pos : int
 var enemy_name : String
 
-func _initialize_enemy(name, speed, sprites):
+func _initialize_enemy(type_name, inst_name, speed, sprites):
+	name = type_name
+	
 	move_speed = speed
 	sprite_rect_node.set_sprite_frames(sprites)
 	sprite_rect_node.play()
 	
 	cursor_pos = 0
-	enemy_name = name
-	text_box_node.initialize_text_box(name)
+	enemy_name = inst_name
+	text_box_node.initialize_text_box(inst_name)
 
 func _set_cursor_progress(cursor):
 	cursor_pos = cursor
