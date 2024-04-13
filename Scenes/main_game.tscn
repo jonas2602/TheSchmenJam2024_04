@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7x33yvqgxwnk"]
 
-[ext_resource type="PackedScene" uid="uid://c1rmwfiqwbfp8" path="res://Scenes/enemy_spawn.tscn" id="1_52djr"]
+[ext_resource type="PackedScene" path="res://Scenes/enemy_spawn.tscn" id="1_52djr"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="1_vi2xe"]
 
 [node name="Node2D" type="Node2D"]
