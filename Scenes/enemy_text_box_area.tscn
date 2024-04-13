@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cma2jha7m3sjm"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_text_box_area.gd" id="1_0lakw"]
+
+[node name="EnemyTextBoxArea" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 222.0
+offset_top = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0lakw")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 42.0
