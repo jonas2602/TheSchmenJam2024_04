@@ -51,6 +51,7 @@ func on_new_progression_state(new_progression):
 	if new_progression == 0:
 		for text_character in text_characters:
 			text_character.label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
+			text_character.highlight_times = 0.0
 			#text_character.label.set_position(Vector2(label.get_position().x - half_size, label.get_position().y))
 	
 	progression = new_progression

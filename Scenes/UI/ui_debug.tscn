@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqiufca25tll4"]
+[gd_scene load_steps=3 format=3 uid="uid://cnlnptjrjnp3g"]
 
-[ext_resource type="PackedScene" uid="uid://cma2jha7m3sjm" path="res://Scenes/UI/enemy_text_box_area.tscn" id="1_78t4x"]
+[ext_resource type="PackedScene" uid="uid://ca4cxq8732n81" path="res://Scenes/enemy_text_box_area.tscn" id="1_hqjyc"]
+[ext_resource type="PackedScene" uid="uid://dcka8c7l0b54w" path="res://Scenes/UI/speech_text_box.tscn" id="2_jbjt0"]
 
 [node name="UIDebugRoot" type="Control"]
 layout_mode = 3
@@ -10,9 +11,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EnemyTextBoxArea" parent="." instance=ExtResource("1_78t4x")]
+[node name="EnemyTextBoxArea" parent="." instance=ExtResource("1_hqjyc")]
 layout_mode = 1
-offset_left = 849.0
-offset_top = 100.0
-offset_right = 627.0
-offset_bottom = -3.0
+offset_left = 130.0
+offset_top = 45.0
+offset_right = -92.0
+offset_bottom = -58.0
+
+[node name="SpeechTextBoxRoot" parent="." instance=ExtResource("2_jbjt0")]
+layout_mode = 1
+offset_left = -277.0
+offset_top = 192.0
+offset_right = -277.0
+offset_bottom = 192.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 99.0
+offset_right = 373.0
+offset_bottom = 221.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+text = "Hello"
