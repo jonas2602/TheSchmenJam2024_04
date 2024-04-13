@@ -1,7 +1,22 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bwnxr6rm3otb3"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bwnxr6rm3otb3"]
 
-[ext_resource type="FontFile" uid="uid://ddt2ub2pcj6xr" path="res://UI/Fonts/Platypi-VariableFont_wght.ttf" id="1_uvtnn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5my2"]
+bg_color = Color(0.478431, 0.478431, 0.478431, 1)
+border_width_left = 1
+border_width_top = 1
+border_color = Color(0.894118, 0.768627, 0.72549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.0627451, 0.12549, 0.054902, 0.764706)
+shadow_size = 1
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="SystemFont" id="SystemFont_1w4qc"]
+oversampling = 0.5
 
 [resource]
-default_font = ExtResource("1_uvtnn")
+default_font = SubResource("SystemFont_1w4qc")
 default_font_size = 24
+Panel/styles/panel = SubResource("StyleBoxFlat_m5my2")

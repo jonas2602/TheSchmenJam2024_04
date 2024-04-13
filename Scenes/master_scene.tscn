@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://gc7a2vbr8mwg"]
+[gd_scene load_steps=3 format=3 uid="uid://cfnnottyj712b"]
 
-[ext_resource type="PackedScene" uid="uid://crl5naeiviu00" path="res://Scenes/main_game.tscn" id="1_gr7mx"]
+[ext_resource type="PackedScene" uid="uid://b7x33yvqgxwnk" path="res://Scenes/main_game.tscn" id="1_gr7mx"]
+[ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/ingame_ui.tscn" id="2_kyer8"]
 
-[node name="Node" type="Node"]
+[node name="MasterRoot" type="Node"]
 
-[node name="Node2D" parent="." instance=ExtResource("1_gr7mx")]
+[node name="MainGame" parent="." instance=ExtResource("1_gr7mx")]
+
+[node name="IngameUIRoot" parent="." instance=ExtResource("2_kyer8")]
+offset_left = 19.0
+offset_top = 7.0
+offset_right = 19.0
+offset_bottom = 7.0

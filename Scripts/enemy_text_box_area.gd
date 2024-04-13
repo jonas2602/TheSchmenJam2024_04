@@ -1,27 +1,29 @@
 extends Control
 
-var text
-var progression = 0
+var text = "Default Andy"
+var previous_progression = 0
 var character_labels = []
 var character_highlight_times = []
 var text_padding_hortizontal = 10.0
 
-var test_randominput_interval = 0.2
-var test_randominput_progress = -2.0
+func initialize(enemy_text):
+	text = enemy_text
+	pass
 
-var rng = RandomNumberGenerator.new()
+# Call this when the text progresses
+func on_new_progression_state(new_progression):
+	
+	previous_progression = new_progression
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = "Sparrow Gurgler"
-	
 	var position_x = text_padding_hortizontal
 	for character in text:
 		var label = Label.new()
 		
 		label.text = character
 		label.set_size(Vector2(0.0, 0.0))
-		label.force_update_transform()
 		label.update_minimum_size()
 		label.set_size(label.get_minimum_size())
 		label.set_position(Vector2(position_x, label.position.y))
@@ -29,37 +31,24 @@ func _ready():
 		
 		position_x += label.size.x;
 		
-		character_highlight_times.append(0.0)
-		character_labels.append(label)
-		add_child(label)
+		if character != ' ':
+			character_highlight_times.append(0.0)
+			character_labels.append(label)
+			add_child(label)
 	
 	var background_panel_node = get_node("BackgroundPanel")
 	background_panel_node.set_size(Vector2(position_x + text_padding_hortizontal, background_panel_node.get_size().y))
+	var half_size = (position_x - text_padding_hortizontal) / 2.0;
 	
+	for label in character_labels:
+		label.set_position(Vector2(label.get_position().x - half_size, label.get_position().y))
 	
-	pass
-
-func ProgressInput(delta):
-	progression += 1
-	
-
-		
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	# Debug test processing
-	test_randominput_progress += delta
-	while test_randominput_progress >= test_randominput_interval:
-		if rng.randf_range(0.0, 100.0 * (1.0 + progression/5)) > 10.0:
-			ProgressInput(delta)
-		
-		test_randominput_progress -= test_randominput_interval
-	pass
-	
 	# Animate characters
-	for index in range(progression):
+	for index in range(previous_progression):
 		if index >= character_labels.size():
 			break
 		
