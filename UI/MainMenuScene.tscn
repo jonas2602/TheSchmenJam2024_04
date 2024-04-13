@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf7s8pp3yf6f3"]
+
+[ext_resource type="Theme" uid="uid://bwnxr6rm3otb3" path="res://UI/Themes/base_theme.tres" id="1_q5ret"]
+
+[sub_resource type="SystemFont" id="SystemFont_txyp8"]
+
+[node name="MainMenuUIRoot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Game Title Temp Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 42.0
+offset_right = 825.0
+offset_bottom = 76.0
+theme = ExtResource("1_q5ret")
+theme_override_fonts/font = SubResource("SystemFont_txyp8")
+text = "Untitled Word Unsummuning Game?"
+
+[node name="Start Game Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 341.0
+offset_right = 541.0
+offset_bottom = 406.0
+text = "Start Game"
+
+[node name="Options Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 340.0
+offset_right = 779.0
+offset_bottom = 405.0
+text = "Options
+"

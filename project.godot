@@ -11,5 +11,11 @@ config_version=5
 [application]
 
 config/name="TheSchmenJam2024_04"
+run/main_scene="res://UI/MainMenuScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"

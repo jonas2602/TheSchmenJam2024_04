@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bwnxr6rm3otb3"]
+
+[ext_resource type="FontFile" uid="uid://ddt2ub2pcj6xr" path="res://UI/Fonts/Platypi-VariableFont_wght.ttf" id="1_uvtnn"]
+
+[resource]
+default_font = ExtResource("1_uvtnn")
+default_font_size = 24
