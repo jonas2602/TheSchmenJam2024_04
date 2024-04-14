@@ -4,7 +4,7 @@ extends Node2D
 @export var move_speed : int = 200
 
 @onready var sprite_rect_node = $AnimatedSprite2D
-@onready var text_box_node = $EnemyTextBoxArea
+@onready var text_box_node    = $EnemyTextBoxArea
 
 const death_raise_speed : int = 100
 const death_move_speed : int = 0
@@ -32,7 +32,7 @@ func _on_audio_player_finished():
 		_audio_player.stream = walk_sound
 		walk_sound_timer = walk_sound_period
 
-func _initialize_enemy(type_info, type_id, text_offset):
+func _initialize_enemy(type_info, type_id):
 	var type_name = type_info.name
 	var inst_name = type_info.possible_names[randi() % type_info.possible_names.size()]
 	name          = type_name + " (" + inst_name + ")"
@@ -53,7 +53,7 @@ func _initialize_enemy(type_info, type_id, text_offset):
 	
 	cursor_pos = 0
 	enemy_name = inst_name
-	text_box_node.initialize_text_box(inst_name, text_offset)
+	text_box_node.initialize_text_box(inst_name)
 
 	player_node = get_tree().get_root().find_child("PlayerPrefab", true, false)
 

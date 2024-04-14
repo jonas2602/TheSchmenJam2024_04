@@ -1,6 +1,11 @@
 extends Control
 
-@export var enemy_offset_array : Array[int]
+@export var number_of_text_rows: int = 3
+
+@onready var background_panel_node         = $BackgroundPanel
+@onready var background_visuals_panel_node = $BackgroundPanel/BackgroundPanelSize
+
+static var current_text_row : int = 0
 
 var text = "Default Andy"
 var progression = 0
@@ -8,8 +13,11 @@ var previous_processed_progression = 0
 var text_padding_hortizontal = 10.0
 var death_initialized = false
 var time_since_death = 0.0
-
 var rng = RandomNumberGenerator.new()
+
+# intended to be a const but useful for testing at runtime.
+var global_height_start : float = 180
+
 
 class TextCharacter:
 	var label
@@ -22,24 +30,17 @@ var text_characters = []
 func on_death():
 	pass
 
-func set_text_box_offset(offset : int):	
-	var background_panel_node = get_node("BackgroundPanel")
-	var enemy_sprite_node     = get_parent().get_node("AnimatedSprite2D")
-	var sprite_texture        = enemy_sprite_node.get_sprite_frames().get_frame_texture(enemy_sprite_node.animation, 0)
-	var texture_height        = sprite_texture.get_height() * enemy_sprite_node.scale.y + enemy_sprite_node.position.y
-	
-	var enemy_type            = get_parent().enemy_type_id
-	
-	position.x                = background_panel_node.size.x * 0.5
-	position.y                = -texture_height - background_panel_node.size.y * (offset + 1) + enemy_offset_array[enemy_type]
+func set_text_box_offset():
+	global_position.y = global_height_start + background_panel_node.size.y * current_text_row
+	current_text_row  = (current_text_row + 1) % number_of_text_rows
+	pass
 
-func initialize_text_box(enemy_text, offset : int):
-	text = enemy_text.to_upper()
 
-	var background_panel_node = get_node("BackgroundPanel")
-	var position_x            = text_padding_hortizontal
+func initialise_text_letters(text_to_display):
 
-	for character in text:
+	var position_x = text_padding_hortizontal
+
+	for character in text_to_display:
 		var label = Label.new()
 		
 		label.text = character
@@ -62,18 +63,33 @@ func initialize_text_box(enemy_text, offset : int):
 			text_characters.append(text_character)
 			background_panel_node.add_child(text_character.label)
 
-	background_panel_node.set_size(Vector2(position_x + text_padding_hortizontal, background_panel_node.get_size().y))
-	# var half_size = (position_x - text_padding_hortizontal) / 2.0;
-	
-	for text_character in text_characters:
-		text_character.label.set_position(Vector2(text_character.label.get_position().x, text_character.label.get_position().y))
-	
-	set_text_box_offset(offset)
-	
-	var background_panel_node_visual = background_panel_node.get_node("BackgroundPanelSize")
-	background_panel_node_visual.size.x = background_panel_node.scale.x * background_panel_node.size.x / background_panel_node_visual.scale.x + 100
-	background_panel_node_visual.size.y = background_panel_node.scale.y * background_panel_node.size.y / background_panel_node_visual.scale.y
+	return position_x + text_padding_hortizontal
+
+
+func intitalize_background_panel(width):
+
+	# Set the size required to cover all the letters
+	background_panel_node.set_size(Vector2(width, background_panel_node.get_size().y))
+	# Adjust the realtive position of the panel so it's still centered
+	background_panel_node.position.x = -background_panel_node.size.x * 0.5
+
+	# Also initialize the background
+	background_visuals_panel_node.size.x = background_panel_node.scale.x * background_panel_node.size.x / background_visuals_panel_node.scale.x + 100
+	background_visuals_panel_node.size.y = background_panel_node.scale.y * background_panel_node.size.y / background_visuals_panel_node.scale.y
 	background_panel_node.set_self_modulate(Color(0,0,0,0))
+
+	pass
+
+
+func initialize_text_box(enemy_text):
+
+	var background_panel_width = initialise_text_letters(enemy_text.to_upper())
+
+	for text_character in text_characters:
+		text_character.label.set_position(text_character.label.get_position())
+	
+	intitalize_background_panel(background_panel_width)
+	set_text_box_offset()
 
 # Call this when the text progresses
 func on_new_progression_state(new_progression):

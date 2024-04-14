@@ -15,7 +15,6 @@ offset_right = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lnh0w")
-enemy_offset_array = Array[int]([0, 0, -96, -96, 0])
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 1

@@ -5,7 +5,6 @@ extends Node2D
 @export var enemy_inst_container : Node
 
 static var enemy_id_counter : int = 0
-var enemy_text_offsets : Array[int]
 
 func _on_input_detected(input_char : String):
 	var there_was_a_hit : bool = false 
@@ -50,7 +49,7 @@ func _ready():
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
 	GlobalEventSystem.player_died.connect(_on_player_died)
 	GlobalEventSystem.restart.connect(_on_restart)
-	enemy_text_offsets.resize($EnemyTypeContainer.get_child_count())
+
 
 func _on_restart():
 	$Timer.start()
@@ -62,7 +61,6 @@ func _on_timer_timeout():
 	var type_id                    = next_index
 	var type_info                  = $EnemyTypeContainer.get_child(next_index)
 	next_index                     = (next_index + 1) % $EnemyTypeContainer.get_child_count()
-	enemy_text_offsets[next_index] = (enemy_text_offsets[next_index] + 1) % 4 
 	
 	$Timer.set_wait_time($Timer.get_wait_time() * 0.99)
 	
@@ -73,7 +71,7 @@ func _on_timer_timeout():
 	enemy_id_counter += 1
 	
 	enemy_inst_container.add_child(mob)
-	mob._initialize_enemy(type_info, type_id, enemy_text_offsets[next_index])
+	mob._initialize_enemy(type_info, type_id)
 
 	# Insert the fast enemies in a lower node than the slow ones.
 	# Also insert any new spawned enemy on a higher possible node so the earlier
