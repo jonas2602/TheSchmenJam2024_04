@@ -88,13 +88,8 @@ func _process(delta):
 			text_character.velocity *= 0.98
 			text_character.label.set_self_modulate(lerp(Color(1.0, 1.0, 1.0, 1.0), Color(0.0, 0.0, 0.0, 0.0), time_since_death*0.6))
 		
-		
-		#var bb = BackgroundPanel.new()
-		#bb.add_theme_constant_override()
-		
 		var background_panel = get_node("BackgroundPanel")
 		var background_panel_color = lerp(Color(1.0, 1.0, 1.0, 1.0), Color(0.0, 0.0, 0.0, 0.0), time_since_death*5.0)
-		#background_panel.add_theme_override_color("self_modulate", background_panel_color)
 		background_panel.set_self_modulate(background_panel_color)
 
 	

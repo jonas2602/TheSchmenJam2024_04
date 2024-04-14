@@ -4,6 +4,8 @@ var text = "^Lovely^ evening #mortal# :3"
 const characters_per_second = 0.04
 var progression = 0.0
 var shown_characters = 0
+var box_original_position
+var is_left_aligned = false
 
 var rng = RandomNumberGenerator.new()
 
@@ -19,6 +21,8 @@ var text_padding_hortizontal = 10.0
 
 func set_text(new_text):
 	progression = 0.0
+	shown_characters = 0
+	
 	# Clear character
 	for text_character in text_characters:
 		remove_child(text_character.label)
@@ -70,8 +74,25 @@ func set_text(new_text):
 		add_child(label)
 	
 	var background_panel_node = get_node("BackgroundPanel")
-	background_panel_node.set_size(Vector2(position_x + text_padding_hortizontal, background_panel_node.get_size().y))
+	var box_width = position_x + text_padding_hortizontal
+	
+	if !is_left_aligned:
+		background_panel_node.set_position(box_original_position - Vector2(box_width, 0))
+		for text_character in text_characters:
+			text_character.original_position -= Vector2(box_width, 0.0);
+			text_character.label.set_position(text_character.original_position)
+			
+		
+	background_panel_node.set_size(Vector2(box_width, background_panel_node.get_size().y))
 	var half_size = (position_x - text_padding_hortizontal) / 2.0
+	
+
+	
+
+
+func _ready():
+	var background_panel_node = get_node("BackgroundPanel")
+	box_original_position = background_panel_node.get_position()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
