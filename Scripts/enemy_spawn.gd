@@ -64,6 +64,8 @@ func _on_timer_timeout():
 	next_index                     = (next_index + 1) % $EnemyTypeContainer.get_child_count()
 	enemy_text_offsets[next_index] = (enemy_text_offsets[next_index] + 1) % 4 
 	
+	$Timer.set_wait_time($Timer.get_wait_time() * 0.99)
+	
 	var mob         = mob_scene.instantiate()
 	mob.position    = position
 	mob.position.y -= type_info.height
