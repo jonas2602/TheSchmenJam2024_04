@@ -29,7 +29,7 @@ offset_right = -27.0
 offset_bottom = 20.0
 
 [node name="GameScoreUI" parent="." instance=ExtResource("4_xnlhx")]
-offset_left = 25.0
-offset_top = 230.0
-offset_right = 25.0
-offset_bottom = 230.0
+offset_left = 23.0
+offset_top = 217.0
+offset_right = 23.0
+offset_bottom = 217.0
