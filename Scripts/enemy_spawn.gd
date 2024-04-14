@@ -48,8 +48,12 @@ func _on_input_detected(input_char : String):
 func _ready():
 	$Timer.start()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
+	GlobalEventSystem.player_died.connect(_on_player_died)
 	enemy_text_offsets.resize($EnemyTypeContainer.get_child_count())
 
+func _on_player_died():
+	$Timer.stop()
+	
 func _on_timer_timeout():
 	var type_id                    = next_index
 	var type_info                  = $EnemyTypeContainer.get_child(next_index)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0suu3snv6mwv"
-path="res://.godot/imported/heart-empty.png-6d10bf0ab5082be62d2611f40b8efafc.ctex"
+uid="uid://droj04f8yonro"
+path="res://.godot/imported/Cristal_Anim0000.png-65ab753d792be13fe0c0716792148987.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/UI/Health/heart-empty.png"
-dest_files=["res://.godot/imported/heart-empty.png-6d10bf0ab5082be62d2611f40b8efafc.ctex"]
+source_file="res://Data/UI/Health/Cristal_Anim0000.png"
+dest_files=["res://.godot/imported/Cristal_Anim0000.png-65ab753d792be13fe0c0716792148987.ctex"]
 
 [params]
 
