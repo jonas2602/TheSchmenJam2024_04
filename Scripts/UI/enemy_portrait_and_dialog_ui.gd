@@ -1,5 +1,6 @@
 extends Control
 
+@export var possible_text : Array[String]
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _speech_text = $SpeechTextBoxRoot
 var _back_to_idle_timer := Timer.new()
@@ -31,7 +32,7 @@ func _on_new_speech():
 	_monster_speech_timer.stop()
 	_animated_sprite.play("talk")
 	_speech_text.visible = true
-	_speech_text.set_text("^Lovely^ evening #mortal# :3")
+	_speech_text.set_text(possible_text[randi() % possible_text.size()])
 	_speak_in_progress = true
 	_monster_speech_hide_timer.start()
 
@@ -40,7 +41,7 @@ func _on_speech_done():
 	_speech_text.visible = false
 	_speak_in_progress = false
 	_on_back_to_idle()
-	_monster_speech_timer.wait_time = (randi() % 11 + 5) # between 5 and 10 seconds
+	_monster_speech_timer.wait_time = (randi() % 1 + 5) # between 1 and 5 seconds
 	_monster_speech_timer.start()
 
 func _on_back_to_idle():

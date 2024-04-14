@@ -52,6 +52,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 script = ExtResource("1_j2sm6")
+possible_text = Array[String](["^I^ will lead you to #hell# !", "God must be desperate to send you ^here^", "There will be ^no end^ to your #pain#", "Magic can't do anything to me !", "I will summon ^more and more^", "Be my sacrifice"])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-154, 0)
@@ -61,13 +62,13 @@ animation = &"lol"
 centered = false
 
 [node name="SpeechTextBoxRoot" parent="." instance=ExtResource("2_7ng8v")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -443.0
-offset_top = 53.0
-offset_right = -443.0
-offset_bottom = 53.0
+offset_left = -571.0
+offset_top = 59.0
+offset_right = -571.0
+offset_bottom = 59.0
 grow_horizontal = 0
 grow_vertical = 1
