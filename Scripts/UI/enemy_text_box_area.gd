@@ -63,7 +63,7 @@ func initialize_text_box(enemy_text, offset : int):
 			background_panel_node.add_child(text_character.label)
 
 	background_panel_node.set_size(Vector2(position_x + text_padding_hortizontal, background_panel_node.get_size().y))
-	var half_size = (position_x - text_padding_hortizontal) / 2.0;
+	# var half_size = (position_x - text_padding_hortizontal) / 2.0;
 	
 	for text_character in text_characters:
 		text_character.label.set_position(Vector2(text_character.label.get_position().x, text_character.label.get_position().y))
@@ -141,9 +141,9 @@ func _process(delta):
 			var color = Color(1.0, animation_factor * animation_factor, animation_factor * animation_factor)
 			label.add_theme_color_override("font_color", color)
 			
-			var scale = 1.0 + sin(clamp(animation_factor, 0.0, 1.0) * PI)*0.2
-			label.scale.x = scale
-			label.scale.y = scale
+			var label_scale = 1.0 + sin(clamp(animation_factor, 0.0, 1.0) * PI)*0.2
+			label.scale.x = label_scale
+			label.scale.y = label_scale
 		else:
 			
 			if progression <= index:
@@ -157,9 +157,9 @@ func _process(delta):
 			label.add_theme_color_override("font_shadow_color", shadow_color)
 			label.add_theme_constant_override("shadow_outline_size", lerp(0.0, 5.0, min(animation_factor, 1.0)))
 			
-			var scale = 1.0 + sin(clamp(animation_factor, 0.0, 1.0) * PI)
-			label.scale.x = scale
-			label.scale.y = scale
+			var label_scale = 1.0 + sin(clamp(animation_factor, 0.0, 1.0) * PI)
+			label.scale.x = label_scale
+			label.scale.y = label_scale
 			
 			var shake_angle = rng.randf_range(0.0, PI*2.0)
 			label.set_position(text_character.original_position + Vector2(cos(shake_angle), sin(shake_angle) * 0.6))

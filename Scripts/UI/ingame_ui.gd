@@ -8,13 +8,8 @@ var test_spawn_padding = 50.0
 
 var enemy_text_boxes = []
 
-func testcall():
-	var hello = 0
-	pass
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	# test spawning of text box areas
 	for index in range(10):
 		break
@@ -32,5 +27,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

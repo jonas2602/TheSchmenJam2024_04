@@ -38,7 +38,7 @@ func _send_kill_wave(max_distance : int):
 	wave.position     = position
 	wave.max_distance = max_distance
 
-func _on_player_damaged(damage : int):
+func _on_player_damaged(_damage : int):
 	_send_kill_wave(600)
 
 func _on_player_died():
@@ -49,7 +49,7 @@ func _on_player_died():
 	$FullAnimatedSprite.visible = true
 	$FullAnimatedSprite.play("death")
 	
-func _on_input_detected(input_char : String):
+func _on_input_detected(_input_char : String):
 	_animated_top.play("summon")
 	_back_to_idle_timer.start()
 	

@@ -15,16 +15,16 @@ func _ready():
 func _on_back_to_idle():
 	_animated_sprite.play("idle")
 
-func _on_input_detected(input_char : String):
+func _on_input_detected(_input_char : String):
 	if _animated_sprite.animation != "kill":
 		_animated_sprite.play("summon")
 		_back_to_idle_timer.start()
 
-func _on_monster_killed(points : int):
+func _on_monster_killed(_points : int):
 	if _animated_sprite.animation != "damaged":
 		_animated_sprite.play("kill")
 		_back_to_idle_timer.start()
 
-func _on_player_damaged(damage : int):
+func _on_player_damaged(_damage : int):
 	_animated_sprite.play("damaged")
 	_back_to_idle_timer.start()

@@ -84,7 +84,7 @@ func set_text(new_text):
 			
 		
 	background_panel_node.set_size(Vector2(box_width, background_panel_node.get_size().y))
-	var half_size = (position_x - text_padding_hortizontal) / 2.0
+	# var half_size = (position_x - text_padding_hortizontal) / 2.0
 	
 
 	
@@ -119,9 +119,9 @@ func _process(delta):
 		
 		var animationFactor = highlight_time*5.0
 		
-		var scale = 1.0 + sin(clamp(animationFactor, 0.0, 1.0) * PI) * 0.5
-		label.scale.x = scale
-		label.scale.y = scale
+		var label_scale = 1.0 + sin(clamp(animationFactor, 0.0, 1.0) * PI) * 0.5
+		label.scale.x = label_scale
+		label.scale.y = label_scale
 		
 		var base_color = Color(animationFactor, animationFactor * animationFactor, animationFactor * animationFactor * animationFactor, clamp(animationFactor, 0.0, 1.0))
 		var color = base_color

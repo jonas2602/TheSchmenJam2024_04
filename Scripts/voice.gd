@@ -37,5 +37,5 @@ func _ready():
 	load_sounds()
 	pass
 
-func _process(delta):
+func _process(_delta):
 	pass

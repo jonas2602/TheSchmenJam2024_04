@@ -14,7 +14,7 @@ func _on_monster_slain(points : int):
 	
 	# Progress score multiplier if it's below the cap:
 	if multiplier < multiplier_cap:
-		multiplier_progress += (points / multiplier) / multiplier_step
+		multiplier_progress += (float(points) / float(multiplier)) / float(multiplier_step)
 		# If the progress reaches to 1, increment multiplier
 		if multiplier_progress >= 1.0:
 			multiplier += 1
@@ -25,7 +25,7 @@ func _on_monster_slain(points : int):
 
 # Triggered when player registers an character that doesn't match with any of
 # the enemies' cursor.
-func _on_character_miss(input_char : String):
+func _on_character_miss(_input_char : String):
 	multiplier          = 1
 	multiplier_progress = 0.0
 	# Emit combo progress to tell whoever interested that multiplier has been
