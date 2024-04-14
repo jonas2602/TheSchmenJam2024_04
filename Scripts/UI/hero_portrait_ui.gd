@@ -20,7 +20,7 @@ func _on_input_detected(input_char : String):
 		_animated_sprite.play("summon")
 		_back_to_idle_timer.start()
 
-func _on_monster_killed():
+func _on_monster_killed(points : int):
 	if _animated_sprite.animation != "damaged":
 		_animated_sprite.play("kill")
 		_back_to_idle_timer.start()

@@ -47,7 +47,7 @@ func _set_cursor_progress(cursor):
 	text_box_node.on_new_progression_state(cursor)
 	
 	if (cursor == enemy_name.length()):
-		GlobalEventSystem.monster_killed.emit()
+		GlobalEventSystem.monster_killed.emit(cursor)
 		current_state = MonsterState.Dying
 		sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
 

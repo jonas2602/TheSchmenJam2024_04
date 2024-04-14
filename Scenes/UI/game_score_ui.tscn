@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg248xb04xjjo"]
+
+[ext_resource type="Script" path="res://Scripts/UI/game_score_ui.gd" id="1_6gm3w"]
+
+[node name="GameScoreUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6gm3w")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 34.0
+text = "Score:"
+
+[node name="PointsLabel" type="Label" parent="."]
+offset_left = 75.0
+offset_right = 145.0
+offset_bottom = 34.0
+text = "123456"
