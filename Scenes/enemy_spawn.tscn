@@ -116,6 +116,7 @@ wait_time = 2.0
 script = ExtResource("3_2np3i")
 speed = 100
 height = 50
+spawn_rate = 1.75
 sprites = SubResource("SpriteFrames_65fw6")
 vfx_kill = ExtResource("6_4lcv0")
 vfx_kill_offset = Vector2(0, -64)
@@ -125,7 +126,8 @@ death_sound = ExtResource("8_ujw88")
 
 [node name="ImpEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
-speed = 25
+speed = 75
+spawn_rate = 2.0
 sprites = SubResource("SpriteFrames_msor8")
 vfx_kill = ExtResource("8_xs8cg")
 possible_names = Array[String](["malusul", "perseve", "conscin", "dapife", "laetan", "verecun", "loricatu", "brocher", "rhetoric", "occurs", "quernu"])
@@ -134,24 +136,25 @@ death_sound = ExtResource("8_ujw88")
 
 [node name="WendigoEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
-speed = 100
 height = -20
+spawn_rate = 0.125
 sprites = SubResource("SpriteFrames_gbuux")
 vfx_kill = ExtResource("6_4lcv0")
-possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
+possible_names = Array[String](["notleshen", "cervimonstrum", "anthropophagi", "comedentisomnia", "fictorcarnis", "animapravitatis", "priordilexitunum"])
 
 [node name="SkeletonEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
-speed = 150
+speed = 25
+spawn_rate = 0.75
 sprites = SubResource("SpriteFrames_b1h68")
 vfx_kill = ExtResource("6_4lcv0")
-possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
+possible_names = Array[String](["osseus", "sceletus", "quaesitor", "inmortui", "amica", "cavae", "crepitus", "sitis", "tabes", "deserta", "aetas", "vetero"])
 
 [node name="BeetleEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
 speed = 200
 sprites = SubResource("SpriteFrames_iti6m")
 vfx_kill = ExtResource("6_4lcv0")
-possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
+possible_names = Array[String](["bee", "soo", "ree", "goo", "pah", "hah", "eek", "rui", "sap", "fff", "nie", "lol"])
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

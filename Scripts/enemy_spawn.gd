@@ -1,16 +1,19 @@
 extends Node2D
 
-@export var next_index : int = 0
 @export var mob_scene : PackedScene
 @export var enemy_inst_container : Node
 
 static var enemy_id_counter : int = 0
 
+var enemy_spawn_values : Array[float]
+var accumulated_spawn_rate : float = 0
+
+
 func _on_input_detected(input_char : String):
 	var there_was_a_hit : bool = false 
 	var char_miss       : bool = true
 
-	for i in range(0, enemy_inst_container.get_child_count()):
+	for i in range(enemy_inst_container.get_child_count()):
 		var current_enemy = enemy_inst_container.get_child(i)
 		# Means it's dead
 		if not is_instance_valid(current_enemy):
@@ -43,12 +46,25 @@ func _on_input_detected(input_char : String):
 	if char_miss:
 		GlobalEventSystem.character_miss.emit(input_char)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.start()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
 	GlobalEventSystem.player_died.connect(_on_player_died)
 	GlobalEventSystem.restart.connect(_on_restart)
+
+	# Generate the spawn rate for the enemies
+	accumulated_spawn_rate = 0
+
+	var enemy_type_count = $EnemyTypeContainer.get_child_count()
+	enemy_spawn_values.resize(enemy_type_count)
+
+	for i in range(enemy_type_count):
+		var enemy_type = $EnemyTypeContainer.get_child(i)
+
+		accumulated_spawn_rate += enemy_type.spawn_rate
+		enemy_spawn_values[i]   = accumulated_spawn_rate
 
 
 func _on_restart():
@@ -58,9 +74,17 @@ func _on_player_died():
 	$Timer.stop()
 	
 func _on_timer_timeout():
+
+	var random_selector : float = randf() * accumulated_spawn_rate
+	var next_index : int = 0
+
+	for i in range($EnemyTypeContainer.get_child_count()):
+		if (random_selector < enemy_spawn_values[i]):
+			next_index = i
+			break
+
 	var type_id                    = next_index
 	var type_info                  = $EnemyTypeContainer.get_child(next_index)
-	next_index                     = (next_index + 1) % $EnemyTypeContainer.get_child_count()
 	
 	$Timer.set_wait_time($Timer.get_wait_time() * 0.99)
 	
