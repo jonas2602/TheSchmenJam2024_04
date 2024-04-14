@@ -8,12 +8,14 @@ static var enemy_id_counter : int = 0
 var enemy_text_offsets : Array[int]
 
 func _on_input_detected(input_char : String):
+	var there_was_a_hit : bool = false 
+	var char_miss       : bool = true
+
 	for i in range(0, enemy_inst_container.get_child_count()):
 		var current_enemy = enemy_inst_container.get_child(i)
 		# Means it's dead
 		if not is_instance_valid(current_enemy):
 			continue
-
 		# Means it's dead
 		if current_enemy.cursor_pos >= current_enemy.enemy_name.length():
 			continue
@@ -21,16 +23,24 @@ func _on_input_detected(input_char : String):
 		# If the cursor is at 1 and player registers same char with first char
 		# of the name, don't reset.
 		if current_enemy.cursor_pos == 1 and input_char[0] == current_enemy.enemy_name.to_upper()[0]:
+			there_was_a_hit = true
 			continue
 		# Move the cursor to the next character if the input matches with char
 		# at enemy cursor.
 		elif input_char[0] == current_enemy.enemy_name.to_upper()[current_enemy.cursor_pos]:
+			there_was_a_hit           = true
 			current_enemy.cursor_pos += 1
 		# Reset cursor if input doesn't match with char at enemy cursor.
 		else:
+			char_miss = char_miss and true;
 			current_enemy.cursor_pos = 0
 
 		current_enemy._set_cursor_progress(current_enemy.cursor_pos)
+	
+	if there_was_a_hit:
+		GlobalEventSystem.character_hit.emit(input_char)
+	if char_miss:
+		GlobalEventSystem.character_miss.emit(input_char)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
