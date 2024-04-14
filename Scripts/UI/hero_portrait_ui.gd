@@ -21,8 +21,9 @@ func _on_input_detected(input_char : String):
 		_back_to_idle_timer.start()
 
 func _on_monster_killed():
-	_animated_sprite.play("kill")
-	_back_to_idle_timer.start()
+	if _animated_sprite.animation != "damaged":
+		_animated_sprite.play("kill")
+		_back_to_idle_timer.start()
 
 func _on_player_damaged(damage : int):
 	_animated_sprite.play("damaged")

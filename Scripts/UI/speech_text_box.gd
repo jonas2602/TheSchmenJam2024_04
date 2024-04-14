@@ -1,8 +1,7 @@
 extends Control
 
 var text = "^Lovely^ evening #mortal# :3"
-var characters_per_second = 0.04
-var wait_per_character = 0.1
+const characters_per_second = 0.04
 var progression = 0.0
 var shown_characters = 0
 
@@ -19,6 +18,7 @@ var text_characters = []
 var text_padding_hortizontal = 10.0
 
 func set_text(new_text):
+	progression = 0.0
 	# Clear character
 	for text_character in text_characters:
 		remove_child(text_character.label)
@@ -72,13 +72,6 @@ func set_text(new_text):
 	var background_panel_node = get_node("BackgroundPanel")
 	background_panel_node.set_size(Vector2(position_x + text_padding_hortizontal, background_panel_node.get_size().y))
 	var half_size = (position_x - text_padding_hortizontal) / 2.0
-	
-	pass
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	set_text(text)
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
