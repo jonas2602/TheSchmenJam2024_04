@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci45evnbqlvwj"]
+[gd_scene load_steps=7 format=3 uid="uid://ci45evnbqlvwj"]
 
 [ext_resource type="Theme" uid="uid://bwnxr6rm3otb3" path="res://UI/Themes/base_theme.tres" id="1_bikil"]
 [ext_resource type="Script" path="res://Scripts/UI/main_menu_ui.gd" id="1_blioc"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cfnnottyj712b" path="res://Scenes/master_scene.tscn" id="2_pmoab"]
 
 [sub_resource type="SystemFont" id="SystemFont_txyp8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mugeb"]
+font_size = 18
 
 [node name="MainMenuUIRoot" type="Control"]
 layout_mode = 3
@@ -44,24 +47,57 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Start" type="Button" parent="."]
-layout_mode = 0
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Start" type="Button" parent="MainMenu"]
 offset_left = 491.0
 offset_top = 265.0
 offset_right = 686.0
 offset_bottom = 330.0
 text = "Start Game"
 
-[node name="Credits" type="Button" parent="."]
+[node name="Credits" type="Button" parent="MainMenu"]
 offset_left = 491.0
 offset_top = 349.0
 offset_right = 686.0
 offset_bottom = 414.0
 text = "Credits"
 
-[node name="Exit" type="Button" parent="."]
+[node name="Exit" type="Button" parent="MainMenu"]
 offset_left = 491.0
 offset_top = 436.0
 offset_right = 686.0
 offset_bottom = 501.0
 text = "Exit"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+
+[node name="Back" type="Button" parent="Credits"]
+offset_left = 491.0
+offset_top = 436.0
+offset_right = 686.0
+offset_bottom = 501.0
+text = "Back
+"
+
+[node name="CreditsText" type="Label" parent="Credits"]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 155.0
+offset_right = 762.0
+offset_bottom = 448.0
+text = "Game Director - Gulliame
+Art Director - Louis
+Senior Artist - Denise
+UI - Albin
+Input Tech - Baran
+SFX and Audio - Tobias
+Gameplay Programmer - Jonas
+Tech Art - Inshal
+"
+label_settings = SubResource("LabelSettings_mugeb")
+horizontal_alignment = 1
+vertical_alignment = 1
