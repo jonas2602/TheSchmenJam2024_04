@@ -16,7 +16,7 @@ func load_sounds():
 func _ready():
 	load_sounds()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
-	
+
 func _on_input_detected(input_char : String):
 	if input_char == _last_pressed_key:
 		return
