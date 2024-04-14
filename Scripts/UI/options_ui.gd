@@ -15,7 +15,8 @@ func _unhandled_input(event):
 func toggle_pause_menu():
 	pause_menu_open = !pause_menu_open
 	
-	
+	get_tree().paused = pause_menu_open
+	self.visible = pause_menu_open
 	pass 
 
 
