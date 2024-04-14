@@ -2,8 +2,9 @@ extends Node2D
 
 # Variables exposed to the editor.
 @export var move_speed : int = 200
-@export var text_box_node : Node
-@export var sprite_rect_node : Node
+
+@onready var sprite_rect_node = $AnimatedSprite2D
+@onready var text_box_node = $EnemyTextBoxArea
 
 var cursor_pos : int
 var enemy_name : String

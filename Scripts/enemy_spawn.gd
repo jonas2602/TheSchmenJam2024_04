@@ -47,7 +47,7 @@ func _on_timer_timeout():
 	
 	
 	var name_type = type_info.name
-	var name_inst = enemy_names_temp[randi() % enemy_names_temp.size()]
+	var name_inst = type_info.possible_names[randi() % type_info.possible_names.size()]
 	var speed     = type_info.speed
 	var sprites   = type_info.sprites
 	
