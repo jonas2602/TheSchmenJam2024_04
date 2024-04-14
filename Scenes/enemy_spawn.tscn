@@ -50,15 +50,17 @@ mesh = SubResource("SphereMesh_23dd2")
 
 [node name="EnemyTypeContainer" type="Node" parent="."]
 
-[node name="BasicBitchEnemy" type="Node" parent="EnemyTypeContainer"]
+[node name="MediumEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
-speed = 150
+speed = 50
 sprites = SubResource("SpriteFrames_qvylj")
+possible_names = Array[String](["malusul", "perseve", "conscin", "dapife", "laetan", "verecun", "loricatu", "brocher", "rhetoric", "occurs", "quernu"])
 
-[node name="FlyingEnemy" type="Node" parent="EnemyTypeContainer"]
+[node name="FastEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
-speed = 250
+speed = 100
 sprites = SubResource("SpriteFrames_65fw6")
 height = 60
+possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
