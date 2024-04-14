@@ -1,22 +1,29 @@
 extends Control
 
 @onready var _animated_sprite = $AnimatedSprite2D
-const ANIM_COOLDOWN_MS = 25
-var stop_anim_cooldown = 0
+var _back_to_idle_timer := Timer.new()
 
 func _ready():
 	GlobalEventSystem.monster_killed.connect(self._on_monster_killed)
+	GlobalEventSystem.player_damaged.connect(self._on_player_damaged)
+	GlobalEventSystem.input_detected.connect(self._on_input_detected)
+	add_child(_back_to_idle_timer)
+	_back_to_idle_timer.wait_time = 0.3
+	_back_to_idle_timer.timeout.connect(self._on_back_to_idle)
+	_animated_sprite.play("idle")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if (Input.is_anything_pressed()):
+func _on_back_to_idle():
+	_animated_sprite.play("idle")
+
+func _on_input_detected(input_char : String):
+	if _animated_sprite.animation != "kill":
 		_animated_sprite.play("summon")
-		stop_anim_cooldown = ANIM_COOLDOWN_MS
-	elif (stop_anim_cooldown <= 0):
-		_animated_sprite.play("idle")
-
-	if stop_anim_cooldown > 0:
-		stop_anim_cooldown = stop_anim_cooldown - 1
+		_back_to_idle_timer.start()
 
 func _on_monster_killed():
-	print("Monster killed")
+	_animated_sprite.play("kill")
+	_back_to_idle_timer.start()
+
+func _on_player_damaged(damage : int):
+	_animated_sprite.play("damaged")
+	_back_to_idle_timer.start()
