@@ -2,11 +2,13 @@ extends Node2D
 
 # Variables exposed to the editor.
 @export var move_speed : int = 200
-@export var death_raise_speed : int = 100
-@export var death_raise_seconds : float = 2
 
 @onready var sprite_rect_node = $AnimatedSprite2D
 @onready var text_box_node = $EnemyTextBoxArea
+
+const death_raise_speed : int = 100
+const death_move_speed : int = 0
+const death_raise_seconds : float = 2
 
 var cursor_pos : int
 var enemy_name : String
@@ -60,6 +62,7 @@ func _process(delta):
 
 		MonsterState.Dying:
 			# Reduce of the size of the monster
+			position.x -= delta * death_move_speed
 			position.y -= delta * death_raise_speed
 			death_raise_seconds_timer -= delta
 
