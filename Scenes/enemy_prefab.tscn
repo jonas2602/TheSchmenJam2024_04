@@ -14,5 +14,4 @@ offset_right = 1.0
 offset_bottom = -335.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -134)
 scale = Vector2(0.25, 0.25)

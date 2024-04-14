@@ -14,9 +14,11 @@ func _initialize_enemy(type_name, inst_name, speed, sprites):
 	name = type_name
 	
 	move_speed = speed
+	var tex = sprites.get_frame_texture("default", 0)
+	sprite_rect_node.position.y = -tex.get_height() / 2 * sprite_rect_node.scale.y
 	sprite_rect_node.set_sprite_frames(sprites)
 	sprite_rect_node.play()
-	
+
 	cursor_pos = 0
 	enemy_name = inst_name
 	text_box_node.initialize_text_box(inst_name)
