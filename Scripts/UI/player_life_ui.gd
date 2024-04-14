@@ -23,6 +23,7 @@ func _on_player_damaged(damage : int):
 	_update_ui()
 	if (_current_life == 0):
 		GlobalEventSystem.player_died.emit()
+		GlobalEventSystem.enable_scrolling.emit(false)
 
 func _update_ui():
 	for i in range(0, _current_life):
