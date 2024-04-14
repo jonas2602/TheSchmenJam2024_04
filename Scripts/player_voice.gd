@@ -5,7 +5,7 @@ const NO_KEY  : int = MAX_INT
 
 var _streams = {}
 var _last_pressed_key = ""
-@onready var _audio_player = $AudioStreamPlayer
+@onready var _audio_player = $talking
 
 func load_sounds():
 	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
