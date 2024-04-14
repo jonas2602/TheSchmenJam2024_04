@@ -11,6 +11,10 @@ class TextCharacter:
 
 var text_characters = []
 
+func on_death():
+	
+	pass
+
 func initialize_text_box(enemy_text):
 	text = enemy_text
 	
