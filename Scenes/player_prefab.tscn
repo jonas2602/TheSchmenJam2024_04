@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://biivxpp44thpq"]
+[gd_scene load_steps=19 format=3 uid="uid://biivxpp44thpq"]
 
 [ext_resource type="Script" path="res://Scripts/player_prefab.gd" id="1_7lgvt"]
 [ext_resource type="PackedScene" uid="uid://joskbts8mijd" path="res://Scenes/kill_wave.tscn" id="2_2ixca"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://4uct7u7felsi" path="res://Data/Hero/Legs/CharacterWalkLegs0006.png" id="8_8s3xx"]
 [ext_resource type="Texture2D" uid="uid://dlia6twk6cfh3" path="res://Data/Hero/Legs/CharacterWalkLegs0007.png" id="9_kvlfo"]
 [ext_resource type="Texture2D" uid="uid://bcmpm5tbugb6h" path="res://Data/Hero/Top/CharacterTop0.png" id="10_2cbif"]
+[ext_resource type="Texture2D" uid="uid://b4cpyg06lp4ed" path="res://Data/Hero/Top/CharacterWalkSpellCast0002.png" id="14_lwn6u"]
+[ext_resource type="Texture2D" uid="uid://cmai7e6w3e55x" path="res://Data/Hero/Top/CharacterWalkSpellCast0003.png" id="15_ekyxv"]
+[ext_resource type="Texture2D" uid="uid://4vs3mfv636mq" path="res://Data/Hero/Top/CharacterWalkSpellCast0004.png" id="16_vqtc8"]
+[ext_resource type="Texture2D" uid="uid://bq2c7dw5334eb" path="res://Data/Hero/Top/CharacterWalkSpellCast0005.png" id="17_3a5l7"]
+[ext_resource type="Texture2D" uid="uid://dujxxhfl0b3yr" path="res://Data/Hero/Top/CharacterWalkSpellCast0006.png" id="18_4cfl4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lbdlb"]
 animations = [{
@@ -51,7 +56,27 @@ animations = [{
 "texture": ExtResource("10_2cbif")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_lwn6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ekyxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vqtc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3a5l7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4cfl4")
+}],
+"loop": true,
+"name": &"summon",
 "speed": 5.0
 }]
 
@@ -65,7 +90,9 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_lbdlb")
 animation = &"walk"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="TopAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -102)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_f6vnw")
+animation = &"summon"
+frame_progress = 0.445194
