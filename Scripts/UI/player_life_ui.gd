@@ -10,6 +10,7 @@ func _ready():
 	GlobalEventSystem.player_damaged.connect(_on_player_damaged)
 	_full_life = _full_life_container.get_child_count()
 	_current_life = _full_life
+	_current_life = max(_current_life, 0)
 
 func _on_player_damaged(damage : int):
 	_current_life = _current_life - damage
