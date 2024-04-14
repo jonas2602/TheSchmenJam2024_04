@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwsx8k1ityd4f"]
+
+[ext_resource type="Script" path="res://Scripts/mob_sounding.gd" id="1_in38y"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_vmonu"]
+
+[node name="MobSounding" type="Node"]
+script = ExtResource("1_in38y")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_vmonu")

@@ -27,12 +27,15 @@ var spawn_sound : AudioStream
 var death_sound : AudioStream
 var walk_sound  : AudioStream
 
+var _type_info : enemy_type_info # heads up, at the time of writing most stuff that would be in here is kept as separate members, this is just for the enemy_killed signal
+
 func _on_audio_player_finished():
 	if (walk_sound):
 		_audio_player.stream = walk_sound
 		walk_sound_timer = walk_sound_period
 
 func _initialize_enemy(type_info, type_id):
+	_type_info    = type_info
 	var type_name = type_info.name
 	var inst_name = type_info.possible_names[randi() % type_info.possible_names.size()]
 	name          = type_name + " (" + inst_name + ")"
@@ -72,7 +75,7 @@ func _set_cursor_progress(cursor):
 	text_box_node.on_new_progression_state(cursor)
 	
 	if (cursor == enemy_name.length()):
-		GlobalEventSystem.monster_killed.emit(cursor)
+		GlobalEventSystem.monster_killed.emit(_type_info, cursor)
 		current_state = MonsterState.Dying
 		sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
 

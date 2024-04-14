@@ -8,7 +8,7 @@ static var multiplier_progress : float = 0.0
 @export var multiplier_cap     : int   = 5
 
 # Triggered when player kills a monster.
-func _on_monster_slain(points : int):
+func _on_monster_slain(_type_info : enemy_type_info, points : int):
 	score += points * multiplier
 	GlobalEventSystem.score_increase.emit(score)
 	
