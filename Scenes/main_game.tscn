@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7x33yvqgxwnk"]
+[gd_scene load_steps=4 format=3 uid="uid://b7x33yvqgxwnk"]
 
 [ext_resource type="PackedScene" uid="uid://c1rmwfiqwbfp8" path="res://Scenes/enemy_spawn.tscn" id="1_52djr"]
 [ext_resource type="Script" path="res://Scripts/input_manager.gd" id="1_vi2xe"]
+[ext_resource type="PackedScene" uid="uid://biivxpp44thpq" path="res://Scenes/player_prefab.tscn" id="3_m61to"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,7 +11,9 @@ script = ExtResource("1_vi2xe")
 
 [node name="SpawnPoint" parent="." node_paths=PackedStringArray("enemy_inst_container") instance=ExtResource("1_52djr")]
 position = Vector2(1103, 645)
-input_manager_node_path = NodePath("../InputManager")
 enemy_inst_container = NodePath("../EnemyContainer")
 
 [node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="PlayerPrefab" parent="." instance=ExtResource("3_m61to")]
+position = Vector2(73, 646)

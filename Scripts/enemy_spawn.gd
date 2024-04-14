@@ -2,10 +2,9 @@ extends Node2D
 
 @export var next_index : int = 0
 @export var mob_scene : PackedScene
-@export var input_manager_node_path : NodePath
 @export var enemy_inst_container : Node
 
-var enemy_names_temp : Array[String] = ["Loki", "Odin", "Thor"]
+var enemy_names_temp : Array[String] = ["Lo", "Hello World", "Larger Thor"]
 
 func _on_input_detected(input_char : String):
 	for i in range(0, enemy_inst_container.get_child_count()):
@@ -31,12 +30,11 @@ func _on_input_detected(input_char : String):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.start()
+	GlobalEventSystem.input_detected.connect(_on_input_detected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	var input_manager_node : Node = get_node(input_manager_node_path)
-	input_manager_node.input_detected.connect(_on_input_detected)
 
 func _on_timer_timeout():
 	var type_info = $EnemyTypeContainer.get_child(next_index)
@@ -49,7 +47,7 @@ func _on_timer_timeout():
 	
 	
 	var name_type = type_info.name
-	var name_inst = enemy_names_temp[randi() % enemy_names_temp.size()]
+	var name_inst = type_info.possible_names[randi() % type_info.possible_names.size()]
 	var speed     = type_info.speed
 	var sprites   = type_info.sprites
 	

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/UI/ingame_ui.tscn" id="2_kyer8"]
 [ext_resource type="PackedScene" uid="uid://b1w0eeyb8jv64" path="res://Scenes/UI/options_ui.tscn" id="3_yh4um"]
 [ext_resource type="PackedScene" uid="uid://c3idsj77kmk8h" path="res://Scenes/UI/auto_scroller.tscn" id="4_yexh0"]
-[ext_resource type="PackedScene" path="res://Scenes/player_voice.tscn" id="5_p6v63"]
+[ext_resource type="PackedScene" uid="uid://celeitfa83iba" path="res://Scenes/player_voice.tscn" id="5_p6v63"]
 
 [node name="MasterRoot" type="Node"]
 
@@ -15,10 +15,6 @@ scale = Vector2(2.4, 2.4)
 position = Vector2(0, -51)
 
 [node name="IngameUIRoot" parent="." instance=ExtResource("2_kyer8")]
-offset_left = 19.0
-offset_top = 7.0
-offset_right = 19.0
-offset_bottom = 7.0
 
 [node name="OptionsUIRoot" parent="." instance=ExtResource("3_yh4um")]
 visible = false

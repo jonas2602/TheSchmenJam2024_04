@@ -4,6 +4,9 @@ extends Control
 const ANIM_COOLDOWN_MS = 25
 var stop_anim_cooldown = 0
 
+func _ready():
+	GlobalEventSystem.monster_killed.connect(self._on_monster_killed)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_anything_pressed()):
@@ -14,3 +17,6 @@ func _process(delta):
 
 	if stop_anim_cooldown > 0:
 		stop_anim_cooldown = stop_anim_cooldown - 1
+
+func _on_monster_killed():
+	print("Monster killed")

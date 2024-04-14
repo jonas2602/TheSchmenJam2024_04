@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7xc0e6rg5dox"
-path="res://.godot/imported/frame0001.png-7ad553d8c66e7a4069c8398eed16b4f7.ctex"
+uid="uid://4uct7u7felsi"
+path="res://.godot/imported/CharacterWalkLegs0006.png-ea5f68c3c0d0387a60aa9bd686da7ce1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/Monsters/ReplaceMe_FlyingMonster/frame0001.png"
-dest_files=["res://.godot/imported/frame0001.png-7ad553d8c66e7a4069c8398eed16b4f7.ctex"]
+source_file="res://Data/Hero/Legs/CharacterWalkLegs0006.png"
+dest_files=["res://.godot/imported/CharacterWalkLegs0006.png-ea5f68c3c0d0387a60aa9bd686da7ce1.ctex"]
 
 [params]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsxcdsr1b7o1o"]
+[gd_scene load_steps=8 format=3 uid="uid://dsxcdsr1b7o1o"]
 
-[ext_resource type="Script" path="res://Scripts/hero_portrait_ui.gd" id="1_thrax"]
+[ext_resource type="Script" path="res://Scripts/UI/hero_portrait_ui.gd" id="1_thrax"]
 [ext_resource type="Texture2D" uid="uid://dk3jpk02af7gv" path="res://Data/Portraits/Hero/HeroPortrait0000.png" id="1_uu7jr"]
 [ext_resource type="Texture2D" uid="uid://cjptoiffs8ovd" path="res://Data/Portraits/Hero/HeroPortrait0002.png" id="2_ovbwi"]
 [ext_resource type="Texture2D" uid="uid://c4jl7ykflqvr4" path="res://Data/Portraits/Hero/HeroPortrait0001.png" id="3_6a7w4"]
 [ext_resource type="Texture2D" uid="uid://cwuhtforydy1l" path="res://Data/Portraits/Hero/HeroPortrait0003.png" id="4_fiysx"]
+[ext_resource type="PackedScene" uid="uid://w4jg7405j3v1" path="res://Scenes/UI/player_life_ui.tscn" id="6_om8wp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yoxlo"]
 animations = [{
@@ -42,3 +43,6 @@ sprite_frames = SubResource("SpriteFrames_yoxlo")
 animation = &"summon"
 frame_progress = 0.326802
 centered = false
+
+[node name="PlayerLifeUi" parent="." instance=ExtResource("6_om8wp")]
+position = Vector2(15, 161)
