@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var speed : float = 10
+@export var max_distance : int = 600
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x += delta * speed
-	if (position.x > 2000):
+	if (position.x > max_distance):
 		queue_free()
 	pass
 
