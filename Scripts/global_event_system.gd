@@ -10,3 +10,7 @@ signal monster_destroyed()
 signal input_detected(input_char : String)
 signal character_hit(char: String)
 signal character_miss(char: String)
+
+# Score system api:
+signal score_increase(new_score : int)
+signal combo_progress(multiplier: int, multiplier_progress : float)

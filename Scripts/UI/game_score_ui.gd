@@ -13,12 +13,12 @@ var from_score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PointsLabel.text = str(0)
-	GlobalEventSystem.monster_killed.connect(self._on_monster_killed)
+	GlobalEventSystem.score_increase.connect(self._on_score_changed)
 
-func _on_monster_killed(points : int):
+func _on_score_changed(new_score : int):
 	interpolation_progress = 0.0
 	from_score = displayed_score
-	current_score += points
+	current_score += new_score
 	
 	var gained_difference_total = current_score - from_score
 	
