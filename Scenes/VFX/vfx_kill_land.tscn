@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://bh0neyiymf4vu"]
+
+[ext_resource type="Script" path="res://Scripts/vfx_destroy.gd" id="1_387su"]
+[ext_resource type="Texture2D" uid="uid://b38t61ovu30o5" path="res://Data/VFX/Free Smoke Fx  Pixel 05.png" id="1_sc4ao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gll0j"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(0, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5kr7"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(64, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jitt"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(128, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfbno"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(192, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl4nq"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(256, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoqtt"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(320, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06ps2"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(384, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7lsu"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(448, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjidp"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(512, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm2w7"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(576, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue7jw"]
+atlas = ExtResource("1_sc4ao")
+region = Rect2(640, 640, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lq6rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gll0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5kr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jitt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfbno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl4nq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoqtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06ps2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7lsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjidp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm2w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue7jw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 11.0
+}]
+
+[node name="VfxKillLand" type="Node2D"]
+script = ExtResource("1_387su")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lq6rv")
+autoplay = "default"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

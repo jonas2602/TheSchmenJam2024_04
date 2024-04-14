@@ -16,9 +16,10 @@ var player_node : Node
 enum MonsterState { Attacking, Dying }
 var current_state : MonsterState
 var death_raise_seconds_timer : float
+var vfx_kill_scene : PackedScene
 
 
-func _initialize_enemy(type_name, inst_name, speed, sprites):
+func _initialize_enemy(type_name, inst_name, speed, sprites, vfx_kill):
 	name = type_name + " (" + inst_name + ")"
 	
 	move_speed = speed
@@ -26,6 +27,8 @@ func _initialize_enemy(type_name, inst_name, speed, sprites):
 	sprite_rect_node.position.y = -tex.get_height() / 2 * sprite_rect_node.scale.y
 	sprite_rect_node.set_sprite_frames(sprites)
 	sprite_rect_node.play()
+
+	vfx_kill_scene = vfx_kill
 
 	cursor_pos = 0
 	enemy_name = inst_name
@@ -46,6 +49,10 @@ func _set_cursor_progress(cursor):
 		GlobalEventSystem.monster_killed.emit()
 		current_state = MonsterState.Dying
 		sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
+
+		var vfx = vfx_kill_scene.instantiate()
+		get_tree().get_root().find_child("MainGame", true, false).add_child(vfx)
+		vfx.position = position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

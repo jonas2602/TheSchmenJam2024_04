@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1rmwfiqwbfp8"]
+[gd_scene load_steps=13 format=3 uid="uid://c1rmwfiqwbfp8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_spawn.gd" id="1_o4g6m"]
 [ext_resource type="PackedScene" uid="uid://chhuuimlvap0i" path="res://Scenes/enemy_prefab.tscn" id="2_t1i8u"]
 [ext_resource type="Script" path="res://Scripts/enemy_type_info.gd" id="3_2np3i"]
+[ext_resource type="PackedScene" uid="uid://78fya0uuop84" path="res://Scenes/VFX/vfx_skill_air.tscn" id="6_4lcv0"]
 [ext_resource type="Texture2D" uid="uid://cxxkey2wf1gkx" path="res://Data/Monsters/Small Monsters/FlyingImp/frame0000.png" id="6_fynby"]
 [ext_resource type="Texture2D" uid="uid://xg5owqf27n0" path="res://Data/Monsters/Small Monsters/FlyingImp/frame0001.png" id="7_3dsn6"]
 [ext_resource type="Texture2D" uid="uid://ccn8hhyjxdx5e" path="res://Data/Monsters/Small Monsters/Imp/frame0000.png" id="8_qijct"]
+[ext_resource type="PackedScene" uid="uid://bh0neyiymf4vu" path="res://Scenes/VFX/vfx_kill_land.tscn" id="8_xs8cg"]
 [ext_resource type="Texture2D" uid="uid://dp8qqfvku6u7x" path="res://Data/Monsters/Small Monsters/Imp/frame0001.png" id="9_714do"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_23dd2"]
@@ -55,12 +57,14 @@ script = ExtResource("3_2np3i")
 speed = 100
 height = 50
 sprites = SubResource("SpriteFrames_65fw6")
+vfx_kill = ExtResource("6_4lcv0")
 possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
 
 [node name="SlowEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
 speed = 25
 sprites = SubResource("SpriteFrames_msor8")
+vfx_kill = ExtResource("8_xs8cg")
 possible_names = Array[String](["malusul", "perseve", "conscin", "dapife", "laetan", "verecun", "loricatu", "brocher", "rhetoric", "occurs", "quernu"])
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

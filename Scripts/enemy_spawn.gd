@@ -48,6 +48,7 @@ func _on_timer_timeout():
 	var name_inst = type_info.possible_names[randi() % type_info.possible_names.size()]
 	var speed     = type_info.speed
 	var sprites   = type_info.sprites
+	var vfx_kill  = type_info.vfx_kill
 	
 	enemy_inst_container.add_child(mob)
-	mob._initialize_enemy(name_type, name_inst, speed, sprites)
+	mob._initialize_enemy(name_type, name_inst, speed, sprites, vfx_kill)
