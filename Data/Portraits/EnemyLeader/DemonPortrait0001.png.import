@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj1kbvn37v518"
-path="res://.godot/imported/EnemyLeader0.png-721a2736577af3f2f6ea446effe5dfb8.ctex"
+uid="uid://cqbru4vdcnmtw"
+path="res://.godot/imported/DemonPortrait0001.png-b4b1c8105f091366374f89212d08094b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/Portraits/EnemyLeader/EnemyLeader0.png"
-dest_files=["res://.godot/imported/EnemyLeader0.png-721a2736577af3f2f6ea446effe5dfb8.ctex"]
+source_file="res://Data/Portraits/EnemyLeader/DemonPortrait0001.png"
+dest_files=["res://.godot/imported/DemonPortrait0001.png-b4b1c8105f091366374f89212d08094b.ctex"]
 
 [params]
 
