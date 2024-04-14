@@ -69,6 +69,11 @@ func initialize_text_box(enemy_text, offset : int):
 		text_character.label.set_position(Vector2(text_character.label.get_position().x, text_character.label.get_position().y))
 	
 	set_text_box_offset(offset)
+	
+	var background_panel_node_visual = background_panel_node.get_node("BackgroundPanelSize")
+	background_panel_node_visual.size.x = background_panel_node.scale.x * background_panel_node.size.x / background_panel_node_visual.scale.x + 100
+	background_panel_node_visual.size.y = background_panel_node.scale.y * background_panel_node.size.y / background_panel_node_visual.scale.y
+	background_panel_node.set_self_modulate(Color(0,0,0,0))
 
 # Call this when the text progresses
 func on_new_progression_state(new_progression):
@@ -97,7 +102,8 @@ func _process(delta):
 		
 		var background_panel = get_node("BackgroundPanel")
 		var background_panel_color = lerp(Color(1.0, 1.0, 1.0, 1.0), Color(0.0, 0.0, 0.0, 0.0), time_since_death*5.0)
-		background_panel.set_self_modulate(background_panel_color)
+		#background_panel.set_self_modulate(background_panel_color)
+		background_panel.get_child(0).set_self_modulate(background_panel_color)
 
 	
 	# Detect and do Reset
