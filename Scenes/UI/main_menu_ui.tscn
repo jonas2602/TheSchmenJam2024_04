@@ -101,6 +101,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CreditsText2" type="Label" parent="Credits"]
+layout_mode = 0
 offset_left = 580.0
 offset_top = 239.0
 offset_right = 928.0
@@ -115,6 +116,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CreditsText3" type="Label" parent="Credits"]
+layout_mode = 0
 offset_left = 236.0
 offset_top = 196.0
 offset_right = 584.0
@@ -133,6 +135,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CreditsText4" type="Label" parent="Credits"]
+layout_mode = 0
 offset_left = 643.0
 offset_top = 184.0
 offset_right = 865.0
