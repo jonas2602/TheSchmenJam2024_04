@@ -59,6 +59,7 @@ speed = 100
 height = 50
 sprites = SubResource("SpriteFrames_65fw6")
 vfx_kill = ExtResource("6_4lcv0")
+vfx_kill_offset = Vector2(0, -64)
 possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
 
 [node name="SlowEnemy" type="Node" parent="EnemyTypeContainer"]

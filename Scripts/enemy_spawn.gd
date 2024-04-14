@@ -60,15 +60,16 @@ func _on_timer_timeout():
 	mob.position    = position
 	mob.position.y -= type_info.height
 	
-	var name_type     = type_info.name
-	var name_inst     = type_info.possible_names[randi() % type_info.possible_names.size()]
-	var speed         = type_info.speed
-	var sprites       = type_info.sprites
-	var vfx_kill      = type_info.vfx_kill
+	var name_type       = type_info.name
+	var name_inst       = type_info.possible_names[randi() % type_info.possible_names.size()]
+	var speed           = type_info.speed
+	var sprites         = type_info.sprites
+	var vfx_kill        = type_info.vfx_kill
+	var vfx_kill_offset = type_info.vfx_kill_offset
 	enemy_id_counter += 1
 	
 	enemy_inst_container.add_child(mob)
-	mob._initialize_enemy(name_type, name_inst, speed, sprites, type_id, enemy_text_offsets[next_index], vfx_kill)
+	mob._initialize_enemy(name_type, name_inst, speed, sprites, type_id, enemy_text_offsets[next_index], vfx_kill, vfx_kill_offset)
 
 	# Insert the fast enemies in a lower node than the slow ones.
 	# Also insert any new spawned enemy on a higher possible node so the earlier

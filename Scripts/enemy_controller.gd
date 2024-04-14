@@ -18,8 +18,10 @@ var current_state : MonsterState
 var death_raise_seconds_timer : float
 var enemy_type_id : int
 var vfx_kill_scene : PackedScene
+var vfx_kill_scene_offset : Vector2
 
-func _initialize_enemy(type_name, inst_name, speed, sprites, type_id, text_offset, vfx_kill):
+
+func _initialize_enemy(type_name, inst_name, speed, sprites, type_id, text_offset, vfx_kill, vfx_kill_offset):
 	name          = type_name + " (" + inst_name + ")"
 	enemy_type_id = type_id
 	move_speed    = speed
@@ -29,8 +31,9 @@ func _initialize_enemy(type_name, inst_name, speed, sprites, type_id, text_offse
 	sprite_rect_node.set_sprite_frames(sprites)
 	sprite_rect_node.play()
 
-	vfx_kill_scene = vfx_kill
-
+	vfx_kill_scene        = vfx_kill
+	vfx_kill_scene_offset = vfx_kill_offset
+	
 	cursor_pos = 0
 	enemy_name = inst_name
 	text_box_node.initialize_text_box(inst_name, text_offset)
@@ -53,7 +56,7 @@ func _set_cursor_progress(cursor):
 
 		var vfx = vfx_kill_scene.instantiate()
 		get_tree().get_root().find_child("MainGame", true, false).add_child(vfx)
-		vfx.position = position
+		vfx.position = position + vfx_kill_scene_offset
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
