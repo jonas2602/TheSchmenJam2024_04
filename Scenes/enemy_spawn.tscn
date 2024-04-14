@@ -45,6 +45,7 @@ script = ExtResource("1_o4g6m")
 mob_scene = ExtResource("2_t1i8u")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 scale = Vector2(30.61, 30.61)
 mesh = SubResource("SphereMesh_23dd2")
 
