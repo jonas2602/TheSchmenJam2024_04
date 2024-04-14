@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu536ymb4dtul"]
+[gd_scene load_steps=5 format=3 uid="uid://cu536ymb4dtul"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ingame_ui.gd" id="1_b65dg"]
 [ext_resource type="PackedScene" uid="uid://b5gt1atkp4ssc" path="res://Scenes/UI/enemy_portrait_and_dialog_ui.tscn" id="3_4u6kf"]
 [ext_resource type="PackedScene" uid="uid://dsxcdsr1b7o1o" path="res://Scenes/UI/hero_portrait_ui.tscn" id="3_mim8c"]
+[ext_resource type="PackedScene" uid="uid://dg248xb04xjjo" path="res://Scenes/UI/game_score_ui.tscn" id="4_xnlhx"]
 
 [node name="IngameUIRoot" type="Control"]
 layout_mode = 3
@@ -26,3 +27,9 @@ offset_left = -27.0
 offset_top = 20.0
 offset_right = -27.0
 offset_bottom = 20.0
+
+[node name="GameScoreUI" parent="." instance=ExtResource("4_xnlhx")]
+offset_left = 25.0
+offset_top = 230.0
+offset_right = 25.0
+offset_bottom = 230.0
