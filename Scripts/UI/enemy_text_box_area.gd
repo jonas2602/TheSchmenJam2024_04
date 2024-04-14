@@ -4,12 +4,22 @@ var text = "Default Andy"
 var progression = 0
 var previous_processed_progression = 0
 var text_padding_hortizontal = 10.0
+var death_initialized = false
+var time_since_death = 0.0
+
+var rng = RandomNumberGenerator.new()
 
 class TextCharacter:
 	var label
 	var highlight_times
+	var original_position
+	var velocity
 
 var text_characters = []
+
+func on_death():
+	
+	pass
 
 func initialize_text_box(enemy_text):
 	text = enemy_text
@@ -38,6 +48,7 @@ func initialize_text_box(enemy_text):
 			var text_character = TextCharacter.new()
 			text_character.label = label
 			text_character.highlight_times = 0.0
+			text_character.original_position = label.get_position()
 			text_characters.append(text_character)
 			background_panel_node.add_child(text_character.label)
 	
@@ -56,13 +67,38 @@ func on_new_progression_state(new_progression):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	pass
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# Detect and animate death
+	if previous_processed_progression >= text_characters.size():
+		if !death_initialized:
+			for text_character in text_characters:
+				var explosition_angle = rng.randf_range(0.0, PI)
+				var explosion_velocity = 2.0
+				text_character.velocity = Vector2(cos(explosition_angle), sin(explosition_angle)) * Vector2(explosion_velocity, -explosion_velocity*3.0)
+				
+			death_initialized = true
+		
+		time_since_death += delta
+		
+		for text_character in text_characters:
+			text_character.original_position = text_character.original_position + text_character.velocity
+			text_character.velocity.y += delta*14
+			text_character.velocity *= 0.98
+			text_character.label.set_self_modulate(lerp(Color(1.0, 1.0, 1.0, 1.0), Color(0.0, 0.0, 0.0, 0.0), time_since_death*0.6))
+		
+		
+		#var bb = BackgroundPanel.new()
+		#bb.add_theme_constant_override()
+		
+		var background_panel = get_node("BackgroundPanel")
+		var background_panel_color = lerp(Color(1.0, 1.0, 1.0, 1.0), Color(0.0, 0.0, 0.0, 0.0), time_since_death*5.0)
+		#background_panel.add_theme_override_color("self_modulate", background_panel_color)
+		background_panel.set_self_modulate(background_panel_color)
+
 	
 	# Detect and do Reset
 	if progression == 0 && previous_processed_progression != 0:
@@ -71,7 +107,11 @@ func _process(delta):
 				break
 			
 			var text_character = text_characters[index]
-			text_character.label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0, 1.0))
+			text_character.label.add_theme_color_override("font_color", Color(1.0, 1.0, 1.0))
+			text_character.label.add_theme_color_override("font_shadow_color", Color(0.2, 0.2, 0.2, 1.0))
+			text_character.label.add_theme_constant_override("shadow_offset_y", 2)
+			text_character.label.add_theme_constant_override("shadow_outline_size", 4)
+			text_character.label.set_position(text_character.original_position)
 			text_character.highlight_times = -1.0
 	
 	previous_processed_progression = progression
@@ -90,12 +130,12 @@ func _process(delta):
 		
 		if text_character.highlight_times < 0.0:
 			# Do text animation for reset
-			var animationFactor = (1.0+highlight_time)*10.0
+			var animation_factor = (1.0+highlight_time)*10.0
 			
-			var color = Color(1.0, animationFactor * animationFactor, animationFactor * animationFactor)
+			var color = Color(1.0, animation_factor * animation_factor, animation_factor * animation_factor)
 			label.add_theme_color_override("font_color", color)
 			
-			var scale = 1.0 + sin(clamp(animationFactor, 0.0, 1.0) * PI)*0.2
+			var scale = 1.0 + sin(clamp(animation_factor, 0.0, 1.0) * PI)*0.2
 			label.scale.x = scale
 			label.scale.y = scale
 		else:
@@ -103,18 +143,20 @@ func _process(delta):
 			if progression <= index:
 				continue
 				
-			var animationFactor = highlight_time*6.0
+			var animation_factor = highlight_time*6.0
+			var color = lerp(Color(1.0, 1.0, 1.0), Color(0.8, 0.9, 1.0), min(animation_factor, 1.0))
+			var shadow_color = lerp(Color(0.0, 0.0, 0.0), Color(1.0, 1.0, 1.0), min(animation_factor, 1.0))
 			
-			var color = Color(lerp(1.0, 0.9, animationFactor), lerp(1.0, 0.8, animationFactor), 1.0 - (animationFactor * animationFactor))
-			#var shadow_color = Color(max(lerp(1.0, 0.9, animationFactor), 0.5) , max(lerp(1.0, 0.8, animationFactor), 0.4), 1.0 - (animationFactor * animationFactor))
-			#var color = Color(1.0-animationFactor, 1.0-animationFactor * animationFactor, 1.0-animationFactor * animationFactor * animationFactor)
 			label.add_theme_color_override("font_color", color)
-			#label.add_theme_color_override("font_shadow_color", shadow_color)
-			#label.add_theme_constant_override("shadow_outline_size", lerp(0.0, 5.0, clamp(animationFactor, 0.0, 1.0)))
+			label.add_theme_color_override("font_shadow_color", shadow_color)
+			label.add_theme_constant_override("shadow_outline_size", lerp(0.0, 5.0, min(animation_factor, 1.0)))
 			
-			var scale = 1.0 + sin(clamp(animationFactor, 0.0, 1.0) * PI)
+			var scale = 1.0 + sin(clamp(animation_factor, 0.0, 1.0) * PI)
 			label.scale.x = scale
 			label.scale.y = scale
+			
+			var shake_angle = rng.randf_range(0.0, PI*2.0)
+			label.set_position(text_character.original_position + Vector2(cos(shake_angle), sin(shake_angle) * 0.6))
 		
 		index += 1
 		

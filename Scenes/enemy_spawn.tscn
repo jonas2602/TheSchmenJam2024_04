@@ -53,6 +53,7 @@ mesh = SubResource("SphereMesh_23dd2")
 [node name="FastEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
 speed = 100
+height = 50
 sprites = SubResource("SpriteFrames_65fw6")
 possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
 

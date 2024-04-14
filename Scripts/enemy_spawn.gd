@@ -4,8 +4,6 @@ extends Node2D
 @export var mob_scene : PackedScene
 @export var enemy_inst_container : Node
 
-var enemy_names_temp : Array[String] = ["Lo", "Hello World", "Larger Thor"]
-
 func _on_input_detected(input_char : String):
 	for i in range(0, enemy_inst_container.get_child_count()):
 		var current_enemy = enemy_inst_container.get_child(i)
