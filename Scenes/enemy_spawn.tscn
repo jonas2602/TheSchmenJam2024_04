@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1rmwfiqwbfp8"]
+[gd_scene load_steps=11 format=3 uid="uid://c1rmwfiqwbfp8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_spawn.gd" id="1_o4g6m"]
 [ext_resource type="PackedScene" uid="uid://chhuuimlvap0i" path="res://Scenes/enemy_prefab.tscn" id="2_t1i8u"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://toowomqny63x" path="res://Data/Monsters/ReplaceMe_Monster/frame0000.png" id="5_wp70w"]
 [ext_resource type="Texture2D" uid="uid://cxxkey2wf1gkx" path="res://Data/Monsters/Small Monsters/FlyingImp/frame0000.png" id="6_fynby"]
 [ext_resource type="Texture2D" uid="uid://xg5owqf27n0" path="res://Data/Monsters/Small Monsters/FlyingImp/frame0001.png" id="7_3dsn6"]
-[ext_resource type="Texture2D" uid="uid://bgkpordc24b36" path="res://Data/Monsters/Small Monsters/FlyingImp/frame0002.png" id="8_g2wvc"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_23dd2"]
 
@@ -33,13 +32,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_3dsn6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_g2wvc")
 }],
 "loop": true,
 "name": &"default",
-"speed": 4.0
+"speed": 3.0
 }]
 
 [node name="SpawnPoint" type="Node2D"]
