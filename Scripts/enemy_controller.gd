@@ -32,6 +32,9 @@ func _initialize_enemy(type_name, inst_name, speed, sprites):
 	player_node = get_tree().get_root().find_child("PlayerPrefab", true, false)
 
 	death_raise_seconds_timer = death_raise_seconds
+	
+func _force_death():
+	_set_cursor_progress(enemy_name.length())
 
 func _set_cursor_progress(cursor):
 	cursor_pos = cursor
