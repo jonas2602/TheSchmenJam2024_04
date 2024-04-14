@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci45evnbqlvwj"]
+[gd_scene load_steps=6 format=3 uid="uid://ci45evnbqlvwj"]
 
 [ext_resource type="Theme" uid="uid://bwnxr6rm3otb3" path="res://UI/Themes/base_theme.tres" id="1_bikil"]
+[ext_resource type="Script" path="res://Scripts/UI/main_menu_ui.gd" id="1_blioc"]
+[ext_resource type="PackedScene" uid="uid://c3idsj77kmk8h" path="res://Scenes/UI/auto_scroller.tscn" id="1_ud4rq"]
+[ext_resource type="PackedScene" uid="uid://cfnnottyj712b" path="res://Scenes/master_scene.tscn" id="2_pmoab"]
 
 [sub_resource type="SystemFont" id="SystemFont_txyp8"]
 
@@ -13,15 +16,21 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_blioc")
+start_scene = ExtResource("2_pmoab")
 
-[node name="Game Title Temp Label" type="Label" parent="."]
+[node name="AutoScroller" parent="." instance=ExtResource("1_ud4rq")]
+scale = Vector2(2.4, 2.4)
+
+[node name="Game Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -274.0
-offset_right = 278.0
-offset_bottom = 170.0
+offset_left = -264.0
+offset_top = 44.0
+offset_right = 288.0
+offset_bottom = 214.0
 grow_horizontal = 2
 theme = ExtResource("1_bikil")
 theme_override_colors/font_shadow_color = Color(0.462745, 0.462745, 0.462745, 0.470588)
@@ -29,15 +38,30 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 7
 theme_override_fonts/font = SubResource("SystemFont_txyp8")
-text = "Untitled Type To Unsummon Game?"
+theme_override_font_sizes/font_size = 48
+text = "The Unsummoning"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Start Game Button" type="Button" parent="."]
+[node name="Start" type="Button" parent="."]
 layout_mode = 0
-offset_left = 333.0
-offset_top = 429.0
-offset_right = 528.0
-offset_bottom = 494.0
+offset_left = 491.0
+offset_top = 265.0
+offset_right = 686.0
+offset_bottom = 330.0
 text = "Start Game"
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 491.0
+offset_top = 349.0
+offset_right = 686.0
+offset_bottom = 414.0
+text = "Credits"
+
+[node name="Exit" type="Button" parent="."]
+offset_left = 491.0
+offset_top = 436.0
+offset_right = 686.0
+offset_bottom = 501.0
+text = "Exit"
