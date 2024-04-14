@@ -1,7 +1,7 @@
 extends Control
 
 var text = "^Lovely^ evening #mortal# :3"
-const characters_per_second = 0.04
+const characters_per_second = 0.1
 var progression = 0.0
 var shown_characters = 0
 var box_original_position
@@ -64,8 +64,6 @@ func set_text(new_text):
 
 		position_x += label.size.x;
 		
-
-		
 		var text_character = SpeechTextCharacter.new()
 		text_character.label = label
 		text_character.highlight_time = 0.0
@@ -102,6 +100,10 @@ func _process(delta):
 	
 	while progression > characters_per_second:
 		shown_characters += 1
+		
+		if shown_characters < text.length():
+			voice.speak(text[shown_characters])
+			
 		progression -= characters_per_second
 	
 	# Animate characters

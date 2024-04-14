@@ -13,6 +13,9 @@ var from_score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PointsLabel.text = str(0)
+	$GainedLabel.set_self_modulate(Color(0.0, 0.0, 0.0, 0.0))
+	interpolation_progress = 1.0
+	
 	GlobalEventSystem.score_increase.connect(self._on_score_changed)
 
 func _on_score_changed(new_score : int):

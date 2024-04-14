@@ -16,6 +16,11 @@ func load_sounds():
 			print("Failed to load: " + path)
 
 func speak(input_char : String):
+	
+	input_char = input_char.capitalize()
+	if input_char.length() == 0:
+		return
+	
 	var stream = _streams.get(input_char[0])
 	if (!stream):
 		return
