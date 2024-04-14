@@ -2,6 +2,8 @@ extends Node2D
 
 # Variables exposed to the editor.
 @export var move_speed : int = 200
+@export var death_raise_speed : int = 100
+@export var death_raise_seconds : float = 2
 
 @onready var sprite_rect_node = $AnimatedSprite2D
 @onready var text_box_node = $EnemyTextBoxArea
@@ -9,6 +11,10 @@ extends Node2D
 var cursor_pos : int
 var enemy_name : String
 var player_node : Node
+enum MonsterState { Attacking, Dying }
+var current_state : MonsterState
+var death_raise_seconds_timer : float
+
 
 func _initialize_enemy(type_name, inst_name, speed, sprites):
 	name = type_name + " (" + inst_name + ")"
@@ -25,18 +31,39 @@ func _initialize_enemy(type_name, inst_name, speed, sprites):
 
 	player_node = get_tree().get_root().find_child("PlayerPrefab", true, false)
 
+	death_raise_seconds_timer = death_raise_seconds
+
 func _set_cursor_progress(cursor):
 	cursor_pos = cursor
 	text_box_node.on_new_progression_state(cursor)
 	
 	if (cursor == enemy_name.length()):
 		GlobalEventSystem.monster_killed.emit()
-		queue_free()
+		current_state = MonsterState.Dying
+		sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x -= delta * move_speed
-	
-	if (position.x <= player_node.position.x):
-		GlobalEventSystem.player_damaged.emit(1)
-		queue_free()
+
+	match (current_state):
+		MonsterState.Attacking:
+			# Move monster towards the player
+			position.x -= delta * move_speed
+
+			# Handle "collision" with player
+			if (position.x <= player_node.position.x):
+				GlobalEventSystem.player_damaged.emit(1)
+				queue_free()
+
+		MonsterState.Dying:
+			# Reduce of the size of the monster
+			position.y -= delta * death_raise_speed
+			death_raise_seconds_timer -= delta
+
+			var weight : float = (death_raise_seconds - death_raise_seconds_timer) / death_raise_seconds
+			sprite_rect_node.modulate.a = lerp(1, 0, weight)
+
+			# Enemy should be cleaned up now
+			if (death_raise_seconds <= 0):
+				GlobalEventSystem.monster_destroyed.emit()
+				queue_free()
