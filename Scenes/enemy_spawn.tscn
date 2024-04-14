@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1rmwfiqwbfp8"]
+[gd_scene load_steps=24 format=3 uid="uid://c1rmwfiqwbfp8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_spawn.gd" id="1_o4g6m"]
 [ext_resource type="PackedScene" uid="uid://chhuuimlvap0i" path="res://Scenes/enemy_prefab.tscn" id="2_t1i8u"]
@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://ccn8hhyjxdx5e" path="res://Data/Monsters/Small Monsters/Imp/frame0000.png" id="8_qijct"]
 [ext_resource type="PackedScene" uid="uid://bh0neyiymf4vu" path="res://Scenes/VFX/vfx_kill_land.tscn" id="8_xs8cg"]
 [ext_resource type="Texture2D" uid="uid://dp8qqfvku6u7x" path="res://Data/Monsters/Small Monsters/Imp/frame0001.png" id="9_714do"]
+[ext_resource type="Texture2D" uid="uid://cimcr1pfej8xh" path="res://Data/Monsters/Large Monsters/WendigoShadows_frames/Wendigo_1_1_shadow.png" id="10_72mf1"]
+[ext_resource type="Texture2D" uid="uid://dyyyxf4vvqf6l" path="res://Data/Monsters/Large Monsters/WendigoShadows_frames/Wendigo_1_2_shadow.png" id="11_u0ypv"]
+[ext_resource type="Texture2D" uid="uid://bfd8b1jb5buco" path="res://Data/Monsters/Large Monsters/WendigoShadows_frames/Wendigo_1_3_shadow.png" id="12_2g7cn"]
+[ext_resource type="Texture2D" uid="uid://bcrwtjpwxvbt4" path="res://Data/Monsters/Large Monsters/WendigoShadows_frames/Wendigo_1_4_shadow.png" id="13_8p4i0"]
+[ext_resource type="Texture2D" uid="uid://rlyu3fjg0tcb" path="res://Data/Monsters/Medium Monsters/Skeleton_frames/SkeletonVariant_1_1.png" id="14_mugsj"]
+[ext_resource type="Texture2D" uid="uid://dncep51h5gpod" path="res://Data/Monsters/Medium Monsters/Skeleton_frames/SkeletonVariant_1_2.png" id="15_y1886"]
+[ext_resource type="Texture2D" uid="uid://bil6g5iosoa70" path="res://Data/Monsters/Medium Monsters/Beetle_frames/beetle_1_1.png" id="16_5weiv"]
+[ext_resource type="Texture2D" uid="uid://dbqswp13ng1n4" path="res://Data/Monsters/Medium Monsters/Beetle_frames/beetle_1_2.png" id="17_ylxsp"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_23dd2"]
 
@@ -40,6 +48,54 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_gbuux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_72mf1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u0ypv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2g7cn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8p4i0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1h68"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_mugsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_y1886")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iti6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_5weiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ylxsp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="SpawnPoint" type="Node2D"]
 script = ExtResource("1_o4g6m")
 mob_scene = ExtResource("2_t1i8u")
@@ -53,7 +109,7 @@ mesh = SubResource("SphereMesh_23dd2")
 
 [node name="EnemyTypeContainer" type="Node" parent="."]
 
-[node name="FastEnemy" type="Node" parent="EnemyTypeContainer"]
+[node name="FlyingImpEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
 speed = 100
 height = 50
@@ -62,11 +118,33 @@ vfx_kill = ExtResource("6_4lcv0")
 vfx_kill_offset = Vector2(0, -64)
 possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
 
-[node name="SlowEnemy" type="Node" parent="EnemyTypeContainer"]
+[node name="ImpEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
 speed = 25
 sprites = SubResource("SpriteFrames_msor8")
 vfx_kill = ExtResource("8_xs8cg")
 possible_names = Array[String](["malusul", "perseve", "conscin", "dapife", "laetan", "verecun", "loricatu", "brocher", "rhetoric", "occurs", "quernu"])
+
+[node name="WendigoEnemy" type="Node" parent="EnemyTypeContainer"]
+script = ExtResource("3_2np3i")
+speed = 100
+height = -20
+sprites = SubResource("SpriteFrames_gbuux")
+vfx_kill = ExtResource("6_4lcv0")
+possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
+
+[node name="SkeletonEnemy" type="Node" parent="EnemyTypeContainer"]
+script = ExtResource("3_2np3i")
+speed = 150
+sprites = SubResource("SpriteFrames_b1h68")
+vfx_kill = ExtResource("6_4lcv0")
+possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
+
+[node name="BeetleEnemy" type="Node" parent="EnemyTypeContainer"]
+script = ExtResource("3_2np3i")
+speed = 200
+sprites = SubResource("SpriteFrames_iti6m")
+vfx_kill = ExtResource("6_4lcv0")
+possible_names = Array[String](["sa", "litu", "bu", "inq", "put", "si", "not", "rot", "lu", "quo", "fer", "run"])
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

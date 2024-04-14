@@ -1,5 +1,7 @@
 extends Control
 
+@export var enemy_offset_array : Array[int]
+
 var text = "Default Andy"
 var progression = 0
 var previous_processed_progression = 0
@@ -23,8 +25,13 @@ func on_death():
 func set_text_box_offset(offset : int):	
 	var background_panel_node = get_node("BackgroundPanel")
 	var enemy_sprite_node     = get_parent().get_node("AnimatedSprite2D")
+	var sprite_texture        = enemy_sprite_node.get_sprite_frames().get_frame_texture(enemy_sprite_node.animation, 0)
+	var texture_height        = sprite_texture.get_height() * enemy_sprite_node.scale.y + enemy_sprite_node.position.y
+	
+	var enemy_type            = get_parent().enemy_type_id
+	
 	position.x                = background_panel_node.size.x * 0.5
-	position.y                = -128.0 - background_panel_node.size.y * (offset + 1)
+	position.y                = -texture_height - background_panel_node.size.y * (offset + 1) + enemy_offset_array[enemy_type]
 
 func initialize_text_box(enemy_text, offset : int):
 	text = enemy_text.to_upper()
