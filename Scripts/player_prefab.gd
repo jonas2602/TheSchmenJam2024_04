@@ -1,11 +1,16 @@
 extends Node2D
 
 @export var kill_wave_scene : PackedScene
+@export var game_over_scene : PackedScene
 @onready var _animated_legs = $LegAnimatedSprite
 @onready var _animated_top = $TopAnimatedSprite
 var _back_to_idle_timer := Timer.new()
 
+enum HeroState { Idle, Walking, Summoning, Dying, Dead }
+var current_state : HeroState = HeroState.Idle
+
 func _ready():
+	GlobalEventSystem.restart.connect(_on_restart)
 	GlobalEventSystem.player_damaged.connect(_on_player_damaged)
 	GlobalEventSystem.player_died.connect(_on_player_died)
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
@@ -15,6 +20,14 @@ func _ready():
 	_back_to_idle_timer.start()
 	_animated_legs.play("walk")
 	_animated_top.play("idle")
+
+func _on_restart():
+	_animated_legs.visible      = true
+	_animated_top.visible       = true
+	$FullAnimatedSprite.visible = false
+	
+	_animated_legs.play("walk")
+	_animated_top.play("idle")	
 
 func _on_back_to_idle():
 	_animated_top.play("idle")
@@ -45,4 +58,5 @@ func _on_full_animated_sprite_animation_looped():
 	$FullAnimatedSprite.pause()
 	$FullAnimatedSprite.set_frame_and_progress(2, 0)
 	
-	# TODO: wait and reverse to idle animation for next round
+	var game_over = game_over_scene.instantiate()
+	get_tree().get_root().add_child(game_over)

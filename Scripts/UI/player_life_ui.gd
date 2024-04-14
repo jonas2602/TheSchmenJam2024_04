@@ -8,6 +8,7 @@ var _full_life = 0
 var _current_life = 0;
 
 func _ready():
+	GlobalEventSystem.restart.connect(_on_restart)
 	GlobalEventSystem.player_damaged.connect(_on_player_damaged)
 	_full_life = _full_life_container.get_child_count()
 	_current_life = _full_life
@@ -17,6 +18,10 @@ func _ready():
 	_idle_timer.start()
 	_play_animation()
 
+func _on_restart():
+	_current_life = _full_life
+	_update_ui()	
+	
 func _on_player_damaged(damage : int):
 	_current_life = _current_life - damage
 	_current_life = max(_current_life, 0)

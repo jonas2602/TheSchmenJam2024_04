@@ -49,8 +49,12 @@ func _ready():
 	$Timer.start()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
 	GlobalEventSystem.player_died.connect(_on_player_died)
+	GlobalEventSystem.restart.connect(_on_restart)
 	enemy_text_offsets.resize($EnemyTypeContainer.get_child_count())
 
+func _on_restart():
+	$Timer.start()
+	
 func _on_player_died():
 	$Timer.stop()
 	

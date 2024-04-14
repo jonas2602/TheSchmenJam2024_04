@@ -30,3 +30,4 @@ _audio_player = NodePath("../AudioStreamPlayer")
 _resource_folder = "res://Data/Audio/BBEG Voice/"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -9.0
