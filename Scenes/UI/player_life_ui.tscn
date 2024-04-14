@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://w4jg7405j3v1"]
+[gd_scene load_steps=5 format=3 uid="uid://w4jg7405j3v1"]
 
 [ext_resource type="Texture2D" uid="uid://d4cf4lm7se84i" path="res://Data/UI/Health/heart-full.png" id="1_lvkxo"]
 [ext_resource type="Script" path="res://Scripts/UI/player_life_ui.gd" id="1_vmktl"]
 [ext_resource type="Texture2D" uid="uid://b0suu3snv6mwv" path="res://Data/UI/Health/heart-empty.png" id="2_qefjf"]
+[ext_resource type="PackedScene" uid="uid://bdthfxoq7voau" path="res://Scenes/UI/gameover_ui.tscn" id="2_w67pa"]
 
 [node name="PlayerLifeUi" type="Node2D"]
 script = ExtResource("1_vmktl")
+gameover_scene = ExtResource("2_w67pa")
 
 [node name="FullLife" type="Control" parent="."]
 layout_mode = 3
