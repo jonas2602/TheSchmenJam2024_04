@@ -15,10 +15,14 @@ run/main_scene="res://Scenes/master_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalEventSystem="*res://Scripts/global_event_system.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep_width"
 
 [gui]
 

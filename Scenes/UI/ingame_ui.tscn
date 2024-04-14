@@ -22,7 +22,7 @@ offset_bottom = 20.0
 
 [node name="EnemyPortraitAndDialogUi" parent="." instance=ExtResource("3_4u6kf")]
 layout_mode = 1
-offset_left = -52.0
+offset_left = -27.0
 offset_top = 20.0
-offset_right = -52.0
+offset_right = -27.0
 offset_bottom = 20.0

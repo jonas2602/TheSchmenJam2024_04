@@ -31,12 +31,12 @@ func _on_input_detected(input_char : String):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.start()
+	var input_manager_node : Node = get_node(input_manager_node_path)
+	input_manager_node.input_detected.connect(_on_input_detected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	var input_manager_node : Node = get_node(input_manager_node_path)
-	input_manager_node.input_detected.connect(_on_input_detected)
 
 func _on_timer_timeout():
 	var type_info = $EnemyTypeContainer.get_child(next_index)
