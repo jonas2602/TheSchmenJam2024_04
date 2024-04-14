@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cma2jha7m3sjm"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_text_box_area.gd" id="1_lnh0w"]
+[ext_resource type="Script" path="res://Scripts/UI/enemy_text_box_area.gd" id="1_lnh0w"]
 
 [node name="EnemyTextBoxArea" type="Control"]
 z_index = 1

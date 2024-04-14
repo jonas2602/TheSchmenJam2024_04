@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcka8c7l0b54w"]
 
-[ext_resource type="Script" path="res://Scripts/speech_text_box.gd" id="1_m88fn"]
+[ext_resource type="Script" path="res://Scripts/UI/speech_text_box.gd" id="1_m88fn"]
 
 [node name="SpeechTextBoxRoot" type="Control"]
 layout_mode = 3
