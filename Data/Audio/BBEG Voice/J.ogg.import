@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://n5h6d4wtflxu"
+path="res://.godot/imported/J.ogg-b1b1734c10ebb2b0bef3f82a5a90f05a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Data/Audio/BBEG Voice/J.ogg"
+dest_files=["res://.godot/imported/J.ogg-b1b1734c10ebb2b0bef3f82a5a90f05a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

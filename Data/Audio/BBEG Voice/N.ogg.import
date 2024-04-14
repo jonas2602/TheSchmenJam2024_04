@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmuevt4emyxls"
+path="res://.godot/imported/N.ogg-312a116de3f41ca647661fc3da61e4a4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Data/Audio/BBEG Voice/N.ogg"
+dest_files=["res://.godot/imported/N.ogg-312a116de3f41ca647661fc3da61e4a4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
