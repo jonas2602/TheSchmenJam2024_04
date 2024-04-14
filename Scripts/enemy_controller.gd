@@ -78,6 +78,6 @@ func _process(delta):
 			sprite_rect_node.modulate.a = lerp(1, 0, weight)
 
 			# Enemy should be cleaned up now
-			if (death_raise_seconds <= 0):
+			if (death_raise_seconds_timer <= 0):
 				GlobalEventSystem.monster_destroyed.emit()
 				queue_free()
