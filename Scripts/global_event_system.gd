@@ -5,3 +5,4 @@ extends Node
 
 signal player_damaged(damage : int)
 signal monster_killed()
+signal input_detected(input_char : String)

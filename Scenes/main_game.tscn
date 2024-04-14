@@ -11,7 +11,6 @@ script = ExtResource("1_vi2xe")
 
 [node name="SpawnPoint" parent="." node_paths=PackedStringArray("enemy_inst_container") instance=ExtResource("1_52djr")]
 position = Vector2(1103, 645)
-input_manager_node_path = NodePath("../InputManager")
 enemy_inst_container = NodePath("../EnemyContainer")
 
 [node name="EnemyContainer" type="Node2D" parent="."]

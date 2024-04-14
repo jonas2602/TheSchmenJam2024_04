@@ -1,7 +1,5 @@
 extends Node
 
-@export var input_manager_node_path : NodePath
-
 # Struct that represents an enemy's input state.
 class EnemyData:
 	var Name   : String
@@ -49,8 +47,7 @@ func _test_input_detected(input_char : String):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var input_manager_node : Node = get_node(input_manager_node_path)
-	input_manager_node.input_detected.connect(_test_input_detected)
+	GlobalEventSystem.input_detected.connect(_test_input_detected)
 	
 	# Test enemies:
 	enemies.append(construct_enemy("BARAN"))

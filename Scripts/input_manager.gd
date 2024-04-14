@@ -1,8 +1,5 @@
 extends Node
 
-# Events emitted by this script:
-signal input_detected(input_char)
-
 # Handle inputs:
 func _input(event):
 	# Handle the regular keyboard events:
@@ -20,4 +17,4 @@ func _input(event):
 			return
 
 		# Emit the state of the input buffer.
-		input_detected.emit(pressed_char)
+		GlobalEventSystem.input_detected.emit(pressed_char)
