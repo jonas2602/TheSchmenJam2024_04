@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://biivxpp44thpq"]
+[gd_scene load_steps=23 format=3 uid="uid://biivxpp44thpq"]
 
 [ext_resource type="Script" path="res://Scripts/player_prefab.gd" id="1_7lgvt"]
 [ext_resource type="PackedScene" uid="uid://joskbts8mijd" path="res://Scenes/kill_wave.tscn" id="2_2ixca"]
@@ -14,8 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://b4cpyg06lp4ed" path="res://Data/Hero/Top/CharacterWalkSpellCast0002.png" id="14_lwn6u"]
 [ext_resource type="Texture2D" uid="uid://cmai7e6w3e55x" path="res://Data/Hero/Top/CharacterWalkSpellCast0003.png" id="15_ekyxv"]
 [ext_resource type="Texture2D" uid="uid://4vs3mfv636mq" path="res://Data/Hero/Top/CharacterWalkSpellCast0004.png" id="16_vqtc8"]
+[ext_resource type="Texture2D" uid="uid://5mak06j2ix32" path="res://Data/Hero/hero-static.png" id="17_2viya"]
 [ext_resource type="Texture2D" uid="uid://bq2c7dw5334eb" path="res://Data/Hero/Top/CharacterWalkSpellCast0005.png" id="17_3a5l7"]
 [ext_resource type="Texture2D" uid="uid://dujxxhfl0b3yr" path="res://Data/Hero/Top/CharacterWalkSpellCast0006.png" id="18_4cfl4"]
+[ext_resource type="Texture2D" uid="uid://ck4p8kg0hnks6" path="res://Data/Hero/HeroHit.png" id="18_52ayn"]
+[ext_resource type="Texture2D" uid="uid://bcfa7jagti6xa" path="res://Data/Hero/HeroDefeat.png" id="19_0euh3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lbdlb"]
 animations = [{
@@ -80,6 +83,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqrt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_2viya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_52ayn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0euh3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}]
+
 [node name="PlayerPrefab" type="Node2D"]
 script = ExtResource("1_7lgvt")
 kill_wave_scene = ExtResource("2_2ixca")
@@ -96,3 +116,13 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_f6vnw")
 animation = &"summon"
 frame_progress = 0.445194
+
+[node name="FullAnimatedSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -102)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_aqrt2")
+animation = &"death"
+
+[connection signal="animation_finished" from="FullAnimatedSprite" to="." method="_on_full_animated_sprite_animation_finished"]
+[connection signal="animation_looped" from="FullAnimatedSprite" to="." method="_on_full_animated_sprite_animation_looped"]

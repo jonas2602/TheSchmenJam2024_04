@@ -7,6 +7,7 @@ var _back_to_idle_timer := Timer.new()
 
 func _ready():
 	GlobalEventSystem.player_damaged.connect(_on_player_damaged)
+	GlobalEventSystem.player_died.connect(_on_player_died)
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
 	add_child(_back_to_idle_timer)
 	_back_to_idle_timer.wait_time = 0.3
@@ -18,11 +19,30 @@ func _ready():
 func _on_back_to_idle():
 	_animated_top.play("idle")
 
-func _on_player_damaged(damage : int):
+func _send_kill_wave(max_distance : int):
 	var wave = kill_wave_scene.instantiate()
 	get_parent().add_child(wave)
-	wave.position = position
+	wave.position     = position
+	wave.max_distance = max_distance
 
+func _on_player_damaged(damage : int):
+	_send_kill_wave(600)
+
+func _on_player_died():
+	_send_kill_wave(4000)
+	
+	_animated_legs.visible      = false
+	_animated_top.visible       = false
+	$FullAnimatedSprite.visible = true
+	$FullAnimatedSprite.play("death")
+	
 func _on_input_detected(input_char : String):
 	_animated_top.play("summon")
 	_back_to_idle_timer.start()
+	
+
+func _on_full_animated_sprite_animation_looped():
+	$FullAnimatedSprite.pause()
+	$FullAnimatedSprite.set_frame_and_progress(2, 0)
+	
+	# TODO: wait and reverse to idle animation for next round
