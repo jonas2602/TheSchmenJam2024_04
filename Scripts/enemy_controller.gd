@@ -16,13 +16,14 @@ var player_node : Node
 enum MonsterState { Attacking, Dying }
 var current_state : MonsterState
 var death_raise_seconds_timer : float
+var enemy_type_id : int
 var vfx_kill_scene : PackedScene
 
+func _initialize_enemy(type_name, inst_name, speed, sprites, type_id, text_offset, vfx_kill):
+	name          = type_name + " (" + inst_name + ")"
+	enemy_type_id = type_id
+	move_speed    = speed
 
-func _initialize_enemy(type_name, inst_name, speed, sprites, vfx_kill):
-	name = type_name + " (" + inst_name + ")"
-	
-	move_speed = speed
 	var tex = sprites.get_frame_texture("default", 0)
 	sprite_rect_node.position.y = -tex.get_height() / 2 * sprite_rect_node.scale.y
 	sprite_rect_node.set_sprite_frames(sprites)
@@ -32,7 +33,7 @@ func _initialize_enemy(type_name, inst_name, speed, sprites, vfx_kill):
 
 	cursor_pos = 0
 	enemy_name = inst_name
-	text_box_node.initialize_text_box(inst_name)
+	text_box_node.initialize_text_box(inst_name, text_offset)
 
 	player_node = get_tree().get_root().find_child("PlayerPrefab", true, false)
 

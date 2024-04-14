@@ -18,17 +18,20 @@ class TextCharacter:
 var text_characters = []
 
 func on_death():
-	
 	pass
 
-func initialize_text_box(enemy_text):
-	text = enemy_text
-	
+func set_text_box_offset(offset : int):	
 	var background_panel_node = get_node("BackgroundPanel")
-	
-	text = text.to_upper()
-	
-	var position_x = text_padding_hortizontal
+	var enemy_sprite_node     = get_parent().get_node("AnimatedSprite2D")
+	position.x                = background_panel_node.size.x * 0.5
+	position.y                = -128.0 - background_panel_node.size.y * (offset + 1)
+
+func initialize_text_box(enemy_text, offset : int):
+	text = enemy_text.to_upper()
+
+	var background_panel_node = get_node("BackgroundPanel")
+	var position_x            = text_padding_hortizontal
+
 	for character in text:
 		var label = Label.new()
 		
@@ -41,9 +44,9 @@ func initialize_text_box(enemy_text):
 		label.add_theme_color_override("font_shadow_color", Color(0.2, 0.2, 0.2, 1.0))
 		label.add_theme_constant_override("shadow_offset_y", 2)
 		label.add_theme_constant_override("shadow_outline_size", 4)
-		
+
 		position_x += label.size.x;
-		
+
 		if character != ' ':
 			var text_character = TextCharacter.new()
 			text_character.label = label
@@ -51,23 +54,18 @@ func initialize_text_box(enemy_text):
 			text_character.original_position = label.get_position()
 			text_characters.append(text_character)
 			background_panel_node.add_child(text_character.label)
-	
-	
+
 	background_panel_node.set_size(Vector2(position_x + text_padding_hortizontal, background_panel_node.get_size().y))
 	var half_size = (position_x - text_padding_hortizontal) / 2.0;
 	
 	for text_character in text_characters:
 		text_character.label.set_position(Vector2(text_character.label.get_position().x, text_character.label.get_position().y))
 	
+	set_text_box_offset(offset)
 
 # Call this when the text progresses
 func on_new_progression_state(new_progression):
 	progression = new_progression
-	pass
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -159,6 +157,3 @@ func _process(delta):
 			label.set_position(text_character.original_position + Vector2(cos(shake_angle), sin(shake_angle) * 0.6))
 		
 		index += 1
-		
-
-

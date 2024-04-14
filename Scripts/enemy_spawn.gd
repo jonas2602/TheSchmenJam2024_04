@@ -4,6 +4,9 @@ extends Node2D
 @export var mob_scene : PackedScene
 @export var enemy_inst_container : Node
 
+static var enemy_id_counter : int = 0
+var enemy_text_offsets : Array[int]
+
 func _on_input_detected(input_char : String):
 	for i in range(0, enemy_inst_container.get_child_count()):
 		var current_enemy = enemy_inst_container.get_child(i)
@@ -29,26 +32,34 @@ func _on_input_detected(input_char : String):
 func _ready():
 	$Timer.start()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	enemy_text_offsets.resize($EnemyTypeContainer.get_child_count())
 
 func _on_timer_timeout():
-	var type_info = $EnemyTypeContainer.get_child(next_index)
-	next_index = (next_index + 1) % $EnemyTypeContainer.get_child_count()
+	var type_id                    = next_index
+	var type_info                  = $EnemyTypeContainer.get_child(next_index)
+	next_index                     = (next_index + 1) % $EnemyTypeContainer.get_child_count()
+	enemy_text_offsets[next_index] = (enemy_text_offsets[next_index] + 1) % 4 
 	
-	
-	var mob = mob_scene.instantiate()
+	var mob         = mob_scene.instantiate()
 	mob.position    = position
 	mob.position.y -= type_info.height
 	
-	
-	var name_type = type_info.name
-	var name_inst = type_info.possible_names[randi() % type_info.possible_names.size()]
-	var speed     = type_info.speed
-	var sprites   = type_info.sprites
-	var vfx_kill  = type_info.vfx_kill
+	var name_type     = type_info.name
+	var name_inst     = type_info.possible_names[randi() % type_info.possible_names.size()]
+	var speed         = type_info.speed
+	var sprites       = type_info.sprites
+	var vfx_kill      = type_info.vfx_kill
+	enemy_id_counter += 1
 	
 	enemy_inst_container.add_child(mob)
-	mob._initialize_enemy(name_type, name_inst, speed, sprites, vfx_kill)
+	mob._initialize_enemy(name_type, name_inst, speed, sprites, type_id, enemy_text_offsets[next_index], vfx_kill)
+
+	# Insert the fast enemies in a lower node than the slow ones.
+	# Also insert any new spawned enemy on a higher possible node so the earlier
+	# spawned enemies appear in front of the later ones.	
+	var insertion_index = enemy_inst_container.get_children().size()-1
+	for i in range(0, enemy_inst_container.get_children().size()-1):
+		if enemy_inst_container.get_children()[i].enemy_type_id < type_id:
+			insertion_index =enemy_inst_container.get_children().size()-1- i
+
+	enemy_inst_container.move_child(mob, insertion_index)
