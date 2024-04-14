@@ -23,11 +23,13 @@ func _on_input_detected(input_char : String):
 		# If the cursor is at 1 and player registers same char with first char
 		# of the name, don't reset.
 		if current_enemy.cursor_pos == 1 and input_char[0] == current_enemy.enemy_name.to_upper()[0]:
+			char_miss       = char_miss and false;
 			there_was_a_hit = true
 			continue
 		# Move the cursor to the next character if the input matches with char
 		# at enemy cursor.
 		elif input_char[0] == current_enemy.enemy_name.to_upper()[current_enemy.cursor_pos]:
+			char_miss                 = char_miss and false;
 			there_was_a_hit           = true
 			current_enemy.cursor_pos += 1
 		# Reset cursor if input doesn't match with char at enemy cursor.
