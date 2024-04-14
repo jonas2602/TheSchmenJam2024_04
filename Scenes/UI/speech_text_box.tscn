@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcka8c7l0b54w"]
+[gd_scene load_steps=3 format=3 uid="uid://dcka8c7l0b54w"]
 
 [ext_resource type="Script" path="res://Scripts/UI/speech_text_box.gd" id="1_m88fn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdhah"]
+bg_color = Color(0, 0, 0, 0.584314)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="SpeechTextBoxRoot" type="Control"]
 layout_mode = 3
@@ -15,3 +22,4 @@ script = ExtResource("1_m88fn")
 layout_mode = 1
 offset_right = 154.47
 offset_bottom = 42.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tdhah")

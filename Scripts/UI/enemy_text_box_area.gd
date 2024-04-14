@@ -16,6 +16,8 @@ func initialize_text_box(enemy_text):
 	
 	var background_panel_node = get_node("BackgroundPanel")
 	
+	text = text.to_upper()
+	
 	var position_x = text_padding_hortizontal
 	for character in text:
 		var label = Label.new()

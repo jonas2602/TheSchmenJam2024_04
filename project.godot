@@ -27,6 +27,7 @@ window/stretch/aspect="keep_width"
 [gui]
 
 theme/custom="res://UI/Themes/base_theme.tres"
+theme/custom_font="res://UI/Fonts/Platypi-VariableFont_wght.ttf"
 
 [rendering]
 
