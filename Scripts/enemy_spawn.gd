@@ -17,10 +17,14 @@ func _on_input_detected(input_char : String):
 		# Means it's dead
 		if current_enemy.cursor_pos >= current_enemy.enemy_name.length():
 			continue
-
+		
+		# If the cursor is at 1 and player registers same char with first char
+		# of the name, don't reset.
+		if current_enemy.cursor_pos == 1 and input_char[0] == current_enemy.enemy_name.to_upper()[0]:
+			continue
 		# Move the cursor to the next character if the input matches with char
 		# at enemy cursor.
-		if input_char[0] == current_enemy.enemy_name.to_upper()[current_enemy.cursor_pos]:
+		elif input_char[0] == current_enemy.enemy_name.to_upper()[current_enemy.cursor_pos]:
 			current_enemy.cursor_pos += 1
 		# Reset cursor if input doesn't match with char at enemy cursor.
 		else:
