@@ -7,3 +7,7 @@ extends Node
 @export var vfx_kill        : PackedScene
 @export var vfx_kill_offset : Vector2
 @export var possible_names  : Array[String]
+
+@export var spawn_sound : AudioStream
+@export var death_sound : AudioStream
+@export var walk_sound  : AudioStream
