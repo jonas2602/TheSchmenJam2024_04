@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://celeitfa83iba"]
+[gd_scene load_steps=5 format=3 uid="uid://celeitfa83iba"]
 
 [ext_resource type="Script" path="res://Scripts/player_voice.gd" id="1_57adb"]
+[ext_resource type="AudioStream" uid="uid://bdtp3x1wi2eag" path="res://Data/Audio/weird_chants.ogg" id="2_53r53"]
+[ext_resource type="Script" path="res://Scripts/bgchants.gd" id="3_nggfl"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_8fn5e"]
 
 [node name="player_voice" type="Node"]
 script = ExtResource("1_57adb")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="talking" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPolyphonic_8fn5e")
+
+[node name="bgchants" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_53r53")
+script = ExtResource("3_nggfl")
