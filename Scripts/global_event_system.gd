@@ -6,6 +6,7 @@ extends Node
 signal enable_scrolling(enable : bool)
 signal player_damaged(damage : int)
 signal player_died()
+signal restart()
 signal monster_killed(points : int)
 signal monster_destroyed()
 signal input_detected(input_char : String)

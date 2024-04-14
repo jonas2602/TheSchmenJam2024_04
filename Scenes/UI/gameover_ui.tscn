@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bdthfxoq7voau"]
+[gd_scene load_steps=2 format=3 uid="uid://bdthfxoq7voau"]
+
+[ext_resource type="Script" path="res://Scripts/UI/gameover_ui.gd" id="1_e1x1g"]
 
 [node name="GameoverUi" type="Control"]
 layout_mode = 3
@@ -7,9 +9,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e1x1g")
 
-[node name="Label" type="Label" parent="."]
+[node name="Restart" type="Button" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 34.0
-text = "YOU DIED"
+offset_left = 491.0
+offset_top = 265.0
+offset_right = 686.0
+offset_bottom = 330.0
+text = "Restart Game"
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 349.0
+offset_right = 686.0
+offset_bottom = 414.0
+text = "Credits"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 436.0
+offset_right = 686.0
+offset_bottom = 501.0
+text = "Exit"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

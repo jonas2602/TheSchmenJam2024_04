@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://biivxpp44thpq"]
+[gd_scene load_steps=24 format=3 uid="uid://biivxpp44thpq"]
 
 [ext_resource type="Script" path="res://Scripts/player_prefab.gd" id="1_7lgvt"]
 [ext_resource type="PackedScene" uid="uid://joskbts8mijd" path="res://Scenes/kill_wave.tscn" id="2_2ixca"]
 [ext_resource type="Texture2D" uid="uid://cwsqks22nrtyh" path="res://Data/Hero/Legs/CharacterWalkLegs0000.png" id="2_75itd"]
+[ext_resource type="PackedScene" uid="uid://bdthfxoq7voau" path="res://Scenes/UI/gameover_ui.tscn" id="3_1q8ue"]
 [ext_resource type="Texture2D" uid="uid://c446avsdl8ftm" path="res://Data/Hero/Legs/CharacterWalkLegs0001.png" id="3_a8w7q"]
 [ext_resource type="Texture2D" uid="uid://d1gpfcs04nwmo" path="res://Data/Hero/Legs/CharacterWalkLegs0002.png" id="4_jkf1p"]
 [ext_resource type="Texture2D" uid="uid://dhmddb6s3i5uv" path="res://Data/Hero/Legs/CharacterWalkLegs0003.png" id="5_7vu77"]
@@ -22,6 +23,34 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lbdlb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_2viya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_52ayn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0euh3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_2viya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_52ayn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2viya")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_75itd")
@@ -54,6 +83,34 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f6vnw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_2viya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_52ayn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0euh3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_2viya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_52ayn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2viya")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("10_2cbif")
@@ -103,19 +160,19 @@ animations = [{
 [node name="PlayerPrefab" type="Node2D"]
 script = ExtResource("1_7lgvt")
 kill_wave_scene = ExtResource("2_2ixca")
+game_over_scene = ExtResource("3_1q8ue")
 
 [node name="LegAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -102)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_lbdlb")
-animation = &"walk"
+animation = &"hit"
 
 [node name="TopAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -102)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_f6vnw")
 animation = &"summon"
-frame_progress = 0.445194
 
 [node name="FullAnimatedSprite" type="AnimatedSprite2D" parent="."]
 visible = false
