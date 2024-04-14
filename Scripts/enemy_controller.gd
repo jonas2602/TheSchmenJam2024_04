@@ -11,7 +11,7 @@ var enemy_name : String
 var player_node : Node
 
 func _initialize_enemy(type_name, inst_name, speed, sprites):
-	name = type_name
+	name = type_name + " (" + inst_name + ")"
 	
 	move_speed = speed
 	var tex = sprites.get_frame_texture("default", 0)
