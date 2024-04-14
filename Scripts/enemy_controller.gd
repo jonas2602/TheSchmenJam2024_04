@@ -24,7 +24,7 @@ func _set_cursor_progress(cursor):
 	text_box_node.on_new_progression_state(cursor)
 	
 	if (cursor == enemy_name.length()):
-		GlobalEventSystem.emit_signal("monster_killed")
+		GlobalEventSystem.monster_killed.emit()
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

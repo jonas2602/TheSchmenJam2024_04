@@ -5,7 +5,7 @@ const ANIM_COOLDOWN_MS = 25
 var stop_anim_cooldown = 0
 
 func _ready():
-	GlobalEventSystem.connect("monster_killed", self._on_monster_killed)
+	GlobalEventSystem.monster_killed.connect(self._on_monster_killed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
