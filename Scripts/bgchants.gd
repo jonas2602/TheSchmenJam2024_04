@@ -19,4 +19,6 @@ func _on_input_detected(input_char : String):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	chant_timer -= delta
-	pass
+	
+	if  (chant_timer <  0):
+		stop()

@@ -11,6 +11,7 @@ script = ExtResource("1_57adb")
 
 [node name="talking" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPolyphonic_8fn5e")
+volume_db = -6.0
 
 [node name="bgchants" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_53r53")
