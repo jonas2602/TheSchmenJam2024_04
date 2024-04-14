@@ -8,6 +8,7 @@ extends Node2D
 
 var cursor_pos : int
 var enemy_name : String
+var player_node : Node
 
 func _initialize_enemy(type_name, inst_name, speed, sprites):
 	name = type_name
@@ -19,6 +20,8 @@ func _initialize_enemy(type_name, inst_name, speed, sprites):
 	cursor_pos = 0
 	enemy_name = inst_name
 	text_box_node.initialize_text_box(inst_name)
+
+	player_node = get_tree().get_root().find_child("PlayerPrefab", true, false)
 
 func _set_cursor_progress(cursor):
 	cursor_pos = cursor
@@ -32,5 +35,6 @@ func _set_cursor_progress(cursor):
 func _process(delta):
 	position.x -= delta * move_speed
 	
-	if (position.x < 0):
+	if (position.x <= player_node.position.x):
+		GlobalEventSystem.player_damaged.emit(1)
 		queue_free()
