@@ -9,6 +9,8 @@ var is_left_aligned = false
 
 var rng = RandomNumberGenerator.new()
 
+@onready var voice = $Voice
+
 class SpeechTextCharacter:
 	var label
 	var highlight_time
