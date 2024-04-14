@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5gt1atkp4ssc"]
+[gd_scene load_steps=8 format=3 uid="uid://b5gt1atkp4ssc"]
 
 [ext_resource type="Texture2D" uid="uid://cjj0mk6xe4bgj" path="res://Data/Portraits/EnemyLeader/DemonPortrait0000.png" id="1_fwq7k"]
+[ext_resource type="Script" path="res://Scripts/UI/enemy_portrait_and_dialog_ui.gd" id="1_j2sm6"]
 [ext_resource type="PackedScene" uid="uid://dcka8c7l0b54w" path="res://Scenes/UI/speech_text_box.tscn" id="2_7ng8v"]
 [ext_resource type="Texture2D" uid="uid://bi6kexulsxuyg" path="res://Data/Portraits/EnemyLeader/DemonPortrait0002.png" id="2_w4y6d"]
 [ext_resource type="Texture2D" uid="uid://c5p0hifcpjkqk" path="res://Data/Portraits/EnemyLeader/DemonPortrait0004.png" id="3_0uafg"]
@@ -10,18 +11,18 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fwq7k")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("2_w4y6d")
 }],
 "loop": true,
 "name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fwq7k")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -50,6 +51,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
+script = ExtResource("1_j2sm6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-154, 0)
