@@ -25,7 +25,7 @@ func speak(input_char : String):
 	if (!stream):
 		return
 	
-	if _audio_player.is_playing:
+	if _audio_player.is_playing():
 		_audio_player.stop()
 	
 	_audio_player.stream = stream
