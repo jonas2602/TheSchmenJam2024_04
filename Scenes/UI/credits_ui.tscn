@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkl0q4nmq5foh"]
+[gd_scene load_steps=2 format=3 uid="uid://b4ojtnvf76p0e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wymec"]
 font_size = 18
@@ -8,13 +8,12 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="CreditsText2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 580.0
-offset_top = 239.0
+offset_top = 173.0
 offset_right = 928.0
-offset_bottom = 439.0
-text = "Aethrall - Demon Woods Background
-Brullov - Oak Woods
-BDragon - Smoke FX
+offset_bottom = 373.0
+text = "BDragon - Smoke FX
 YouFulCa - JRPG Battle music pack
 Sonatina - SIBZ selection"
 label_settings = SubResource("LabelSettings_wymec")
@@ -22,6 +21,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CreditsText4" type="Label" parent="."]
+layout_mode = 0
 offset_left = 643.0
 offset_top = 184.0
 offset_right = 865.0
