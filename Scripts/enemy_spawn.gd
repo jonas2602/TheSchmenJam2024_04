@@ -53,7 +53,6 @@ func _ready():
 	$Timer.start()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
 	GlobalEventSystem.player_died.connect(_on_player_died)
-	GlobalEventSystem.monster_destroyed.connect(_on_monster_destroyed)
 	GlobalEventSystem.restart.connect(_on_restart)
 	GlobalEventSystem.game_ends.connect(_on_game_ends)
 	#_on_game_ends()
@@ -70,14 +69,6 @@ func _ready():
 		accumulated_spawn_rate += enemy_type.spawn_rate
 		enemy_spawn_values[i]   = accumulated_spawn_rate
 
-
-func _on_monster_destroyed(monster : Node):
-	if (monster.enemy_name == "restart"):
-		GlobalEventSystem.enable_scrolling.emit(true)
-		GlobalEventSystem.restart.emit()
-	if (monster.enemy_name == "quit"):
-		get_tree().quit()
-	
 func _on_restart():
 	$Timer.start()
 	

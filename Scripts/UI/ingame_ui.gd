@@ -1,6 +1,6 @@
 extends Control
 
-var enemy_text_box_scene = load("res://Scenes/enemy_text_box_area.tscn")
+@onready var enemy_text_box_scene = load("res://Scenes/UI/enemy_text_box_area.tscn")
 
 var rng = RandomNumberGenerator.new()
 
