@@ -30,7 +30,11 @@ var text_characters = []
 func on_death():
 	pass
 
-func set_text_box_offset():
+func set_text_box_offset(override_height : float):
+	if (override_height != 0):
+		global_position.y = override_height
+		return
+		
 	global_position.y = global_height_start + background_panel_node.size.y * current_text_row
 	current_text_row  = (current_text_row + 1) % number_of_text_rows
 	pass
@@ -81,7 +85,7 @@ func intitalize_background_panel(width):
 	pass
 
 
-func initialize_text_box(enemy_text):
+func initialize_text_box(enemy_text, override_height : float = 0.0):
 
 	var background_panel_width = initialise_text_letters(enemy_text.to_upper())
 
@@ -89,7 +93,7 @@ func initialize_text_box(enemy_text):
 		text_character.label.set_position(text_character.label.get_position())
 	
 	intitalize_background_panel(background_panel_width)
-	set_text_box_offset()
+	set_text_box_offset(override_height)
 
 # Call this when the text progresses
 func on_new_progression_state(new_progression):

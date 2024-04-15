@@ -1,71 +1,80 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3idsj77kmk8h"]
+[gd_scene load_steps=11 format=3 uid="uid://c3idsj77kmk8h"]
 
 [ext_resource type="Script" path="res://Scripts/UI/auto_scroller.gd" id="1_8i8o1"]
-[ext_resource type="Texture2D" uid="uid://6w3cy3cdr6c4" path="res://Data/Background/parallax-demon-woods-bg.png" id="1_pf2nl"]
+[ext_resource type="Texture2D" uid="uid://o7sl5idf1qrk" path="res://Data/Background/Background_Type3.png" id="2_30igu"]
 [ext_resource type="Shader" path="res://Shaders/auto_scroller.gdshader" id="2_s8vwb"]
-[ext_resource type="Texture2D" uid="uid://ba5rvuxlakffu" path="res://Data/Background/parallax-demon-woods-far-trees.png" id="3_5lblu"]
-[ext_resource type="Texture2D" uid="uid://cysw8qnldnq5g" path="res://Data/Background/parallax-demon-woods-mid-trees.png" id="4_l8m0a"]
-[ext_resource type="Texture2D" uid="uid://1wud4jmniej" path="res://Data/Background/parallax-demon-woods-close-trees.png" id="5_gwwo1"]
-[ext_resource type="Texture2D" uid="uid://6xxy63l08m0a" path="res://Data/Background/oak-woods-ground.png" id="6_hcaip"]
+[ext_resource type="Texture2D" uid="uid://dl3wo6bwybuwk" path="res://Data/Background/Background_Type2.png" id="4_nll5v"]
+[ext_resource type="Texture2D" uid="uid://bu2xajwuf0buj" path="res://Data/Background/Background_Type1.png" id="6_jr7us"]
+[ext_resource type="Texture2D" uid="uid://bvvnbep8ypi86" path="res://Data/Background/Background_Type0.png" id="7_802p1"]
+[ext_resource type="Texture2D" uid="uid://cbeqyde5w172y" path="res://Data/Background/TheMoon.png" id="7_n02i1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jv7m2"]
 shader = ExtResource("2_s8vwb")
 shader_parameter/direction = Vector2(1, 0)
-shader_parameter/speed_scale = 0.02
-shader_parameter/moving = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qattk"]
-shader = ExtResource("2_s8vwb")
-shader_parameter/direction = Vector2(3, 0)
-shader_parameter/speed_scale = 0.02
+shader_parameter/speed_scale = 0.05
 shader_parameter/moving = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_maog4"]
 shader = ExtResource("2_s8vwb")
 shader_parameter/direction = Vector2(5, 0)
-shader_parameter/speed_scale = 0.02
+shader_parameter/speed_scale = 0.01
 shader_parameter/moving = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2yuik"]
 shader = ExtResource("2_s8vwb")
 shader_parameter/direction = Vector2(1.5, 0)
-shader_parameter/speed_scale = 1.0
+shader_parameter/speed_scale = 0.15
 shader_parameter/moving = 1.0
 
 [node name="AutoScroller" type="Node2D"]
 script = ExtResource("1_8i8o1")
 
 [node name="BackFixedTuxture" type="TextureRect" parent="."]
+z_index = -1
 offset_right = 592.0
 offset_bottom = 272.0
-texture = ExtResource("1_pf2nl")
+texture = ExtResource("2_30igu")
+
+[node name="Moon" type="TextureRect" parent="."]
+offset_left = 748.0
+offset_top = -214.0
+offset_right = 1780.0
+offset_bottom = 818.0
+texture = ExtResource("7_n02i1")
 
 [node name="Far" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_jv7m2")
-offset_right = 320.0
-offset_bottom = 240.0
-texture = ExtResource("3_5lblu")
+offset_left = -1.0
+offset_top = 179.0
+offset_right = 2999.0
+offset_bottom = 1259.0
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("4_nll5v")
 stretch_mode = 1
 
-[node name="TextureRectNearClouds" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_qattk")
-offset_right = 592.0
-offset_bottom = 272.0
-texture = ExtResource("4_l8m0a")
+[node name="Far2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_jv7m2")
+offset_top = 334.0
+offset_right = 3826.0
+offset_bottom = 1711.0
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("4_nll5v")
 stretch_mode = 1
 
 [node name="Near" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_maog4")
 offset_right = 320.0
 offset_bottom = 240.0
-texture = ExtResource("5_gwwo1")
+texture = ExtResource("6_jr7us")
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Foreground" type="TextureRect" parent="."]
+z_index = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_2yuik")
-offset_top = 248.0
-offset_right = 592.0
-offset_bottom = 272.0
-texture = ExtResource("6_hcaip")
+offset_left = -4.0
+offset_top = 101.0
+offset_right = 5422.0
+offset_bottom = 2014.0
+texture = ExtResource("7_802p1")
 stretch_mode = 1

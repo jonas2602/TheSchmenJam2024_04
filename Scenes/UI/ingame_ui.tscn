@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu536ymb4dtul"]
+[gd_scene load_steps=6 format=3 uid="uid://cu536ymb4dtul"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ingame_ui.gd" id="1_b65dg"]
 [ext_resource type="PackedScene" uid="uid://b5gt1atkp4ssc" path="res://Scenes/UI/enemy_portrait_and_dialog_ui.tscn" id="3_4u6kf"]
 [ext_resource type="PackedScene" uid="uid://dsxcdsr1b7o1o" path="res://Scenes/UI/hero_portrait_ui.tscn" id="3_mim8c"]
 [ext_resource type="PackedScene" uid="uid://co3ibis3rbygc" path="res://Scenes/UI/game_score_ui.tscn" id="4_xnlhx"]
+[ext_resource type="PackedScene" uid="uid://b5wf5nnp58kxr" path="res://Scenes/UI/player_combo.tscn" id="5_2h4s0"]
 
 [node name="IngameUIRoot" type="Control"]
 layout_mode = 3
@@ -33,3 +34,6 @@ offset_left = 188.715
 offset_top = 60.185
 offset_right = 188.715
 offset_bottom = 60.185
+
+[node name="PlayerComboUI" parent="." instance=ExtResource("5_2h4s0")]
+position = Vector2(188.715, 103)

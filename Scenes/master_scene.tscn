@@ -11,7 +11,7 @@
 [node name="MasterRoot" type="Node"]
 
 [node name="AutoScroller" parent="." instance=ExtResource("4_yexh0")]
-scale = Vector2(2.4, 2.4)
+scale = Vector2(0.6, 0.6)
 
 [node name="MainGame" parent="." instance=ExtResource("1_gr7mx")]
 position = Vector2(0, -51)
