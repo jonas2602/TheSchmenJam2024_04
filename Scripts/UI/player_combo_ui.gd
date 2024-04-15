@@ -7,6 +7,7 @@ var _idle_timer := Timer.new()
 var multiplier_cap      : int   = 0
 var multiplier          : int   = 0
 var multiplier_progress : float = 0.0
+var combo_time = 0.0
 
 func _ready():
 	GlobalEventSystem.restart.connect(_on_restart)
@@ -34,7 +35,16 @@ func _on_restart():
 	multiplier_progress = 0.0
 	_update_ui()
 
+func _process(delta):
+	combo_time += delta
+	_update_ui()
+
 func _update_ui():
+	$ComboText.text = "x%.1f" % float(multiplier)
+	$ComboText.scale.x = 0.8+multiplier_progress * 0.5 + float(multiplier - 1) * 0.5
+	$ComboText.scale.y = 0.8+multiplier_progress * 0.5 + float(multiplier - 1) * 0.5
+	$ComboText.pivot_offset = Vector2(0.0, 20.0*sin(combo_time * 3))
+	
 	for i in range(0, multiplier):
 		active_combo_container.get_child(i).visible   = true
 		deactive_combo_container.get_child(i).visible = false
