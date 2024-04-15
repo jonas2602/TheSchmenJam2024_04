@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://biivxpp44thpq"]
+[gd_scene load_steps=31 format=3 uid="uid://biivxpp44thpq"]
 
 [ext_resource type="Script" path="res://Scripts/player_prefab.gd" id="1_7lgvt"]
 [ext_resource type="PackedScene" uid="uid://joskbts8mijd" path="res://Scenes/kill_wave.tscn" id="2_2ixca"]
@@ -11,15 +11,21 @@
 [ext_resource type="Texture2D" uid="uid://dcdkuqlqowolj" path="res://Data/Hero/Legs/Character_LegIdle.png" id="7_rk7ro"]
 [ext_resource type="Texture2D" uid="uid://4uct7u7felsi" path="res://Data/Hero/Legs/CharacterWalkLegs0006.png" id="8_8s3xx"]
 [ext_resource type="Texture2D" uid="uid://dlia6twk6cfh3" path="res://Data/Hero/Legs/CharacterWalkLegs0007.png" id="9_kvlfo"]
-[ext_resource type="Texture2D" uid="uid://bcmpm5tbugb6h" path="res://Data/Hero/Top/CharacterTop0.png" id="10_2cbif"]
 [ext_resource type="Texture2D" uid="uid://b4cpyg06lp4ed" path="res://Data/Hero/Top/CharacterWalkSpellCast0002.png" id="14_lwn6u"]
+[ext_resource type="Texture2D" uid="uid://deix52cdwgde2" path="res://Data/Hero/Top/CharacterWalkTopIdle0000.png" id="15_72dup"]
 [ext_resource type="Texture2D" uid="uid://cmai7e6w3e55x" path="res://Data/Hero/Top/CharacterWalkSpellCast0003.png" id="15_ekyxv"]
+[ext_resource type="Texture2D" uid="uid://joays2j3v261" path="res://Data/Hero/Top/CharacterWalkTopIdle0001.png" id="16_ag407"]
 [ext_resource type="Texture2D" uid="uid://4vs3mfv636mq" path="res://Data/Hero/Top/CharacterWalkSpellCast0004.png" id="16_vqtc8"]
 [ext_resource type="Texture2D" uid="uid://5mak06j2ix32" path="res://Data/Hero/hero-static.png" id="17_2viya"]
 [ext_resource type="Texture2D" uid="uid://bq2c7dw5334eb" path="res://Data/Hero/Top/CharacterWalkSpellCast0005.png" id="17_3a5l7"]
+[ext_resource type="Texture2D" uid="uid://bontef60rnr5h" path="res://Data/Hero/Top/CharacterWalkTopIdle0002.png" id="17_3ehx1"]
 [ext_resource type="Texture2D" uid="uid://dujxxhfl0b3yr" path="res://Data/Hero/Top/CharacterWalkSpellCast0006.png" id="18_4cfl4"]
 [ext_resource type="Texture2D" uid="uid://ck4p8kg0hnks6" path="res://Data/Hero/HeroHit.png" id="18_52ayn"]
+[ext_resource type="Texture2D" uid="uid://dqhmiugpum46n" path="res://Data/Hero/Top/CharacterWalkTopIdle0003.png" id="18_ncuct"]
 [ext_resource type="Texture2D" uid="uid://bcfa7jagti6xa" path="res://Data/Hero/HeroDefeat.png" id="19_0euh3"]
+[ext_resource type="Texture2D" uid="uid://bxdrc35t1jlbs" path="res://Data/Hero/Top/CharacterWalkTopIdle0004.png" id="19_6p5lt"]
+[ext_resource type="Texture2D" uid="uid://7psnrxbbsyd7" path="res://Data/Hero/Top/CharacterWalkTopIdle0005.png" id="20_q0bdw"]
+[ext_resource type="Texture2D" uid="uid://jvvq3l2m7sxr" path="res://Data/Hero/Top/CharacterWalkTopIdle0006.png" id="21_48acc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lbdlb"]
 animations = [{
@@ -121,7 +127,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_2cbif")
+"texture": ExtResource("15_72dup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ag407")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3ehx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ncuct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6p5lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_q0bdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_48acc")
 }],
 "loop": true,
 "name": &"idle",
