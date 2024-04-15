@@ -24,7 +24,7 @@ script = ExtResource("1_blioc")
 start_scene = ExtResource("2_pmoab")
 
 [node name="AutoScroller" parent="." instance=ExtResource("1_ud4rq")]
-scale = Vector2(2.4, 2.4)
+scale = Vector2(0.6, 0.6)
 
 [node name="Game Title" type="Label" parent="."]
 layout_mode = 1
