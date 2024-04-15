@@ -62,10 +62,7 @@ func _initialize_enemy(type_info, type_id):
 
 	death_raise_seconds_timer = death_raise_seconds
 	
-	if (spawn_sound):
-		_audio_player.stop()
-		_audio_player.stream = spawn_sound
-		_audio_player.play()
+	GlobalEventSystem.monster_spawned.emit(_type_info)
 
 func _force_death():
 	_set_cursor_progress(enemy_name.length())
@@ -83,10 +80,7 @@ func _set_cursor_progress(cursor):
 		get_tree().get_root().find_child("MainGame", true, false).add_child(vfx)
 		vfx.position = position + vfx_kill_scene_offset
 		
-		if (_audio_player):
-			_audio_player.stop()
-			_audio_player.stream = death_sound
-			_audio_player.play()
+		GlobalEventSystem.monster_killed.emit(_type_info)
 
 func process_walk_sound(delta):
 	if (walk_sound == null):
@@ -94,7 +88,7 @@ func process_walk_sound(delta):
 	
 	walk_sound_timer -= delta
 	if walk_sound_timer < 0.0:
-		_audio_player.play()
+		GlobalEventSystem.monster_periodic.emit(_type_info)
 		walk_sound_timer = walk_sound_period
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
