@@ -81,7 +81,11 @@ func _on_player_dead():
 	pass
 
 
-func _on_game_restart(_credits : bool):
+func _on_game_restart(credits : bool):
+
+	if (credits):
+		return
+
 	speak_in_progress = false
 	animated_sprite.play("idle")
 	monster_speech_timer.start()

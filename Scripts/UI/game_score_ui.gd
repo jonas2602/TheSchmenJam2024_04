@@ -27,7 +27,7 @@ func _on_restart(_credits : bool):
 func _on_score_changed(new_score : int):
 	interpolation_progress = 0.0
 	from_score = displayed_score
-	current_score += new_score
+	current_score = new_score
 	
 	var gained_difference_total = current_score - from_score
 	

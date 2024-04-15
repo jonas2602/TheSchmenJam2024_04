@@ -83,7 +83,7 @@ func kill(forced : bool):
 	cursor_pos = enemy_name.length()
 	text_box_node.on_new_progression_state(cursor_pos)
 	
-	GlobalEventSystem.monster_killed.emit(_type_info, forced if 0 else cursor_pos)
+	GlobalEventSystem.monster_killed.emit(_type_info, 0 if forced else cursor_pos)
 	current_state = MonsterState.Dying
 	sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
 
@@ -94,9 +94,9 @@ func kill(forced : bool):
 	if (((enemy_name == "restart") || (enemy_name == "start")) && (forced == false)):
 		GlobalEventSystem.enable_scrolling.emit(true)
 		GlobalEventSystem.restart.emit(false)
-	if ((enemy_name == "credits") && (forced == false)):
+	elif ((enemy_name == "credits") && (forced == false)):
 		GlobalEventSystem.restart.emit(true)
-	if ((enemy_name == "quit") && (forced == false)):
+	elif ((enemy_name == "quit") && (forced == false)):
 		get_tree().quit()
 
 

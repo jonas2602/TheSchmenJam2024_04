@@ -20,6 +20,8 @@ func _on_enemy_spawned(type_info : enemy_type_info):
 	play_sound(type_info.spawn_sound)
 
 func _on_enemy_killed(type_info : enemy_type_info, _points : int):
+	if _points  == 0:
+		return
 	play_sound(type_info.death_sound)
 
 func _on_enemy_periodic(type_info :  enemy_type_info):
