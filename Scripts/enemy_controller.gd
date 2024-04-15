@@ -120,6 +120,7 @@ func _process(delta):
 			position.x -= delta * move_speed
 			if (position.x <= target_pos_x):
 				current_state = MonsterState.Idleing
+				GlobalEventSystem.enemy_reached_spot.emit(self)
 				if (_type_info.stop_animation):
 					sprite_rect_node.stop()
 					

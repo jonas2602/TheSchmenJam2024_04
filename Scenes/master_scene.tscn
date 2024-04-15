@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfnnottyj712b"]
+[gd_scene load_steps=20 format=3 uid="uid://cfnnottyj712b"]
 
 [ext_resource type="PackedScene" uid="uid://b7x33yvqgxwnk" path="res://Scenes/main_game.tscn" id="1_gr7mx"]
 [ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/UI/ingame_ui.tscn" id="2_kyer8"]
@@ -13,6 +13,31 @@
 [ext_resource type="Texture2D" uid="uid://c0x0cviccr6pc" path="res://Data/TheUnsummoning.png" id="10_43r5b"]
 [ext_resource type="PackedScene" uid="uid://b4ojtnvf76p0e" path="res://Scenes/UI/credits_ui.tscn" id="10_uqqob"]
 [ext_resource type="Script" path="res://Scripts/UI/credits_ui.gd" id="11_a5upa"]
+[ext_resource type="Texture2D" uid="uid://bh2g2efab10rs" path="res://Data/UI/ButtonS/PressS0000.png" id="14_wtq3b"]
+[ext_resource type="Texture2D" uid="uid://cpr857uijhxp2" path="res://Data/UI/ButtonS/PressS0001.png" id="15_nm0hl"]
+[ext_resource type="Texture2D" uid="uid://b0f3obxdb351k" path="res://Data/UI/ButtonS/PressS0002.png" id="16_g63k0"]
+[ext_resource type="Texture2D" uid="uid://c5er7hhmvu07h" path="res://Data/UI/ButtonS/PressS0003.png" id="17_ft7r4"]
+[ext_resource type="Script" path="res://Scripts/button_s_ui.gd" id="18_3csma"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yc7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_wtq3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_nm0hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g63k0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ft7r4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MasterRoot" type="Node"]
 
@@ -65,3 +90,10 @@ texture = ExtResource("10_43r5b")
 script = ExtResource("9_vi4ws")
 
 [node name="MobSounding" parent="." instance=ExtResource("8_0a18o")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(466, 256)
+scale = Vector2(0.252734, 0.252734)
+sprite_frames = SubResource("SpriteFrames_6yc7j")
+script = ExtResource("18_3csma")
