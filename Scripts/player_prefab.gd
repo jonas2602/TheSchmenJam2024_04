@@ -31,7 +31,7 @@ func _on_game_ends():
 	
 func _on_restart(_credits : bool):
 	current_state = HeroState.Walking
-	_animated_legs.play("walk")
+	_animated_legs.play(_credits if "idle" else "walk")
 	_animated_top.play("idle")
 
 func _on_back_to_idle():

@@ -91,11 +91,6 @@ func kill(forced : bool):
 	get_tree().get_root().find_child("MainGame", true, false).add_child(vfx)
 	vfx.position = position + vfx_kill_scene_offset
 	
-	if (_audio_player):
-		_audio_player.stop()
-		_audio_player.stream = death_sound
-		_audio_player.play()
-		
 	if (((enemy_name == "restart") || (enemy_name == "start")) && (forced == false)):
 		GlobalEventSystem.enable_scrolling.emit(true)
 		GlobalEventSystem.restart.emit(false)

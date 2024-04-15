@@ -10,5 +10,5 @@ func _on_restart(credits : bool):
 	visible = credits
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
