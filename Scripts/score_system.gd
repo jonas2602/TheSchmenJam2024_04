@@ -4,7 +4,7 @@ static var score               : int   = 0
 static var multiplier          : int   = 1
 static var multiplier_progress : float = 0.0
 
-@export var multiplier_step    : int   = 100
+@export var multiplier_step    : int   = 20
 @export var multiplier_cap     : int   = 5
 
 # Triggered when player kills a monster.

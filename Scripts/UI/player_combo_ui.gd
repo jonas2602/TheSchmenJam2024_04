@@ -41,10 +41,9 @@ func _process(delta):
 
 func _update_ui():
 	$ComboText.text = "x%.1f" % float(multiplier)
-	$ComboText.scale.x = 0.8+multiplier_progress
-	$ComboText.scale.y = 0.8+multiplier_progress
+	$ComboText.scale.x = 0.8+multiplier_progress * 0.5 + float(multiplier - 1) * 0.5
+	$ComboText.scale.y = 0.8+multiplier_progress * 0.5 + float(multiplier - 1) * 0.5
 	$ComboText.pivot_offset = Vector2(0.0, 20.0*sin(combo_time * 3))
-	#Label.new().offset_bottom
 	
 	for i in range(0, multiplier):
 		active_combo_container.get_child(i).visible   = true
