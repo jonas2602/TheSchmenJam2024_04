@@ -9,7 +9,7 @@ var _poly_stream : AudioStreamPlaybackPolyphonic
 #  This is basically the exact behaviour we want so we just let it  be
 
 func play_sound(stream : AudioStream):
-	if _player.is_playing:
+	if _player.is_playing():
 		return
 	if stream == null:
 		return

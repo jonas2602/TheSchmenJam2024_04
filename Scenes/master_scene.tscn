@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://celeitfa83iba" path="res://Scenes/player_voice.tscn" id="5_p6v63"]
 [ext_resource type="AudioStream" uid="uid://mtewxojm7a7f" path="res://Data/Audio/Musics/Battle-Conflict.mp3" id="6_5nh5u"]
 [ext_resource type="Script" path="res://Scripts/score_system.gd" id="7_46d3t"]
+[ext_resource type="PackedScene" uid="uid://dwsx8k1ityd4f" path="res://Scenes/mob_sounding.tscn" id="8_0a18o"]
 [ext_resource type="Script" path="res://Scripts/UI/game_title_ui.gd" id="9_vi4ws"]
 [ext_resource type="Texture2D" uid="uid://c0x0cviccr6pc" path="res://Data/TheUnsummoning.png" id="10_43r5b"]
 [ext_resource type="PackedScene" uid="uid://dkl0q4nmq5foh" path="res://Scenes/UI/credits_ui.tscn" id="10_uqqob"]
