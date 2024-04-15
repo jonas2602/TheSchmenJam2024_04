@@ -22,9 +22,8 @@ func _on_enemy_periodic(type_info :  enemy_type_info):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalEventSystem.monster_killed.connect(_on_enemy_killed)
 	_poly_stream = player.get_stream_playback()
-	pass # Replace with function body.
+	GlobalEventSystem.monster_killed.connect(_on_enemy_killed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
