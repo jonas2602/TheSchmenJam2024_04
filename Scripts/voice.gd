@@ -5,6 +5,14 @@ var _last_char = ""
 @export var _audio_player : AudioStreamPlayer
 @export var _resource_folder : String
 
+var set_volume_at_start = 0
+
+func silence(yes : bool):
+	if yes:
+		_audio_player.volume_db = -80
+	else:
+		_audio_player.volume_db = set_volume_at_start
+
 func load_sounds():
 	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	for k in chars:
@@ -34,6 +42,7 @@ func speak(input_char : String):
 	_last_char = input_char
 
 func _ready():
+	set_volume_at_start = _audio_player.volume_db
 	load_sounds()
 	pass
 

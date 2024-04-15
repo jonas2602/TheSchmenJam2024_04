@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://celeitfa83iba"]
+[gd_scene load_steps=9 format=3 uid="uid://celeitfa83iba"]
 
 [ext_resource type="Script" path="res://Scripts/player_voice.gd" id="1_57adb"]
 [ext_resource type="AudioStream" uid="uid://bdtp3x1wi2eag" path="res://Data/Audio/weird_chants.ogg" id="2_53r53"]
+[ext_resource type="AudioStream" uid="uid://m1sdntvdf6fo" path="res://Data/Audio/Player Owwies/oof.ogg" id="2_cfcv7"]
+[ext_resource type="AudioStream" uid="uid://b1ejj7tw4pudx" path="res://Data/Audio/Player Owwies/ooph.ogg" id="3_cc82o"]
 [ext_resource type="Script" path="res://Scripts/bgchants.gd" id="3_nggfl"]
 [ext_resource type="PackedScene" uid="uid://dttdwrd6mxtkt" path="res://Scenes/voice.tscn" id="4_il4vx"]
+[ext_resource type="AudioStream" uid="uid://cjq7888x3qjjk" path="res://Data/Audio/Player Owwies/ow.ogg" id="4_inicr"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_8fn5e"]
 
 [node name="player_voice" type="Node"]
 script = ExtResource("1_57adb")
+dmg_sounds = [ExtResource("2_cfcv7"), ExtResource("3_cc82o"), ExtResource("4_inicr")]
 
 [node name="talking" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPolyphonic_8fn5e")
@@ -21,3 +25,5 @@ script = ExtResource("3_nggfl")
 [node name="Voice" parent="." node_paths=PackedStringArray("_audio_player") instance=ExtResource("4_il4vx")]
 _audio_player = NodePath("../talking")
 _resource_folder = "res://Data/Audio/Alphabet/"
+
+[node name="dmg_player" type="AudioStreamPlayer" parent="."]

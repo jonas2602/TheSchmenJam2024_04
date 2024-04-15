@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://m1sdntvdf6fo"
+path="res://.godot/imported/oof.ogg-3b37d5263992dc20c06d0ff2a513962b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Data/Audio/Player Owwies/oof.ogg"
+dest_files=["res://.godot/imported/oof.ogg-3b37d5263992dc20c06d0ff2a513962b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
