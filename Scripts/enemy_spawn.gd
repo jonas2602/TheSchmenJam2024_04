@@ -74,16 +74,16 @@ func _ready():
 
 func _on_restart(credits : bool):
 	if (credits):
-		_spawn_enemy(1, 400, "Albin", 0.0)
-		_spawn_enemy(2, 450, "Baran", 0.0)
-		_spawn_enemy(4, 500, "Denise", 0.0)
-		_spawn_enemy(3, 550, "Guillaume", 0.0)
-		_spawn_enemy(0, 600, "Inshal", 0.0)
-		_spawn_enemy(1, 650, "Jonas", 0.0)
-		_spawn_enemy(0, 700, "Louis", 0.0)
-		_spawn_enemy(3, 750, "Tobias", 0.0)
 		
-		_spawn_enemy(4, 900, "restart", 250)
+		_spawn_enemy(4, 1000, "restart",  400.0)
+		_spawn_enemy(1, 400, "Albin",     250.0)
+		_spawn_enemy(2, 450, "Baran",     300.0)
+		_spawn_enemy(4, 500, "Denise",    350.0)
+		_spawn_enemy(3, 550, "Guillaume", 250.0)
+		_spawn_enemy(0, 600, "Inshal",    300.0)
+		_spawn_enemy(1, 650, "Jonas",     350.0)
+		_spawn_enemy(0, 700, "Louis",     250.0)
+		_spawn_enemy(3, 750, "Tobias",    300.0)
 	else:
 		$Timer.start()
 	
