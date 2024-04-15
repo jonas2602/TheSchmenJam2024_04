@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	GlobalEventSystem.enable_scrolling.connect(self._enable_scrolling)
+	_enable_scrolling(false)
 
 func _enable_scrolling(enable : bool):
 	for i in range(get_child_count()):

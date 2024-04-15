@@ -21,16 +21,15 @@ func _ready():
 	_back_to_idle_timer.wait_time = 0.3
 	_back_to_idle_timer.timeout.connect(self._on_back_to_idle)
 
-	current_state = HeroState.Walking
-	_back_to_idle_timer.start()
-	_animated_legs.play("walk")
+	current_state = HeroState.Idle
+	_animated_legs.play("idle")
 	_animated_top.play("idle")
 
 func _on_game_ends():
 	current_state = HeroState.Recovering
 	$FullAnimatedSprite.play_backwards("death")
 	
-func _on_restart():
+func _on_restart(_credits : bool):
 	current_state = HeroState.Walking
 	_animated_legs.play("walk")
 	_animated_top.play("idle")
@@ -51,7 +50,7 @@ func _on_player_damaged(_damage : int):
 	_send_kill_wave(600)
 
 func _on_player_died():
-	var wave = _send_kill_wave(4000)
+	_send_kill_wave(4000)
 	
 	current_state = HeroState.Dying
 	_animated_legs.visible      = false
@@ -61,6 +60,7 @@ func _on_player_died():
 	
 func _on_input_detected(_input_char : String):
 	current_state = HeroState.Summoning
+	_animated_top.stop()
 	_animated_top.play("summon")
 	_back_to_idle_timer.start()
 	

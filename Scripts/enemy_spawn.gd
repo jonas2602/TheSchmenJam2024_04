@@ -50,12 +50,10 @@ func _on_input_detected(input_char : String):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.start()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
 	GlobalEventSystem.player_died.connect(_on_player_died)
 	GlobalEventSystem.restart.connect(_on_restart)
 	GlobalEventSystem.game_ends.connect(_on_game_ends)
-	#_on_game_ends()
 
 	# Generate the spawn rate for the enemies
 	accumulated_spawn_rate = 0
@@ -69,17 +67,30 @@ func _ready():
 		accumulated_spawn_rate += enemy_type.spawn_rate
 		enemy_spawn_values[i]   = accumulated_spawn_rate
 
-func _on_restart():
-	$Timer.start()
+	await get_tree().create_timer(1).timeout
+	_spawn_enemy(2, 600, "start", 250)
+	_spawn_enemy(0, 700, "credits", 300)
+	_spawn_enemy(1, 800, "quit", 350)
+
+func _on_restart(credits : bool):
+	if (credits):
+		_spawn_enemy(1, 400, "Albin", 0.0)
+		_spawn_enemy(2, 450, "Baran", 0.0)
+		_spawn_enemy(4, 500, "Denise", 0.0)
+		_spawn_enemy(3, 550, "Guillaume", 0.0)
+		_spawn_enemy(0, 600, "Inshal", 0.0)
+		_spawn_enemy(1, 650, "Jonas", 0.0)
+		_spawn_enemy(0, 700, "Louis", 0.0)
+		_spawn_enemy(3, 750, "Tobias", 0.0)
+	else:
+		$Timer.start()
 	
 func _on_player_died():
 	$Timer.stop()
 	
 func _on_game_ends():
 	_spawn_enemy(2, 600, "restart", 250)
-	await get_tree().create_timer(1).timeout
 	_spawn_enemy(0, 700, "credits", 300)
-	await get_tree().create_timer(1).timeout
 	_spawn_enemy(1, 800, "quit", 350)
 	
 func _on_timer_timeout():

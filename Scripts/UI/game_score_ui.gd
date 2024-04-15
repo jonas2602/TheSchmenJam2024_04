@@ -19,7 +19,7 @@ func _ready():
 	
 	GlobalEventSystem.score_increase.connect(self._on_score_changed)
 
-func _on_restart():
+func _on_restart(_credits : bool):
 	current_score   = 0
 	displayed_score = 0
 	$PointsLabel.text = str(displayed_score)
