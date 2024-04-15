@@ -45,17 +45,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_2viya")
-}, {
-"duration": 1.0,
 "texture": ExtResource("18_52ayn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_2viya")
 }],
 "loop": true,
 "name": &"hit",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -113,17 +107,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_2viya")
-}, {
-"duration": 1.0,
 "texture": ExtResource("18_52ayn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_2viya")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -199,16 +187,16 @@ kill_wave_scene = ExtResource("2_2ixca")
 revive_delay = 2.0
 
 [node name="LegAnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -102)
+position = Vector2(0, -101)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_lbdlb")
-animation = &"idle"
+animation = &"hit"
 
 [node name="TopAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -102)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_f6vnw")
-animation = &"idle"
+animation = &"hit"
 
 [node name="FullAnimatedSprite" type="AnimatedSprite2D" parent="."]
 visible = false

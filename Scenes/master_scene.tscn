@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfnnottyj712b"]
+[gd_scene load_steps=13 format=3 uid="uid://cfnnottyj712b"]
 
 [ext_resource type="PackedScene" uid="uid://b7x33yvqgxwnk" path="res://Scenes/main_game.tscn" id="1_gr7mx"]
 [ext_resource type="PackedScene" uid="uid://cu536ymb4dtul" path="res://Scenes/UI/ingame_ui.tscn" id="2_kyer8"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://c0x0cviccr6pc" path="res://Data/TheUnsummoning.png" id="10_43r5b"]
 [ext_resource type="PackedScene" uid="uid://b4ojtnvf76p0e" path="res://Scenes/UI/credits_ui.tscn" id="10_uqqob"]
 [ext_resource type="Script" path="res://Scripts/UI/credits_ui.gd" id="11_a5upa"]
-[ext_resource type="PackedScene" uid="uid://dwsx8k1ityd4f" path="res://Scenes/mob_sounding.tscn" id="8_0a18o"]
 
 [node name="MasterRoot" type="Node"]
 
@@ -58,4 +57,5 @@ grow_horizontal = 2
 scale = Vector2(0.72, 0.72)
 texture = ExtResource("10_43r5b")
 script = ExtResource("9_vi4ws")
+
 [node name="MobSounding" parent="." instance=ExtResource("8_0a18o")]
