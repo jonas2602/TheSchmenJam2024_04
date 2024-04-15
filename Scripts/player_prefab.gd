@@ -46,6 +46,7 @@ func _on_restart(credits : bool):
 
 
 func _on_back_to_idle():
+	_animated_legs.visible = true
 	current_state = HeroState.Idle
 	_back_to_idle_timer.stop()
 	_animated_top.play("idle")
@@ -76,12 +77,13 @@ func _on_player_died():
 	_animated_top.visible  = false
 	_animated_full.visible = true
 	_animated_full.play("death")
+	_back_to_idle_timer.stop()
 	pass
 
 
 func _on_input_detected(_input_char : String):
 
-	if (current_state == HeroState.Hurt):
+	if (current_state != HeroState.Idle && current_state != HeroState.Walking && current_state != HeroState.Summoning):
 		return
 
 	current_state = HeroState.Summoning
