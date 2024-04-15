@@ -29,9 +29,10 @@ func _on_game_ends():
 	current_state = HeroState.Recovering
 	$FullAnimatedSprite.play_backwards("death")
 	
-func _on_restart(_credits : bool):
+func _on_restart(credits : bool):
 	current_state = HeroState.Walking
-	_animated_legs.play(_credits if "idle" else "walk")
+	
+	_animated_legs.play("idle" if credits else "walk")
 	_animated_top.play("idle")
 
 func _on_back_to_idle():
