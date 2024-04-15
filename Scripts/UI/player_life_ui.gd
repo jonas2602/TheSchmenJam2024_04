@@ -18,7 +18,7 @@ func _ready():
 	_idle_timer.start()
 	_play_animation()
 
-func _on_restart():
+func _on_restart(_credits : bool):
 	_current_life = _full_life
 	_update_ui()	
 	

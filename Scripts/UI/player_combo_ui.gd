@@ -30,7 +30,7 @@ func _on_combo_progress(new_multiplier : int, new_multiplier_progress : float):
 	multiplier_progress = new_multiplier_progress
 	_update_ui()
 
-func _on_restart():
+func _on_restart(_credits : bool):
 	multiplier          = 1
 	multiplier_progress = 0.0
 	_update_ui()

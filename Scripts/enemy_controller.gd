@@ -66,7 +66,7 @@ func _initialize_enemy(type_info, type_id, target_position_x, inst_name, height_
 	
 	GlobalEventSystem.monster_spawned.emit(_type_info)
 
-func _on_restart():
+func _on_restart(_credits : bool):
 	kill(true)
 	
 func _force_death():
@@ -91,9 +91,11 @@ func kill(forced : bool):
 	get_tree().get_root().find_child("MainGame", true, false).add_child(vfx)
 	vfx.position = position + vfx_kill_scene_offset
 	
-	if ((enemy_name == "restart") && (forced == false)):
+	if (((enemy_name == "restart") || (enemy_name == "start")) && (forced == false)):
 		GlobalEventSystem.enable_scrolling.emit(true)
-		GlobalEventSystem.restart.emit()
+		GlobalEventSystem.restart.emit(false)
+	if ((enemy_name == "credits") && (forced == false)):
+		GlobalEventSystem.restart.emit(true)
 	if ((enemy_name == "quit") && (forced == false)):
 		get_tree().quit()
 

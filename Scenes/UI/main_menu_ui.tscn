@@ -49,6 +49,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 
 [node name="Start" type="Button" parent="MainMenu"]
@@ -76,7 +77,6 @@ offset_bottom = 501.0
 text = "Exit"
 
 [node name="Credits" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 
 [node name="Back" type="Button" parent="Credits"]
