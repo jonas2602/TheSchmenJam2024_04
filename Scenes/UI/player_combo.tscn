@@ -42,6 +42,7 @@ animations = [{
 script = ExtResource("1_a446f")
 
 [node name="DeactiveCombo" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
@@ -102,6 +103,7 @@ texture = ExtResource("2_1ytjy")
 expand_mode = 1
 
 [node name="ActiveCombo" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 131.0
@@ -136,3 +138,16 @@ position = Vector2(143, 15)
 scale = Vector2(0.119141, 0.119141)
 sprite_frames = SubResource("SpriteFrames_n4skm")
 animation = &"idle"
+
+[node name="ComboText" type="Label" parent="."]
+offset_left = -1.0
+offset_top = -14.0
+offset_right = 64.0
+offset_bottom = 28.0
+rotation = -0.108999
+theme_override_colors/font_shadow_color = Color(0.862745, 0.215686, 0.196078, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "x1.0"
