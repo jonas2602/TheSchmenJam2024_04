@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkl0q4nmq5foh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wymec"]
+font_size = 18
+
+[node name="CreditsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CreditsText2" type="Label" parent="."]
+offset_left = 580.0
+offset_top = 239.0
+offset_right = 928.0
+offset_bottom = 439.0
+text = "Aethrall - Demon Woods Background
+Brullov - Oak Woods
+BDragon - Smoke FX
+YouFulCa - JRPG Battle music pack
+Sonatina - SIBZ selection"
+label_settings = SubResource("LabelSettings_wymec")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsText4" type="Label" parent="."]
+offset_left = 643.0
+offset_top = 184.0
+offset_right = 865.0
+offset_bottom = 211.0
+text = "Thanks to"
+label_settings = SubResource("LabelSettings_wymec")
+horizontal_alignment = 1
+vertical_alignment = 1

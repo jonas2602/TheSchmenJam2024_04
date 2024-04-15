@@ -82,6 +82,8 @@ func _on_restart(credits : bool):
 		_spawn_enemy(1, 650, "Jonas", 0.0)
 		_spawn_enemy(0, 700, "Louis", 0.0)
 		_spawn_enemy(3, 750, "Tobias", 0.0)
+		
+		_spawn_enemy(4, 900, "restart", 250)
 	else:
 		$Timer.start()
 	
