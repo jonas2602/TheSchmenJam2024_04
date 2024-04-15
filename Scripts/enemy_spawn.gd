@@ -24,7 +24,8 @@ func _on_input_detected(input_char : String):
 		
 		# If the cursor is at 1 and player registers same char with first char
 		# of the name, don't reset.
-		if current_enemy.cursor_pos == 1 and input_char[0] == current_enemy.enemy_name.to_upper()[0]:
+		var first_two_chars_equal : bool = current_enemy.enemy_name.length() < 2 or current_enemy.enemy_name.to_upper()[0] == current_enemy.enemy_name.to_upper()[1]
+		if current_enemy.cursor_pos == 1 and input_char[0] == current_enemy.enemy_name.to_upper()[0] and !first_two_chars_equal:
 			char_miss       = char_miss and false;
 			there_was_a_hit = true
 			continue
