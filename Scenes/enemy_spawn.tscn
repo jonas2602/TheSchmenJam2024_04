@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1rmwfiqwbfp8"]
+[gd_scene load_steps=32 format=3 uid="uid://c1rmwfiqwbfp8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_spawn.gd" id="1_o4g6m"]
 [ext_resource type="PackedScene" uid="uid://chhuuimlvap0i" path="res://Scenes/enemy_prefab.tscn" id="2_t1i8u"]
@@ -19,6 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://dncep51h5gpod" path="res://Data/Monsters/Medium Monsters/Skeleton_frames/SkeletonVariant_1_2.png" id="15_y1886"]
 [ext_resource type="Texture2D" uid="uid://bil6g5iosoa70" path="res://Data/Monsters/Medium Monsters/Beetle_frames/beetle_1_1.png" id="16_5weiv"]
 [ext_resource type="Texture2D" uid="uid://dbqswp13ng1n4" path="res://Data/Monsters/Medium Monsters/Beetle_frames/beetle_1_2.png" id="17_ylxsp"]
+[ext_resource type="Texture2D" uid="uid://dxowojwno8x43" path="res://Data/Monsters/Medium Monsters/Mantis_frames/mantis_1_1.png" id="20_xtlgn"]
+[ext_resource type="Texture2D" uid="uid://dfxwio1h8bo55" path="res://Data/Monsters/Medium Monsters/Mantis_frames/mantis_1_2.png" id="21_qhf5f"]
+[ext_resource type="AudioStream" uid="uid://dt7amrop3gdju" path="res://Data/Audio/Mantis/mantis_spawn_03.ogg" id="22_y6vji"]
+[ext_resource type="AudioStream" uid="uid://k27d5flsppfq" path="res://Data/Audio/Mantis/mantis_death_03.ogg" id="23_g2jjm"]
+[ext_resource type="AudioStream" uid="uid://clwh5cmdec6s8" path="res://Data/Audio/Mantis/mantis_walk.ogg" id="24_x3ejr"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_23dd2"]
 
@@ -98,6 +103,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6ivo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_xtlgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_qhf5f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="SpawnPoint" type="Node2D"]
 script = ExtResource("1_o4g6m")
 mob_scene = ExtResource("2_t1i8u")
@@ -157,5 +176,19 @@ speed = 200
 sprites = SubResource("SpriteFrames_iti6m")
 vfx_kill = ExtResource("6_4lcv0")
 possible_names = Array[String](["BEE", "SOO", "REE", "GOO", "PAH", "HAH", "EEK", "RUI", "SAP", "FFF", "NIE", "LOL"])
+
+[node name="MantisEnemy" type="Node" parent="EnemyTypeContainer"]
+script = ExtResource("3_2np3i")
+stop_animation = false
+speed = 150
+height = -10
+spawn_rate = 0.1
+sprites = SubResource("SpriteFrames_w6ivo")
+vfx_kill = ExtResource("8_xs8cg")
+vfx_kill_offset = Vector2(0, -64)
+possible_names = Array[String](["saawdw", "lituaws", "bufsd", "inqfs", "puted", "sisfss", "notda", "rotss", "lusew", "quo", "feresss", "runed"])
+spawn_sound = ExtResource("22_y6vji")
+death_sound = ExtResource("23_g2jjm")
+walk_sound = ExtResource("24_x3ejr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
