@@ -9,6 +9,9 @@ static var multiplier_progress : float = 0.0
 
 # Triggered when player kills a monster.
 func _on_monster_slain(_type_info : enemy_type_info, points : int):
+	if (points == 0):
+		return
+	
 	score += points * multiplier
 	GlobalEventSystem.score_increase.emit(score)
 	

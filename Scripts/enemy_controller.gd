@@ -94,9 +94,9 @@ func kill(forced : bool):
 	if (((enemy_name == "restart") || (enemy_name == "start")) && (forced == false)):
 		GlobalEventSystem.enable_scrolling.emit(true)
 		GlobalEventSystem.restart.emit(false)
-	if ((enemy_name == "credits") && (forced == false)):
+	elif ((enemy_name == "credits") && (forced == false)):
 		GlobalEventSystem.restart.emit(true)
-	if ((enemy_name == "quit") && (forced == false)):
+	elif ((enemy_name == "quit") && (forced == false)):
 		get_tree().quit()
 
 
