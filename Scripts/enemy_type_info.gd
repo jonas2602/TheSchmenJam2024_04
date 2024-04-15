@@ -2,6 +2,7 @@ extends Node
 
 class_name enemy_type_info
 
+@export var stop_animation  : bool  = true
 @export var speed           : int   = 50
 @export var height          : int   = 0
 @export var spawn_rate      : float = 1.0

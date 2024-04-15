@@ -53,7 +53,10 @@ func _ready():
 	$Timer.start()
 	GlobalEventSystem.input_detected.connect(_on_input_detected)
 	GlobalEventSystem.player_died.connect(_on_player_died)
+	GlobalEventSystem.monster_destroyed.connect(_on_monster_destroyed)
 	GlobalEventSystem.restart.connect(_on_restart)
+	GlobalEventSystem.game_ends.connect(_on_game_ends)
+	#_on_game_ends()
 
 	# Generate the spawn rate for the enemies
 	accumulated_spawn_rate = 0
@@ -68,14 +71,27 @@ func _ready():
 		enemy_spawn_values[i]   = accumulated_spawn_rate
 
 
+func _on_monster_destroyed(monster : Node):
+	if (monster.enemy_name == "restart"):
+		GlobalEventSystem.enable_scrolling.emit(true)
+		GlobalEventSystem.restart.emit()
+	if (monster.enemy_name == "quit"):
+		get_tree().quit()
+	
 func _on_restart():
 	$Timer.start()
 	
 func _on_player_died():
 	$Timer.stop()
 	
+func _on_game_ends():
+	_spawn_enemy(2, 600, "restart", 250)
+	await get_tree().create_timer(1).timeout
+	_spawn_enemy(0, 700, "credits", 300)
+	await get_tree().create_timer(1).timeout
+	_spawn_enemy(1, 800, "quit", 350)
+	
 func _on_timer_timeout():
-
 	var random_selector : float = randf() * accumulated_spawn_rate
 	var next_index : int = 0
 
@@ -87,23 +103,29 @@ func _on_timer_timeout():
 	var type_id                    = next_index
 	var type_info                  = $EnemyTypeContainer.get_child(next_index)
 	
+	var inst_name = type_info.possible_names[randi() % type_info.possible_names.size()]
+	var player_node = get_tree().get_root().find_child("PlayerPrefab", true, false)
+	_spawn_enemy(type_id, player_node.position.x, inst_name, 0.0);
 	$Timer.set_wait_time($Timer.get_wait_time() * 0.99)
+
+func _spawn_enemy(type_index, target_position_x, inst_name, override_height):
+	var type_info = $EnemyTypeContainer.get_child(type_index)
 	
 	var mob         = mob_scene.instantiate()
 	mob.position    = position
 	mob.position.y -= type_info.height
 	
 	enemy_id_counter += 1
-	
 	enemy_inst_container.add_child(mob)
-	mob._initialize_enemy(type_info, type_id)
+	mob._initialize_enemy(type_info, type_index, target_position_x, inst_name, override_height)
 
 	# Insert the fast enemies in a lower node than the slow ones.
 	# Also insert any new spawned enemy on a higher possible node so the earlier
 	# spawned enemies appear in front of the later ones.	
 	var insertion_index = enemy_inst_container.get_children().size()-1
 	for i in range(0, enemy_inst_container.get_children().size()-1):
-		if enemy_inst_container.get_children()[i].enemy_type_id < type_id:
+		if enemy_inst_container.get_children()[i].enemy_type_id < type_index:
 			insertion_index =enemy_inst_container.get_children().size()-1- i
 
 	enemy_inst_container.move_child(mob, insertion_index)
+	

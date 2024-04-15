@@ -12,9 +12,9 @@ const death_raise_seconds : float = 2
 
 var cursor_pos : int
 var enemy_name : String
-var player_node : Node
-enum MonsterState { Attacking, Dying }
-var current_state : MonsterState
+var target_pos_x : float
+enum MonsterState { Idleing, Attacking, Dying }
+var current_state : MonsterState = MonsterState.Attacking
 var death_raise_seconds_timer : float
 var enemy_type_id : int
 var vfx_kill_scene : PackedScene
@@ -29,15 +29,17 @@ var walk_sound  : AudioStream
 
 var _type_info : enemy_type_info # heads up, at the time of writing most stuff that would be in here is kept as separate members, this is just for the enemy_killed signal
 
+func _ready():
+	GlobalEventSystem.restart.connect(_on_restart)
+	
 func _on_audio_player_finished():
 	if (walk_sound):
 		_audio_player.stream = walk_sound
 		walk_sound_timer = walk_sound_period
 
-func _initialize_enemy(type_info, type_id):
+func _initialize_enemy(type_info, type_id, target_position_x, inst_name, height_override):
 	_type_info    = type_info
 	var type_name = type_info.name
-	var inst_name = type_info.possible_names[randi() % type_info.possible_names.size()]
 	name          = type_name + " (" + inst_name + ")"
 	enemy_type_id = type_id
 	move_speed    = type_info.speed
@@ -56,9 +58,9 @@ func _initialize_enemy(type_info, type_id):
 	
 	cursor_pos = 0
 	enemy_name = inst_name
-	text_box_node.initialize_text_box(inst_name)
+	text_box_node.initialize_text_box(inst_name, height_override)
 
-	player_node = get_tree().get_root().find_child("PlayerPrefab", true, false)
+	target_pos_x = target_position_x
 
 	death_raise_seconds_timer = death_raise_seconds
 	
@@ -67,6 +69,9 @@ func _initialize_enemy(type_info, type_id):
 		_audio_player.stream = spawn_sound
 		_audio_player.play()
 
+func _on_restart():
+	_set_cursor_progress(enemy_name.length())
+	
 func _force_death():
 	_set_cursor_progress(enemy_name.length())
 
@@ -74,7 +79,7 @@ func _set_cursor_progress(cursor):
 	cursor_pos = cursor
 	text_box_node.on_new_progression_state(cursor)
 	
-	if (cursor == enemy_name.length()):
+	if ((cursor == enemy_name.length()) && (current_state != MonsterState.Dying)):
 		GlobalEventSystem.monster_killed.emit(_type_info, cursor)
 		current_state = MonsterState.Dying
 		sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
@@ -101,15 +106,16 @@ func process_walk_sound(delta):
 func _process(delta):
 
 	match (current_state):
+		MonsterState.Idleing:
+			pass
 		MonsterState.Attacking:
 			# Move monster towards the player
 			position.x -= delta * move_speed
-
-			# Handle "collision" with player
-			if (position.x <= player_node.position.x):
-				GlobalEventSystem.player_damaged.emit(1)
-				queue_free()
-			
+			if (position.x <= target_pos_x):
+				current_state = MonsterState.Idleing
+				if (_type_info.stop_animation):
+					sprite_rect_node.stop()
+					
 			process_walk_sound(delta)
 		
 		MonsterState.Dying:
@@ -123,5 +129,15 @@ func _process(delta):
 
 			# Enemy should be cleaned up now
 			if (death_raise_seconds_timer <= 0):
-				GlobalEventSystem.monster_destroyed.emit()
+				GlobalEventSystem.monster_destroyed.emit(self)
 				queue_free()
+
+
+func _on_area_2d_area_entered(area):
+	var other = area.get_parent()
+	# print("hit: " + other.name)
+	
+	# Handle "collision" with player
+	if (other.name == "PlayerPrefab"):
+		GlobalEventSystem.player_damaged.emit(1)
+		queue_free()
