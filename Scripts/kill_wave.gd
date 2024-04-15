@@ -13,6 +13,7 @@ func _ready():
 func _process(delta):
 	position.x += delta * speed
 	if (position.x > max_distance):
+		GlobalEventSystem.kill_wave_complete.emit()
 		queue_free()
 	pass
 

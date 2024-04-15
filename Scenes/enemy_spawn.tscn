@@ -114,6 +114,7 @@ wait_time = 2.0
 
 [node name="FlyingImpEnemy" type="Node" parent="EnemyTypeContainer"]
 script = ExtResource("3_2np3i")
+stop_animation = false
 speed = 100
 height = 50
 spawn_rate = 1.75
