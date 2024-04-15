@@ -64,10 +64,7 @@ func _initialize_enemy(type_info, type_id, target_position_x, inst_name, height_
 
 	death_raise_seconds_timer = death_raise_seconds
 	
-	if (spawn_sound):
-		_audio_player.stop()
-		_audio_player.stream = spawn_sound
-		_audio_player.play()
+	GlobalEventSystem.monster_spawned.emit(_type_info)
 
 func _on_restart():
 	kill(true)
@@ -112,7 +109,7 @@ func process_walk_sound(delta):
 	
 	walk_sound_timer -= delta
 	if walk_sound_timer < 0.0:
-		_audio_player.play()
+		GlobalEventSystem.monster_periodic.emit(_type_info)
 		walk_sound_timer = walk_sound_period
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

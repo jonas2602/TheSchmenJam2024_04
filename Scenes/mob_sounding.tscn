@@ -9,3 +9,5 @@ script = ExtResource("1_in38y")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamPolyphonic_vmonu")
+volume_db = -11.5
+max_polyphony = 3
