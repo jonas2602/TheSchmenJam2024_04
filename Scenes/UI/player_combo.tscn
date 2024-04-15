@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5wf5nnp58kxr"]
+
+[ext_resource type="Script" path="res://Scripts/UI/player_combo_ui.gd" id="1_a446f"]
+[ext_resource type="Texture2D" uid="uid://cv3u654tsmgb4" path="res://Data/UI/Health/CristalLife_Broken.png" id="2_1ytjy"]
+[ext_resource type="Texture2D" uid="uid://droj04f8yonro" path="res://Data/UI/Health/Cristal_Anim0000.png" id="3_qffa4"]
+[ext_resource type="Texture2D" uid="uid://dx7hh7or5w3a" path="res://Data/UI/Health/Cristal_Anim0001.png" id="4_vcjbj"]
+[ext_resource type="Texture2D" uid="uid://dgr5pvt2javqc" path="res://Data/UI/Health/Cristal_Anim0002.png" id="5_nq7n2"]
+[ext_resource type="Texture2D" uid="uid://cib78y254jep3" path="res://Data/UI/Health/Cristal_Anim0003.png" id="6_ymc4e"]
+[ext_resource type="Texture2D" uid="uid://bf474ms6shgko" path="res://Data/UI/Health/Cristal_Anim0004.png" id="7_uv4ko"]
+[ext_resource type="Texture2D" uid="uid://chta2gidlp3t3" path="res://Data/UI/Health/Cristal_Anim0005.png" id="8_r8u5o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4skm"]
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("3_qffa4")
+}, {
+"duration": 0.7,
+"texture": ExtResource("4_vcjbj")
+}, {
+"duration": 0.6,
+"texture": ExtResource("5_nq7n2")
+}, {
+"duration": 0.6,
+"texture": ExtResource("6_ymc4e")
+}, {
+"duration": 0.6,
+"texture": ExtResource("7_uv4ko")
+}, {
+"duration": 0.7,
+"texture": ExtResource("8_r8u5o")
+}, {
+"duration": 0.7,
+"texture": ExtResource("3_qffa4")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="PlayerComboUI" type="Node2D"]
+script = ExtResource("1_a446f")
+
+[node name="DeactiveCombo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 40.0
+
+[node name="Multiplier1" type="TextureRect" parent="DeactiveCombo"]
+texture_filter = 3
+layout_mode = 2
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_1ytjy")
+expand_mode = 1
+
+[node name="Multiplier2" type="TextureRect" parent="DeactiveCombo"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 32.0
+offset_right = 62.0
+offset_bottom = 30.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_1ytjy")
+expand_mode = 1
+
+[node name="Multiplier3" type="TextureRect" parent="DeactiveCombo"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 64.0
+offset_right = 94.0
+offset_bottom = 30.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_1ytjy")
+expand_mode = 1
+
+[node name="Multiplier4" type="TextureRect" parent="DeactiveCombo"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 96.0
+offset_right = 126.0
+offset_bottom = 30.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_1ytjy")
+expand_mode = 1
+
+[node name="Multiplier5" type="TextureRect" parent="DeactiveCombo"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 128.0
+offset_right = 158.0
+offset_bottom = 30.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("2_1ytjy")
+expand_mode = 1
+
+[node name="ActiveCombo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 131.0
+offset_bottom = 40.0
+
+[node name="Multiplier1" type="AnimatedSprite2D" parent="ActiveCombo"]
+position = Vector2(15, 15)
+scale = Vector2(0.119141, 0.119141)
+sprite_frames = SubResource("SpriteFrames_n4skm")
+animation = &"idle"
+
+[node name="Multiplier2" type="AnimatedSprite2D" parent="ActiveCombo"]
+position = Vector2(47, 15)
+scale = Vector2(0.119141, 0.119141)
+sprite_frames = SubResource("SpriteFrames_n4skm")
+animation = &"idle"
+
+[node name="Multiplier3" type="AnimatedSprite2D" parent="ActiveCombo"]
+position = Vector2(79, 15)
+scale = Vector2(0.119141, 0.119141)
+sprite_frames = SubResource("SpriteFrames_n4skm")
+animation = &"idle"
+
+[node name="Multiplier4" type="AnimatedSprite2D" parent="ActiveCombo"]
+position = Vector2(111, 15)
+scale = Vector2(0.119141, 0.119141)
+sprite_frames = SubResource("SpriteFrames_n4skm")
+animation = &"idle"
+
+[node name="Multiplier5" type="AnimatedSprite2D" parent="ActiveCombo"]
+position = Vector2(143, 15)
+scale = Vector2(0.119141, 0.119141)
+sprite_frames = SubResource("SpriteFrames_n4skm")
+animation = &"idle"

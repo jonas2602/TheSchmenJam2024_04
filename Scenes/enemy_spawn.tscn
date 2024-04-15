@@ -155,6 +155,6 @@ script = ExtResource("3_2np3i")
 speed = 200
 sprites = SubResource("SpriteFrames_iti6m")
 vfx_kill = ExtResource("6_4lcv0")
-possible_names = Array[String](["bee", "soo", "ree", "goo", "pah", "hah", "eek", "rui", "sap", "fff", "nie", "lol"])
+possible_names = Array[String](["BEE", "SOO", "REE", "GOO", "PAH", "HAH", "EEK", "RUI", "SAP", "FFF", "NIE", "LOL"])
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
