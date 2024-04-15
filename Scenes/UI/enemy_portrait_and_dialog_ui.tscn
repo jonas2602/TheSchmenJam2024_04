@@ -27,6 +27,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("1_fwq7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ilt8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0uafg")
+}],
+"loop": true,
+"name": &"laugh",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_0uafg")
 }],
 "loop": true,
@@ -58,7 +72,7 @@ possible_text = Array[String](["^I^ will lead you to #hell# !", "God must be des
 position = Vector2(-154, 0)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_4sdxx")
-animation = &"lol"
+animation = &"laugh"
 centered = false
 
 [node name="SpeechTextBoxRoot" parent="." instance=ExtResource("2_7ng8v")]

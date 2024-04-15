@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc0vqpfk2ma0y"]
+[gd_scene load_steps=4 format=3 uid="uid://dcka8c7l0b54w"]
 
 [ext_resource type="Script" path="res://Scripts/UI/speech_text_box.gd" id="1_m88fn"]
-[ext_resource type="PackedScene" uid="uid://dttdwrd6mxtkt" path="res://Scenes/voice.tscn" id="2_ox01i"]
+[ext_resource type="PackedScene" path="res://Scenes/voice.tscn" id="2_ox01i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdhah"]
 bg_color = Color(0, 0, 0, 0.584314)
