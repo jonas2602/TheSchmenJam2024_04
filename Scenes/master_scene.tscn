@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dwsx8k1ityd4f" path="res://Scenes/mob_sounding.tscn" id="8_0a18o"]
 [ext_resource type="Script" path="res://Scripts/UI/game_title_ui.gd" id="9_vi4ws"]
 [ext_resource type="Texture2D" uid="uid://c0x0cviccr6pc" path="res://Data/TheUnsummoning.png" id="10_43r5b"]
-[ext_resource type="PackedScene" uid="uid://dkl0q4nmq5foh" path="res://Scenes/UI/credits_ui.tscn" id="10_uqqob"]
+[ext_resource type="PackedScene" uid="uid://b4ojtnvf76p0e" path="res://Scenes/UI/credits_ui.tscn" id="10_uqqob"]
 [ext_resource type="Script" path="res://Scripts/UI/credits_ui.gd" id="11_a5upa"]
 [ext_resource type="PackedScene" uid="uid://dwsx8k1ityd4f" path="res://Scenes/mob_sounding.tscn" id="8_0a18o"]
 
@@ -40,6 +40,10 @@ script = ExtResource("7_46d3t")
 
 [node name="CreditsUI" parent="." instance=ExtResource("10_uqqob")]
 visible = false
+offset_left = -540.0
+offset_top = 80.0
+offset_right = -540.0
+offset_bottom = 80.0
 script = ExtResource("11_a5upa")
 
 [node name="Game Title" type="TextureRect" parent="."]
