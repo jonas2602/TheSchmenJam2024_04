@@ -47,7 +47,7 @@ func _on_speech_done():
 func _on_back_to_idle():
 	_animated_sprite.play("idle")
 
-func _on_monster_killed(_points : int):
+func _on_monster_killed(_type_info : enemy_type_info, _points : int):
 	if _speak_in_progress:
 		return
 

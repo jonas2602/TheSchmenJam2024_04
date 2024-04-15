@@ -70,28 +70,41 @@ func _initialize_enemy(type_info, type_id, target_position_x, inst_name, height_
 		_audio_player.play()
 
 func _on_restart():
-	_set_cursor_progress(enemy_name.length())
+	kill(true)
 	
 func _force_death():
-	_set_cursor_progress(enemy_name.length())
+	kill(true)
 
 func _set_cursor_progress(cursor):
 	cursor_pos = cursor
 	text_box_node.on_new_progression_state(cursor)
 	
 	if ((cursor == enemy_name.length()) && (current_state != MonsterState.Dying)):
-		GlobalEventSystem.monster_killed.emit(_type_info, cursor)
-		current_state = MonsterState.Dying
-		sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
+		kill(false)
 
-		var vfx = vfx_kill_scene.instantiate()
-		get_tree().get_root().find_child("MainGame", true, false).add_child(vfx)
-		vfx.position = position + vfx_kill_scene_offset
+func kill(forced : bool):
+	cursor_pos = enemy_name.length()
+	text_box_node.on_new_progression_state(cursor_pos)
+	
+	GlobalEventSystem.monster_killed.emit(_type_info, forced if 0 else cursor_pos)
+	current_state = MonsterState.Dying
+	sprite_rect_node.stop()  # Stop the sprite animation to make pretend that the monster is dead
+
+	var vfx = vfx_kill_scene.instantiate()
+	get_tree().get_root().find_child("MainGame", true, false).add_child(vfx)
+	vfx.position = position + vfx_kill_scene_offset
+	
+	if (_audio_player):
+		_audio_player.stop()
+		_audio_player.stream = death_sound
+		_audio_player.play()
 		
-		if (_audio_player):
-			_audio_player.stop()
-			_audio_player.stream = death_sound
-			_audio_player.play()
+	if ((enemy_name == "restart") && (forced == false)):
+		GlobalEventSystem.enable_scrolling.emit(true)
+		GlobalEventSystem.restart.emit()
+	if ((enemy_name == "quit") && (forced == false)):
+		get_tree().quit()
+
 
 func process_walk_sound(delta):
 	if (walk_sound == null):

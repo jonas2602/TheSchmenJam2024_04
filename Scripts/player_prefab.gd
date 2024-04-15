@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var kill_wave_scene : PackedScene
-@export var game_over_scene : PackedScene
 @export var revive_delay : float
 @onready var _animated_legs = $LegAnimatedSprite
 @onready var _animated_top = $TopAnimatedSprite
