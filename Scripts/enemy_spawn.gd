@@ -2,6 +2,7 @@ extends Node2D
 
 @export var mob_scene : PackedScene
 @export var enemy_inst_container : Node
+@export var default_spawn_delay : float = 2
 
 static var enemy_id_counter : int = 0
 
@@ -55,6 +56,7 @@ func _ready():
 	GlobalEventSystem.restart.connect(_on_restart)
 	GlobalEventSystem.game_ends.connect(_on_game_ends)
 
+	$Timer.set_wait_time(default_spawn_delay)
 	# Generate the spawn rate for the enemies
 	accumulated_spawn_rate = 0
 
@@ -73,8 +75,9 @@ func _ready():
 	_spawn_enemy(1, 800, "quit", 350)
 
 func _on_restart(credits : bool):
+	$Timer.set_wait_time(default_spawn_delay)
+
 	if (credits):
-		
 		_spawn_enemy(4, 1000, "restart",  400.0)
 		_spawn_enemy(1, 400, "Albin",     250.0)
 		_spawn_enemy(2, 450, "Baran",     300.0)
