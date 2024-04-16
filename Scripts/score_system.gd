@@ -7,9 +7,9 @@ static var multiplier_progress : float = 0.0
 @export var multiplier_step    : int   = 20
 @export var multiplier_cap     : int   = 5
 
-func on_restart():
+func _on_restart(_credits : bool):
 	score = 0
-	multiplier = 0
+	multiplier = 1
 	multiplier_progress = 0
 
 # Triggered when player kills a monster.
@@ -44,4 +44,4 @@ func _on_character_miss(_input_char : String):
 func _ready():
 	GlobalEventSystem.monster_killed.connect(_on_monster_slain)
 	GlobalEventSystem.character_miss.connect(_on_character_miss)
-	GlobalEventSystem.restart.connect(on_restart)
+	GlobalEventSystem.restart.connect(_on_restart)
